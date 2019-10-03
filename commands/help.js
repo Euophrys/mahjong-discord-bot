@@ -1,11 +1,11 @@
 module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
-    if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
-
-    if (helpWith == "") {
+    if (!helpWith || helpWith == "") {
         return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>`, `!link <site>`, `!define <word>`, `!tile`, `!hand`, and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
     }
+
+    if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
 
     if (helps[helpWith]) {
         return message.channel.send(helps[helpWith]);

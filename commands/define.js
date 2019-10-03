@@ -2,8 +2,8 @@ module.exports = message => {
     let requestArray = message.content.split(" ").slice(1);
     let request = requestArray.join("").toLowerCase();
 
-    if (request == "") {
-        var keys = Object.keys(links);
+    if (!request || request == "") {
+        var keys = Object.keys(definitions);
         var suggestion = keys[Math.floor(Math.random() * keys.length)];
         return message.channel.send(`You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
     }
@@ -155,5 +155,9 @@ const definitions = {
     "mentsu": "A mentsu is a completed shape in a hand.",
     "toitsu": "A toitsu is a pair.",
     "koutsu": "A koutsu is a triplet.",
-    "shuntsu": "A shuntsu is a run."
+    "shuntsu": "A shuntsu is a run.",
+    "jantou": "A jantou is a pair, specifically the one you need to complete your hand.",
+    "jansou": "A jansou is a Mahjong parlour, where people usually play for money.",
+    "shuugi": "A shuugi is a payment that happens between players at a parlour. Generally, each aka dora or ura dora will be a shuugi, but different parlours will have more or less ways to obtain them. When a player tsumos, everyone pays for the shuugi (for example, 500 yen each), while if the player rons, only the ronned player pays (only 500 yen).",
+    "love": "I'll hurt you."
 };
