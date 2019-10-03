@@ -68,7 +68,18 @@ module.exports = message => {
     }
     
     let shanten = calculateMinimumShanten(handTiles);
-    let response = `${handToEmoji(handTiles)} (${shanten}-shanten)\n`;
+    let response = `${handToEmoji(handTiles)} `;
+
+    if (shanten === -1) {
+        response += "(Complete)\n";
+        shanten = 0;
+    }
+    else if (shanten === 0) {
+        response += "(Tenpai)\n";
+    }
+    else {
+        response += `(${shanten}-shanten)\n`;
+    }
 
     if (tiles == 13) {
         let ukeire = calculateUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
