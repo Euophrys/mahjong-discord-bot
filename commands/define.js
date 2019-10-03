@@ -58,7 +58,7 @@ const definitions = {
     "pei": "The north wind. :4z:",
     "menzen": "Closed.",
     "menzentsumo": "Menzen tsumo is a yaku awarded for drawing your winning tile while your hand is closed. Worth one han.",
-    "pinfu": "Pinfu is a yaku for a hand which scores no extra fu points, aside from those for tsumo and ron. Must be closed, and is worth one han. This means the hand has only runs, a pair that isn't yakuhai, and the final wait was a ryanmen.",
+    "pinfu": "Pinfu is a yaku for a hand which scores no extra fu points, aside from those for tsumo and ron. This means the hand has only runs, a pair that isn't yakuhai, and the final wait was a ryanmen. Must be closed, and is worth one han.",
     "sanshoku": "Sanshoku doujun is a yaku for having the same run in each suit. Worth two han closed, and one han open.",
     "iipeikou": "Iipeikou is a yaku for having two identical runs, such as :2s::2s::3s::3s::4s::4s:. Must be closed, and is worth one han.",
     "dora": "The dora is a bonus tile, one greater than the dora indicator. This wraps around, so :9m: as indicator makes :1m: dora. Each one gives you an extra han, but they don't count as a yaku. The order for honors is :1z:->:2z:->:3z:->:4z:->:1z:, and :5z:->:6z:->:7z:->:5z:.",
@@ -162,5 +162,7 @@ const definitions = {
     "love": "I'll hurt you.",
     ":pyong:": "A fox-like creature used as Kyuu's avatar. Often used to denote that a statement is not serious.",
     ":baka:": "In the manual for the Touhou game Phantasmagoria of Flower View, the character Cirno is labeled with :baka:, and in the notes, it says ':baka:: Idiot'. I don't want to make any implications about why people are using it, but you can connect the dots.",
-    "doratanki": "A tanki wait on a dora tile."
+    "doratanki": "A tanki wait on a dora tile.",
+    "kuisagari": "Kuisagari is the property of some yaku wherein they lose a han if you score them while open. For example, sanshoku doujun and chanta.",
+    "fu": "Fu are minipoints. Your hand gains them for various things, and starts with 20 fu. A triplet gives you 2, times two if it's closed, and times two if it's a terminal or honor, and times four if it's a quad. So, :tileBack::6z::6z::tileBack: would give you 32 fu. Additionally, you get two fu if you have a single wait (a tanki, kanchan, or penchan). You also get two fu if your pair is yakuhai, or four fu if it's a double wind. Finally, you get 2 fu if you tsumo, and 10 fu if you win by ron with a closed hand. This is rounded up to the nearest 10, so a 32 fu hand would become a 40 fu hand. The exception to all this is chiitoitsu, which is always 25 fu. Also, if you score pinfu and tsumo, you only get 20 fu. Also also, if a hand scores 20 fu but is open, it goes up to 30 fu due to the open pinfu rule. Phew. Ask something simpler next time."
 };
