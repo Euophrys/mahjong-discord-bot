@@ -19,12 +19,13 @@
     "discord.js": "^11.5.1",
     "dotenv": "^7.0.0",
     "erlpack": "github:discordapp/erlpack",
-    "libsodium-wrappers": "^0.7.3",
     "node-opus": "^0.2.7",
-    "opusscript": "0.0.6",
-    "sodium": "^2.0.3"
+    "opusscript": "0.0.6"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"
+  },
+  "engines": {
+    "node": "10.15.3"
   }
 }
