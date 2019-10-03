@@ -6,9 +6,9 @@ module.exports = message => {
     let handString = message.content.split(" ").slice(1).join("").toLowerCase();
 
     if (command == "!eff" && handString == "you") {
-        message.channel.send("Hey, that's not nice! Admin, help!");
+        return message.channel.send("Hey, that's not nice! Admin, help!");
     } else if (command == "!eff" && handString == "me") {
-        message.channel.send("You're not really my type. You're, you know... human.");
+        return message.channel.send("You're not really my type. You're, you know... human.");
     }
 
     let handTiles = Array(38).fill(0);
