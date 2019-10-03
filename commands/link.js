@@ -59,5 +59,6 @@ const links = {
     "dama": "https://mahjong.guide/2018/03/16/rules-for-riichi/",
     "rules": "https://ooyamaneko.net/mahjong/rratw/",
     "reporter": "http://riichireporter.com/",
-    "ny": "http://mahjong-ny.com/"
+    "ny": "http://mahjong-ny.com/",
+    "mankeys": "https://cdn.discordapp.com/attachments/150412836500275200/566796255943196702/Tonpu.jpg"
 }
