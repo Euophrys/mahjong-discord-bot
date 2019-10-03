@@ -159,5 +159,8 @@ const definitions = {
     "jantou": "A jantou is a pair, specifically the one you need to complete your hand.",
     "jansou": "A jansou is a Mahjong parlour, where people usually play for money.",
     "shuugi": "A shuugi is a payment that happens between players at a parlour. Generally, each aka dora or ura dora will be a shuugi, but different parlours will have more or less ways to obtain them. When a player tsumos, everyone pays for the shuugi (for example, 500 yen each), while if the player rons, only the ronned player pays (only 500 yen).",
-    "love": "I'll hurt you."
+    "love": "I'll hurt you.",
+    ":pyong:": "A fox-like creature used as Kyuu's avatar. Often used to denote that a statement is not serious.",
+    ":baka:": "In the manual for the Touhou game Phantasmagoria of Flower View, the character Cirno is labeled with :baka:, and in the notes, it says ':baka:: Idiot'. I don't want to make any implications about why people are using it, but you can connect the dots.",
+    "doratanki": "A tanki wait on a dora tile."
 };

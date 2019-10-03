@@ -60,5 +60,11 @@ const links = {
     "rules": "https://ooyamaneko.net/mahjong/rratw/",
     "reporter": "http://riichireporter.com/",
     "ny": "http://mahjong-ny.com/",
-    "mankeys": "https://cdn.discordapp.com/attachments/150412836500275200/566796255943196702/Tonpu.jpg"
+    "mankeys": "https://cdn.discordapp.com/attachments/150412836500275200/566796255943196702/Tonpu.jpg",
+    "yakurate": "http://tenhou.net/sc/prof.html",
+    "yakurates": "http://tenhou.net/sc/prof.html",
+    "abema": "https://riichireporter.com/abematv-guide/",
+    "doradragon": "https://pathofhouou.blogspot.com/2019/09/analysis-lone-dora-dragons.html",
+    "doradragons": "https://pathofhouou.blogspot.com/2019/09/analysis-lone-dora-dragons.html",
+    "pao": "https://pathofhouou.blogspot.com/2019/08/analysis-threat-of-pao.html"
 }
