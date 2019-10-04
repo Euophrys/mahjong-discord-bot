@@ -68,5 +68,6 @@ const links = {
     "doradragons": "https://pathofhouou.blogspot.com/2019/09/analysis-lone-dora-dragons.html",
     "pao": "https://pathofhouou.blogspot.com/2019/08/analysis-threat-of-pao.html",
     "wrc": "https://worldriichi.org/wrc-rules",
-    "ema": "http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166"
+    "ema": "http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166",
+    "cersius": "https://cdn.discordapp.com/attachments/150412836500275200/629706271288983562/cersius.png"
 }
