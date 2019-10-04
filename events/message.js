@@ -9,6 +9,7 @@ const platforms = require('../commands/platforms');
 const minefield = require('../commands/minefield');
 const dice = require('../commands/dice');
 const rate = require('../commands/rate');
+const explain = require('../commands/explain');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -41,7 +42,8 @@ commands = {
   "!sevensteps": minefield,
   "!rate": rate,
   "!rank": rate,
-  "!games": rate
+  "!games": rate,
+  "!explain": explain
 };
 
 module.exports = (client, message) => {
@@ -50,11 +52,11 @@ module.exports = (client, message) => {
   if (conversionRequestRegex.test(message.content)) {
     conversionRequestRegex.lastIndex = 0;
     return convert(message);
-  }
+  };
 
   let command = message.content.split(" ")[0].toLowerCase();
 
   if (commands[command]) {
     commands[command](message);
-  }
+  };
 };
