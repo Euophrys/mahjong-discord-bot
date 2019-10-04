@@ -25,11 +25,11 @@ module.exports = message => {
     if (sort) {
         let emojiString = handToEmoji(hand);
 
-        response += emojiString.substring(0, 4 * 12);
+        response += emojiString.substring(0, 24 * 12);
         response += "\n";
-        response += emojiString.substring(4 * 12, 4 * 24);
+        response += emojiString.substring(24 * 12, 24 * 24);
         response += "\n<:tileBack:466437984216940544>";
-        response += emojiString.substring(4 * 24);
+        response += emojiString.substring(24 * 24);
         response += "<:tileBack:466437984216940544>"
     } else {
         for (let i = 0; i < 12; i++) {

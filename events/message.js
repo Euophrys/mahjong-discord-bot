@@ -31,6 +31,7 @@ commands = {
   "!ana": efficiency,
   "!help": help,
   "!?": help,
+  "!commands": help,
   "!platform": platforms,
   "!platforms": platforms,
   "!client": platforms,
