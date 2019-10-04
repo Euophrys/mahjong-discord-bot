@@ -39,7 +39,9 @@ commands = {
   "!roll": dice,
   "!minefield": minefield,
   "!sevensteps": minefield,
-  "!testrate": rate
+  "!rate": rate,
+  "!rank": rate,
+  "!games": rate
 };
 
 module.exports = (client, message) => {

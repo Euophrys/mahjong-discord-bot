@@ -2,7 +2,7 @@ module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
     if (!helpWith || helpWith == "") {
-        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
+        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
     }
 
     if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
@@ -33,5 +33,13 @@ const helps = {
     "platform": "I have some information on various Mahjong clients. Call `!platforms` to find out what I know about.",
     "platforms": "I have some information on various Mahjong clients. Call `!platforms` to find out what I know about.",
     "client": "I have some information on various Mahjong clients. Call `!platforms` to find out what I know about.",
-    "clients": "I have some information on various Mahjong clients. Call `!platforms` to find out what I know about."
+    "clients": "I have some information on various Mahjong clients. Call `!platforms` to find out what I know about.",
+    "minefield": "Minefield is a two-player variant of Mahjong, where both players get 34 tiles and have to try to make the best tenpai hand they can. Then, they discard the rest of the tiles one-by-one until a draw or someone deals in. I can generate a group of 34 tiles for you. If you call `!minefield sort`, I'll even sort them for you. I'm so nice.",
+    "sevensteps": "Minefield is a two-player variant of Mahjong, where both players get 34 tiles and have to try to make the best tenpai hand they can. Then, they discard the rest of the tiles one-by-one until a draw or someone deals in. I can generate a group of 34 tiles for you. If you call `!minefield sort`, I'll even sort them for you. I'm so nice.",
+    "rate": "I can check Nodocchi to see the number of games a player has played, along with their rate. Just call `!rate <name>`.",
+    "rank": "I can check Nodocchi to see the number of games a player has played, along with their rate. Just call `!rate <name>`.",
+    "games": "I can check Nodocchi to see the number of games a player has played, along with their rate. Just call `!rate <name>`.",
+    "dice": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game.",
+    "roll": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game.",
+    "break": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game."
 }

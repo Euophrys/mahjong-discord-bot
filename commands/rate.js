@@ -13,7 +13,7 @@ module.exports = message => {
 
     name = encodeURI(name);
 
-    request(`https://nodocchi.moe/api/listuser.php?name=${name}`, {json:true, timeout=10000}, (err, res, body) => {
+    request(`https://nodocchi.moe/api/listuser.php?name=${name}`, {json:true, timeout:10000}, (err, res, body) => {
         if(err) {
             return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (Error: ${err})`);
         }
@@ -29,7 +29,7 @@ module.exports = message => {
             rate = body.rate[4];
         }
 
-        if (body.rate[3] && json.rate[3] > 1800) {
+        if (body.rate[3] && body.rate[3] > 1800) {
             sanmaRate = `, and ${body.rate[3]}R in sanma`;
         }
 
