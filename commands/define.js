@@ -1,3 +1,6 @@
+const WordPos = require("wordpos");
+const wordpos = new WordPos();
+
 module.exports = message => {
     let requestArray = message.content.split(" ").slice(1);
     let request = requestArray.join("").toLowerCase();
@@ -18,7 +21,13 @@ module.exports = message => {
         }
     }
 
-    return message.channel.send(`I don't know the definition of ${requestArray.join(" ")}. Are you sure you spelt it right?`);
+    wordpos.lookup(request, (result, word) => {
+        if(result[0] && result[0].def) {
+            return message.channel.send(`The dictionary says: ${result[0].def}.`);
+        } else {
+            return message.channel.send(`I don't know the definition of ${requestArray.join(" ")}. Are you sure you spelt it right?`);
+        }
+    });
 };
 
 const definitions = {
