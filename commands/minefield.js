@@ -20,7 +20,7 @@ module.exports = message => {
         chosenTiles.push(tile);
     }
 
-    let response = "Try to build the highest scoring hand you can from these tiles.\n";
+    let response = "Try to build the highest scoring tenpai hand you can from these tiles.\n";
 
     if (sort) {
         let emojiString = handToEmoji(hand);

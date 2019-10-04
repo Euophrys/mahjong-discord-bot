@@ -66,5 +66,7 @@ const links = {
     "abema": "https://riichireporter.com/abematv-guide/",
     "doradragon": "https://pathofhouou.blogspot.com/2019/09/analysis-lone-dora-dragons.html",
     "doradragons": "https://pathofhouou.blogspot.com/2019/09/analysis-lone-dora-dragons.html",
-    "pao": "https://pathofhouou.blogspot.com/2019/08/analysis-threat-of-pao.html"
+    "pao": "https://pathofhouou.blogspot.com/2019/08/analysis-threat-of-pao.html",
+    "wrc": "https://worldriichi.org/wrc-rules",
+    "ema": "http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166"
 }
