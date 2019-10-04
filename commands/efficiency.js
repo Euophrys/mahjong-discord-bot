@@ -31,6 +31,7 @@ module.exports = message => {
                 tile += offset;
 
                 if (tile == 30) {
+                    index++;
                     continue;
                 }
 

@@ -28,9 +28,9 @@ module.exports = message => {
         response += emojiString.substring(0, 4 * 12);
         response += "\n";
         response += emojiString.substring(4 * 12, 4 * 24);
-        response += "\n:tileBack:";
+        response += "\n<:tileBack:466437984216940544>";
         response += emojiString.substring(4 * 24);
-        response += ":tileBack:"
+        response += "<:tileBack:466437984216940544>"
     } else {
         for (let i = 0; i < 12; i++) {
             response += emoji[chosenTiles[i]];
@@ -42,13 +42,13 @@ module.exports = message => {
             response += emoji[chosenTiles[i]];
         }
 
-        response += "\n:tileBack:";
+        response += "\n<:tileBack:466437984216940544>";
         
         for (let i = 24; i < chosenTiles.length; i++) {
             response += emoji[chosenTiles[i]];
         }
 
-        response += ":tileBack:"
+        response += "<:tileBack:466437984216940544>"
     }
 
     return message.channel.send(response);
