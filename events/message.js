@@ -8,6 +8,7 @@ const help = require('../commands/help');
 const platforms = require('../commands/platforms');
 const minefield = require('../commands/minefield');
 const dice = require('../commands/dice');
+const rate = require('../commands/rate');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -37,7 +38,8 @@ commands = {
   "!break": dice,
   "!roll": dice,
   "!minefield": minefield,
-  "!sevensteps": minefield
+  "!sevensteps": minefield,
+  "!testrate": rate
 };
 
 module.exports = (client, message) => {
