@@ -184,5 +184,6 @@ const definitions = {
     "tenbo": "Tenbo are the point sticks.",
     "uma": "The uma is the point spread. At the end of the game, each player has their score increased or decreased by some amount. For example, on Tenhou, it's +20/+10/-10/-20, which means first place gets an extra 20k points, second gets an extra 10k points, and so on.",
     "oka": "The oka is the difference between the starting score and the target score. On Tenhou, the starting score is 25k, and the target score is 30k. The total difference is 20k (5k per player), and this is granted to first place at the end of the game if oka is used.",
-    "yakitori": "Yakitori is a grilled chicken skewer. In Mahjong, it's used to describe a game in which the player never won a hand."
+    "yakitori": "Yakitori is a grilled chicken skewer. In Mahjong, it's used to describe a game in which the player never won a hand.",
+    "washizu": "Washizu Mahjong is a variant from the manga/anime Akagi. It uses normal Riichi rules, but 3/4 of the tiles are transparent, and tiles are drawn from a bag instead of a wall. It's often played as a 2v2 game."
 };
