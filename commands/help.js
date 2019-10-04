@@ -1,7 +1,7 @@
 module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
-    if (!helpWith || helpWith == "") {
+    if (!helpWith || helpWith === "") {
         return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
     }
 

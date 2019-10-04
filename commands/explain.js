@@ -4,8 +4,12 @@ module.exports = message => {
     let requestArray = message.content.split(" ").slice(1);
     let request = requestArray.join("").toLowerCase();
 
-    if (!request || request == "") {
+    if (!request || request === "") {
         return message.channel.send(`I can explain Mahjong, Yaku, Defense, Push Pull, and Furiten. These are kind of long, so please use it sparingly.`);
+    }
+
+    if (request === "yourself") {
+        return message.channel.send("You can't make me.");
     }
 
     if (explanations[request]) {
@@ -18,7 +22,7 @@ module.exports = message => {
         }
     }
 
-    message.channel.send(`I don't have an explanation for ${request}. Let me see if I have a definition...`);
+    message.channel.send(`I don't have an explanation for ${requestArray.join(" ")}. Let me see if I have a definition...`);
     return define(message);
 }
 

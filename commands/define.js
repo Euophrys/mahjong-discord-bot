@@ -2,7 +2,7 @@ module.exports = message => {
     let requestArray = message.content.split(" ").slice(1);
     let request = requestArray.join("").toLowerCase();
 
-    if (!request || request == "") {
+    if (!request || request === "") {
         var keys = Object.keys(definitions);
         var suggestion = keys[Math.floor(Math.random() * keys.length)];
         return message.channel.send(`You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
