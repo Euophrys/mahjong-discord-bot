@@ -8,10 +8,6 @@ module.exports = message => {
         return message.channel.send(`I can explain Mahjong, Yaku, Defense, Push Pull, and Furiten. These are kind of long, so please use it sparingly.`);
     }
 
-    if (request === "yourself") {
-        return message.channel.send("You can't make me.");
-    }
-
     if (explanations[request]) {
         return message.channel.send(explanations[request]);
     } else {
@@ -58,5 +54,11 @@ Furiten is a state you can be in where you are not allowed to win a hand by ron.
 For example, if your last shape is :2p::3p:, and you have a :1p: in your discards, you cannot win by ron, as that :1p: would have completed your hand.
 This applies even if you could not win on that tile. If tanyao is your only yaku, and thus you cannot win with the :1p:, you're still furiten.
 While furiten, you cannot ron ANY tile. Not even the :4p: in this situation. If you drew the :5p: and discarded the :2p:, you'd now only be waiting on :4p:, and would no longer be furiten.
+    `,
+    "yourself": `
+Hello, I'm Natsuki! I'm a bot with a bunch of useful abilities for Riichi Mahjong! You can call \`!help\` to see all my commands.
+If you just want to get started, I can define a lot of Mahjong terms with \`!define\` or tell you the most efficienct discard with \`!efficiency\`.
+If you don't want to spam the channel with my responses, you can also just PM me the commands. But, no funny business!
+I hope I can be helpful to you! Good luck in your games!
     `
 }
