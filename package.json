@@ -20,7 +20,8 @@
     "dotenv": "^7.0.0",
     "erlpack": "github:discordapp/erlpack",
     "node-opus": "^0.2.7",
-    "opusscript": "0.0.6"
+    "opusscript": "0.0.6",
+    "request": "^2.88.0"
   },
   "devDependencies": {
     "nodemon": "^1.19.3"

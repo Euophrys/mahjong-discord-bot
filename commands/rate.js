@@ -1,3 +1,5 @@
+const request = require("request");
+
 module.exports = message => {
     let name = message.content.split(" ")[1];
 
@@ -11,36 +13,26 @@ module.exports = message => {
 
     name = encodeURI(name);
 
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://nodocchi.moe/api/listuser.php?name=${name}`);
-    xhr.timeout = 10000;
-    xhr.onload = function() {
-        if (xhr.status === 200) {
-            let json = JSON.parse(xhr.responseText);
-
-            if (!json) {
-                return message.channel.send(`${decodeURI(name)} hasn't played any games.`);
-            }
-
-            let rate = "less than 1800";
-            let sanmaRate = "";
-
-            if (json.rate[4]) {
-                rate = json.rate[4];
-            }
-
-            if (json.rate[3] && json.rate[3] > 1800) {
-                sanmaRate = `, and ${json.rate[3]}R in sanma`;
-            }
-
-            return message.channel.send(`${decodeURI(name)}: ${json.list.length} games played, with ${rate}R in four-player${sanmaRate}.`);
+    request(`https://nodocchi.moe/api/listuser.php?name=${name}`, {json:true, timeout=10000}, (err, res, body) => {
+        if(err) {
+            return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (Error: ${err})`);
         }
-        else {
-            return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (Error code: ${xhr.status})`);
+
+        if (!body) {
+            return message.channel.send(`${decodeURI(name)} hasn't played any games.`);
         }
-    };
-    xhr.ontimeout = function() {
-        return message.channel.send(`Nodocchi took too long to respond. You'll have to check yourself: https://nodocchi.moe/tenhoulog/#!&name=${name}`);
-    }
-    xhr.send();
+
+        let rate = "less than 1800";
+        let sanmaRate = "";
+
+        if (body.rate[4]) {
+            rate = body.rate[4];
+        }
+
+        if (body.rate[3] && json.rate[3] > 1800) {
+            sanmaRate = `, and ${body.rate[3]}R in sanma`;
+        }
+
+        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}.`);
+    });
 }
