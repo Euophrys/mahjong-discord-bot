@@ -46,17 +46,25 @@ commands = {
   "!explain": explain
 };
 
+const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
+
 module.exports = (client, message) => {
   if (message.author.bot) return;
 
   if (conversionRequestRegex.test(message.content)) {
     conversionRequestRegex.lastIndex = 0;
     return convert(message);
-  };
+  }
 
   let command = message.content.split(" ")[0].toLowerCase();
 
   if (commands[command]) {
-    commands[command](message);
-  };
+    return commands[command](message);
+  }
+
+  let lower = message.content.toLowerCase();
+
+  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1) {
+    message.react(reactions[Math.floor(Math.random() * reactions.length)]);
+  }
 };
