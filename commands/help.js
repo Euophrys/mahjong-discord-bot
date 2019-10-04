@@ -2,7 +2,7 @@ module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
     if (!helpWith || helpWith === "") {
-        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
+        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), `!explain`, and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
     }
 
     if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
@@ -41,5 +41,6 @@ const helps = {
     "games": "I can check Nodocchi to see the number of games a player has played, along with their rate. Just call `!rate <name>`.",
     "dice": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game.",
     "roll": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game.",
-    "break": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game."
+    "break": "I'll roll two dice for you if you call `!dice`, like at the start of a Mahjong game.",
+    "explain": "I have detailed explanations for some Mahjong topics. If I don't have an explanation, I'll check my list of definitions."
 }
