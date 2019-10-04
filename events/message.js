@@ -5,7 +5,9 @@ const define = require("../commands/define");
 const link = require("../commands/link.js");
 const efficiency = require("../commands/efficiency");
 const help = require('../commands/help');
-const platforms = require('../commands/platforms')
+const platforms = require('../commands/platforms');
+const minefield = require('../commands/minefield');
+const dice = require('../commands/dice');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -30,7 +32,12 @@ commands = {
   "!platform": platforms,
   "!platforms": platforms,
   "!client": platforms,
-  "!clients": platforms
+  "!clients": platforms,
+  "!dice": dice,
+  "!break": dice,
+  "!roll": dice,
+  "!minefield": minefield,
+  "!sevensteps": minefield
 };
 
 module.exports = (client, message) => {

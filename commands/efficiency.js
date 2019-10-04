@@ -1,5 +1,6 @@
 const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
+const handToEmoji = require("../utils/handToEmoji");
 
 module.exports = message => {
     let command = message.content.split(" ")[0].toLowerCase();
@@ -110,24 +111,6 @@ module.exports = message => {
     }
 
     return message.channel.send(response);
-}
-
-function handToEmoji(hand) {
-    let result = "";
-
-    for (let i = 0; i < hand.length; i++) {
-        if (i % 10 === 5 && hand[i - 5] > 0) {
-            result += emoji[i - 5];
-        }
-
-        if (i % 10 === 0) continue;
-
-        for (let j = 0; j < hand[i]; j++) {
-            result += emoji[i];
-        }
-    }
-
-    return result;
 }
 
 let hand = new Array(38);
