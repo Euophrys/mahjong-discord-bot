@@ -185,5 +185,11 @@ const definitions = {
     "uma": "The uma is the point spread. At the end of the game, each player has their score increased or decreased by some amount. For example, on Tenhou, it's +20/+10/-10/-20, which means first place gets an extra 20k points, second gets an extra 10k points, and so on.",
     "oka": "The oka is the difference between the starting score and the target score. On Tenhou, the starting score is 25k, and the target score is 30k. The total difference is 20k (5k per player), and this is granted to first place at the end of the game if oka is used.",
     "yakitori": "Yakitori is a grilled chicken skewer. In Mahjong, it's used to describe a game in which the player never won a hand.",
-    "washizu": "Washizu Mahjong is a variant from the manga/anime Akagi. It uses normal Riichi rules, but 3/4 of the tiles are transparent, and tiles are drawn from a bag instead of a wall. It's often played as a 2v2 game."
+    "washizu": "Washizu Mahjong is a variant from the manga/anime Akagi. It uses normal Riichi rules, but 3/4 of the tiles are transparent, and tiles are drawn from a bag instead of a wall. It's often played as a 2v2 game.",
+    "kuinobashi": "Kuinobashi is when you call a tile to turn a kanchan into a ryanmen. For example, with a 23457 shape, you can call 1 or 4 and discard 7 to end up with a 45 ryanmen. When someone calls, then discards a suji of the called tile, this could be likely.",
+    "sakigiri": "Sakigiri is when you cut a tile earlier than efficiency would normally dictate. For example, you might cut a 7 from a 677 shape early on to hide your matagi suji or because you expect the 7 to be dangerous later.",
+    "matagi": "Matagi suji refers to tiles within two steps of a tile. It arises from shapes like 677. It's a strong shape, so you'd keep it for later, then when you call riichi, discard the 7 for a 5-8 wait. If it was 778, your wait would be 6-9. So, 5689 are matagi suji. This usually applies to the riichi tile and the last tedashi of an efficient player.",
+    "sotogawa": "Sotogawa refers to tiles outside of those discarded early by a player. For example, if they discarded a 3s early on, they likely aren't waiting on 12s. This is because a 233s or 334s shape is pretty strong and would likely be kept.",
+    "oikake": "An oikake riichi is a chasing riichi, in other words, one declared after another player has already declared riichi.",
+    "zawa": "Zawa is an onomatopoeia in Japanese for getting a chill, often used in Mahjong manga during a tense situation."
 };
