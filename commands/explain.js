@@ -1,24 +1,19 @@
 const define = require("./define");
+const lookupResponse = require("../utils/lookupResponse");
+const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let requestArray = message.content.split(" ").slice(1);
-    let request = requestArray.join("").toLowerCase();
+    let responseObject = lookupResponse(message, explanations, aliases);
 
-    if (!request || request === "") {
-        return message.channel.send(`I can explain Mahjong, Yaku, Defense, Push Pull, and Furiten. These are kind of long, so please use it sparingly.`);
+    if (responseObject.response) {
+        return sendResponse(message, responseObject.response);
     }
 
-    if (explanations[request]) {
-        return message.channel.send(explanations[request]);
-    } else {
-        for(let i = 0; i < requestArray.length; i++) {
-            if (explanations[requestArray[i].toLowerCase()]) {
-                return message.channel.send(explanations[requestArray[i].toLowerCase()]);
-            }
-        }
+    if (responseObject.request === "") {
+        return sendResponse(message, `I can explain Mahjong, Yaku, Defense, Push Pull, and Furiten. These are kind of long, so please use it sparingly.`);
     }
 
-    message.channel.send(`I don't have an explanation for ${requestArray.join(" ")}. Let me see if I have a definition...`);
+    message.channel.send(`I don't have an explanation for ${responseObject.request}. Let me see if I have a definition...`);
     return define(message);
 }
 
@@ -54,6 +49,7 @@ Furiten is a state you can be in where you are not allowed to win a hand by ron.
 For example, if your last shape is <:2p:466437922669985823><:3p:466437922426716161>, and you have a <:1p:466437920908378113> in your discards, you cannot win by ron, as that <:1p:466437920908378113> would have completed your hand.
 This applies even if you could not win on that tile. If tanyao is your only yaku, and thus you cannot win with the <:1p:466437920908378113>, you're still furiten.
 While furiten, you cannot ron ANY tile. Not even the <:4p:466437922401550337> in this situation. If you drew the <:5p:466437922732769290> and discarded the <:2p:466437922669985823>, you'd now only be waiting on <:4p:466437922401550337>, and would no longer be furiten.
+You can also be in temporary furiten. If someone discards a tile that completes your hand, you're furiten until your next discard if you don't call ron. If you're in riichi, you're furiten forever, so dama if you want to target someone.
     `,
     "yourself": `
 Hello, I'm Natsuki! I'm a bot with a bunch of useful abilities for Riichi Mahjong! You can call \`!help\` to see all my commands.
@@ -61,4 +57,9 @@ If you just want to get started, I can define a lot of Mahjong terms with \`!def
 If you don't want to spam the channel with my responses, you can also just PM me the commands. But, no funny business!
 I hope I can be helpful to you! Good luck in your games!
     `
+}
+
+const aliases = {
+    "folding": "defense",
+    "push/pull": "push"
 }

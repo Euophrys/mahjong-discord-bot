@@ -1,10 +1,23 @@
 const request = require("request");
 
+const parens = /\((.+)\)/
+
 module.exports = message => {
     let name = message.content.split(" ")[1];
 
     if (!name || name === "") {
         return message.channel.send("You'll need to provide a name for me to look up.");
+    }
+
+    if (name === "me") {
+        let username = message.member.user.username;
+        let match = parens.exec(username);
+
+        if (match && match[1]) {
+            name = match[1];
+        } else {
+            name = username.split(" ")[0];
+        }
     }
 
     if (name.length > 8) {
@@ -15,7 +28,7 @@ module.exports = message => {
 
     request(`https://nodocchi.moe/api/listuser.php?name=${name}`, {json:true, timeout:10000}, (err, res, body) => {
         if(err) {
-            return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (Error: ${err})`);
+            return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (${err})`);
         }
 
         if (!body) {

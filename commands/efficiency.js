@@ -12,8 +12,8 @@ module.exports = message => {
         return message.channel.send("You're not really my type. You're, you know... human.");
     }
 
+    // Parse the string into a hand
     let handTiles = Array(38).fill(0);
-
     let characters = handString.split('').reverse();
     let index = 0;
     let tiles = 0;
@@ -55,8 +55,8 @@ module.exports = message => {
         return message.channel.send(`That hand has ${tiles - 14} too many tiles.`);
     }
 
-    if (tiles < 13) {
-        return message.channel.send(`That hand needs at least ${13 - tiles} more tiles.`);
+    if (tiles % 3 === 0) {
+        return message.channel.send(`That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
     }
 
     let remainingTiles = Array(38).fill(4);
@@ -68,9 +68,16 @@ module.exports = message => {
     for (let i = 0; i < remainingTiles.length; i++) {
         remainingTiles[i] = Math.max(0, remainingTiles[i] - handTiles[i]);
     }
+
+    let response = `${handToEmoji(handTiles)} `;
+
+    // We add East triplets just to make the shanten calculation accurate for called hands.
+    while (tiles < 13) {
+        handTiles[31] += 3;
+        tiles += 3;
+    }
     
     let shanten = calculateMinimumShanten(handTiles);
-    let response = `${handToEmoji(handTiles)} `;
 
     if (shanten === -1) {
         response += "(Complete)\n";
@@ -83,6 +90,7 @@ module.exports = message => {
         response += `(${shanten}-shanten)\n`;
     }
 
+    // Check just the ukeire of 13 tile hands (or tiles % 3 === 1 hands)
     if (tiles == 13) {
         let ukeire = calculateUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
         response += `Ukeire: ${ukeire.value} (`;
@@ -96,6 +104,7 @@ module.exports = message => {
         return message.channel.send(response);
     }
 
+    // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
     sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
 
