@@ -46,8 +46,8 @@ module.exports = message => {
             sanmaRate = `, and ${body.rate[3]}R in sanma`;
         }
 
-        let lastPlayed = new Date(body.list[body.list.length - 1].starttime);
+        //let lastPlayed = new Date(body.list[body.list.length - 1].starttime);
 
-        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString()}.`);
+        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}.`);
     });
 }
