@@ -2,7 +2,7 @@ const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let responseObject = lookupResponse(message, explanations, aliases);
+    let responseObject = lookupResponse(message, links, aliases);
 
     if (responseObject.response) {
         return sendResponse(message, responses[Math.floor(Math.random() * responses.length)] + responseObject.response);
