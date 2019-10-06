@@ -48,6 +48,6 @@ module.exports = message => {
 
         let lastPlayed = new Date(parseInt(body.list[body.list.length - 1].starttime) * 1000);
 
-        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString().split("T")[0]}`);
+        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString().split("T")[0]}.`);
     });
 }
