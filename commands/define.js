@@ -65,7 +65,7 @@ const definitions = {
     "ton": "The east wind. <:1z:466437921688518656>",
     "nan": "The south wind. <:2z:466437922594226187>",
     "naan": "A type of leavened flatbread, usually round. Often paired with hummus.",
-    "sha": "The west wind. <:3z:466437922560671744>", "shaa": "The west wind. <:3z:466437922560671744>", "xia": "The west wind. <:3z:466437922560671744>",
+    "sha": "The west wind. <:3z:466437922560671744>",
     "pei": "The north wind. <:4z:466437922518728744>",
     "menzen": "Closed.",
     "menzentsumo": "Menzen tsumo is a yaku awarded for drawing your winning tile while your hand is closed. Worth one han.",
@@ -87,7 +87,6 @@ const definitions = {
     "chinitsu": "Chinitsu is a yaku awarded when all the tiles in your hand are from the same suit. It can be hard to read sometimes. Worth six han closed, and five open.\nExample: <:1s:466437921893908480><:2s:466437921663352842><:3s:466437922258681869><:3s:466437922258681869><:4s:466437922527248384><:5s:466437922258812929><:5s:466437922258812929><:5s:466437922258812929><:6s:466437922586099723><:7s:466437922632105984><:8s:466437922380316673><:9s:466437922850209792><:9s:466437922850209792><:9s:466437922850209792>",
     "nagashi": "Nagashi mangan is a special kind of draw that happens when the games goes to an exhaustive draw while you have only discarded honors and terminals, and nobody has called from you. Counts as scoring a mangan, but not as winning, if that makes sense. The round repeats if the dealer was tenpai.",
     "aman": "Haha, very funny.",
-    "chiitoi": "Chiitoitsu is an exceptional yaku granted when your hand consists of seven pairs. Worth two han, and always scores 25 fu. Has to be closed, obviously. Also, the pairs usually can't be duplicated.\nExample: <:1m:466437920698531841><:1m:466437920698531841><:3m:466437922577580052><:3m:466437922577580052><:9m:466437922430648330><:9m:466437922430648330><:2s:466437921663352842><:2s:466437921663352842><:0s:466441485542359042><:5s:466437922258812929><:2z:466437922594226187><:2z:466437922594226187><:7z:466437922279784469><:7z:466437922279784469>",
     "chiitoitsu": "Chiitoitsu is an exceptional yaku granted when your hand consists of seven pairs. Worth two han, and always scores 25 fu. Has to be closed, obviously. Also, the pairs usually can't be duplicated.\nExample: <:1m:466437920698531841><:1m:466437920698531841><:3m:466437922577580052><:3m:466437922577580052><:9m:466437922430648330><:9m:466437922430648330><:2s:466437921663352842><:2s:466437921663352842><:0s:466441485542359042><:5s:466437922258812929><:2z:466437922594226187><:2z:466437922594226187><:7z:466437922279784469><:7z:466437922279784469>",
     "sanshokudokou": "Sanshoku dokou is a yaku awarded for having the same triplet in each suit. Worth two han.\nExample: <:2m:466437921550106627><:3m:466437922577580052><:4m:466437922556608522><:9m:466437922430648330><:9m:466437922430648330><:9m:466437922430648330><:9p:466437922854404106><:9p:466437922854404106><:9p:466437922854404106><:9s:466437922850209792><:9s:466437922850209792><:9s:466437922850209792><:1z:466437921688518656><:1z:466437921688518656>",
     "sanankou": "Sanankou is a yaku awarded for having three concealed triplets (or kans) in your hand. Worth two han. The rest of your hand can be open.\nExample: <:4m:466437922556608522><:5m:466437922401419274><:6m:466437922556739584><:6m:466437922556739584><:6m:466437922556739584><:6m:466437922556739584><:4p:466437922401550337><:4p:466437922401550337><:4p:466437922401550337><:9s:466437922850209792><:9s:466437922850209792><:9s:466437922850209792><:1z:466437921688518656><:1z:466437921688518656>",
@@ -199,5 +198,8 @@ const aliases = {
     "ittsu": "itsu",
     "ittsuu": "itsu",
     "dokou": "sanshokudokou",
-    "hittori": "hms"
+    "hittori": "hms",
+    "chiitoi": "chiitoitsu",
+    "shaa": "sha",
+    "xia": "sha"
 }
