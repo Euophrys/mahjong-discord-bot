@@ -23,11 +23,11 @@ module.exports = message => {
         return message.member.send(`I have definitions for these things: ${keys.join(", ")}.`);
     }
 
-    wordpos.lookup(request, (result, word) => {
+    wordpos.lookup(responseObject.request, (result, word) => {
         if(result[0] && result[0].def) {
             return sendResponse(message, `The dictionary says: ${result[0].def}.`);
         } else {
-            return sendResponse(message, `I don't know the definition of ${requestArray.join(" ")}. Are you sure you spelt it right?`);
+            return sendResponse(message, `I don't know the definition of ${responseObject.request}. Are you sure you spelt it right?`);
         }
     });
 };
@@ -140,7 +140,6 @@ const definitions = {
     "blocks": "A block in a hand is either a completed set, or a potential set. You usually want five, as a hand needs four sets and a pair to be complete. Check `!link block` for an introduction to five block theory.",
     "karagiri": "Karagiri is when you cut a tile from your hand that you just drew. This can add a bit of mindgames if players are watching where you discard from, but low level players usually won't be doing that.",
     "dama": "Dama is when you're tenpai, and fully closed, but don't call riichi. This increases your winrate, as people won't know to fold, but can decrease your value. See `!link dama` for some guidelines.",
-    "damaten": "Dama is when you're tenpai, and fully closed, but don't call riichi. This increases your winrate, as people won't know to fold, but can decrease your value. See `!link dama` for some guidelines.",
     "takame": "When your hand has multiple outs that give different values, like a <:7p:466437922980102144><:8p:466437922380316683> shape getting tanyao on <:6p:466437922393030657> but not <:9p:466437922854404106>, the takame is the most valuable out.",
     "yasume": "When your hand has multiple outs that give different values, like a <:7p:466437922980102144><:8p:466437922380316683> shape getting tanyao on <:6p:466437922393030657> but not <:9p:466437922854404106>, the yasume is the least valuable out.",
     "sashikomi": "Sashikomi is when you intentionally try to deal into an opponent. For example, if it's South 4, and you're ahead by 25k points, you might want to deal into 3rd's riichi to end the game before 2nd can catch up with dealer repeats.",
