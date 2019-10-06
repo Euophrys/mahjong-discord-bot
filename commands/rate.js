@@ -32,7 +32,7 @@ module.exports = message => {
         }
 
         if (!body) {
-            return message.channel.send(`${decodeURI(name)} hasn't played any games.`);
+            return message.channel.send(`${decodeURI(name)} hasn't played any games on Tenhou.`);
         }
 
         let rate = "less than 1800";
@@ -46,6 +46,8 @@ module.exports = message => {
             sanmaRate = `, and ${body.rate[3]}R in sanma`;
         }
 
-        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}.`);
+        let lastPlayed = new Date(body.list[body.list.length - 1].starttime);
+
+        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString()}.`);
     });
 }
