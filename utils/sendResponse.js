@@ -1,3 +1,3 @@
 module.exports = (message, response) => {
-    message.channel.send(response);
+    setTimeout(() => message.channel.send(response), 250);
 }
