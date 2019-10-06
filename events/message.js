@@ -20,6 +20,7 @@ commands = {
   "!def": define,
   "!define": define,
   "!whatis": define,
+  "!d": define,
   "!link": link,
   "!url": link,
   "!site": link,
