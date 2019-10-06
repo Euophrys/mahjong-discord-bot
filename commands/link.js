@@ -14,6 +14,12 @@ module.exports = message => {
         return sendResponse(message, `Here's a random link: ${link}`);
     }
 
+    if (responseObject.request === "list") {
+        var keys = Object.keys(links);
+        keys = keys.sort();
+        return sendResponse(message, `I have links for these things: ${keys.join(", ")}.`);
+    }
+
     return sendResponse(message, `I don't have a link associated with ${requestArray.join(" ")}. Are you sure you spelt it right?`);
 }
 

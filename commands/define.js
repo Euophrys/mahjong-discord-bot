@@ -16,6 +16,12 @@ module.exports = message => {
         return sendResponse(message, `You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
     }
 
+    if (responseObject.request === "list") {
+        var keys = Object.keys(definitions);
+        keys = keys.sort();
+        return sendResponse(message, `I have definitions for these things: ${keys.join(", ")}.`);
+    }
+
     wordpos.lookup(request, (result, word) => {
         if(result[0] && result[0].def) {
             return sendResponse(message, `The dictionary says: ${result[0].def}.`);
