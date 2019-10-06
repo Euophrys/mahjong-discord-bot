@@ -19,7 +19,8 @@ module.exports = message => {
     if (responseObject.request === "list") {
         var keys = Object.keys(definitions);
         keys = keys.sort();
-        return sendResponse(message, `I have definitions for these things: ${keys.join(", ")}.`);
+        sendResponse(message, `I'll send you a DM, since there are a lot of them.`);
+        return message.member.send(`I have definitions for these things: ${keys.join(", ")}.`);
     }
 
     wordpos.lookup(request, (result, word) => {
