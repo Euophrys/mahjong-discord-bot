@@ -186,7 +186,14 @@ const definitions = {
     "sotogawa": "Sotogawa refers to tiles outside of those discarded early by a player. For example, if they discarded a 3s early on, they likely aren't waiting on 12s. This is because a 233s or 334s shape is pretty strong and would likely be kept.",
     "oikake": "An oikake riichi is a chasing riichi, in other words, one declared after another player has already declared riichi.",
     "zawa": "Zawa is an onomatopoeia in Japanese for getting a chill, often used in Mahjong manga during a tense situation.",
-    "pocchi": "Haku pocchi is a special haku that, when drawn while in riichi, counts as a wildcard. Usually only seen in jansou environments."
+    "pocchi": "Haku pocchi is a special haku that, when drawn while in riichi, counts as a wildcard. Usually only seen in jansou environments.",
+    "sujitrap": "A suji trap wait is a wait that looks safe to your opponents due to suji theories. For example, if you have a 5 in your discards, a 13 kanchan would be a suji trap wait, since the 2 is suji of the 5.",
+    "trap": "A trap wait is a wait that looks safe in the eyes of the opponents. For example, having a 13 kanchan wait would be a suji trap if you had a 5 in your discards. A tanki on a 9 would be a sotogawa trap if you had an early 7 in your discards, and so on.",
+    "otoshi": "Otoshi is used when someone cuts a partial set from their hand. If they cut a 2s from their hand, then cut another 2s from their hand, it would be a toitsu (pair) otoshi. If they cut a 1m from their hand, then a 2m from their hand, it would be a penchan otoshi. These things usually indicate a good wait.",
+    "free": "Free play in Mahjong parlours (jansou) refers to going to the parlour and being matched up with others, playing for money.",
+    "set": "Set play in Mahjong parlours (jansou) refers to going to the parlour as a group of four and renting a table to play with each other.",
+    "anime": "Anime are Japanese animated TV shows. There are a few for Mahjong. There's Akagi, Saki, and Tetsuya as the main ones. You can ask me to define any of those for more info.",
+    "manga": "Manga are Japanese comics. There are many for Mahjong. The ones I know about are Akagi, Saki, Tetsuya, Kirinji, Koizumi, and Tohai. You can ask me to define any of those for more info."
 };
 
 const aliases = {

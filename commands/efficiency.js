@@ -70,6 +70,7 @@ module.exports = message => {
     }
 
     let response = `${handToEmoji(handTiles)} `;
+    let handActuallyHasTon = handTiles[31] > 0;
 
     // We add East triplets just to make the shanten calculation accurate for called hands.
     while (tiles < 13) {
@@ -96,6 +97,8 @@ module.exports = message => {
         response += `Ukeire: ${ukeire.value} (`;
         
         for (let i = 0; i < ukeire.tiles.length; i++) {
+            if (ukeire.tiles[i] === 31 && !handActuallyHasTon) continue;
+
             response += emoji[ukeire.tiles[i]];
         }
 
@@ -114,6 +117,8 @@ module.exports = message => {
         response += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (`;
 
         for (let j = 0; j < sortedUkeire[i].tiles.length; j++) {
+            if (sortedUkeire[i].tiles[j] === 31 && !handActuallyHasTon) continue;
+            
             response += emoji[sortedUkeire[i].tiles[j]];
         }
 
