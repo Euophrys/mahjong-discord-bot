@@ -97,8 +97,6 @@ module.exports = message => {
         response += `Ukeire: ${ukeire.value} (`;
         
         for (let i = 0; i < ukeire.tiles.length; i++) {
-            if (ukeire.tiles[i] === 31 && !handActuallyHasTon) continue;
-
             response += emoji[ukeire.tiles[i]];
         }
 
@@ -112,12 +110,12 @@ module.exports = message => {
     sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
 
     for (let i = 0; i < sortedUkeire.length; i++) {
+        if (i === 31 && !handActuallyHasTon) continue;
         if (sortedUkeire[i].value == 0) continue;
 
         response += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (`;
 
         for (let j = 0; j < sortedUkeire[i].tiles.length; j++) {
-            if (sortedUkeire[i].tiles[j] === 31 && !handActuallyHasTon) continue;
             
             response += emoji[sortedUkeire[i].tiles[j]];
         }
