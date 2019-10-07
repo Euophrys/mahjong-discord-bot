@@ -139,7 +139,7 @@ const definitions = {
     "ryankan": "A ryankan shape is two (ryan) kanchans stuck together, like <:4s:466437922527248384><:6s:466437922586099723><:8s:466437922380316673>. This shape accepts eight tiles, same as a ryanmen, but takes up three tiles in the hand instead of two. It's pretty strong, and is usually kept around until all the other blocks in the hand are better.",
     "blocks": "A block in a hand is either a completed set, or a potential set. You usually want five, as a hand needs four sets and a pair to be complete. Check `!link block` for an introduction to five block theory.",
     "karagiri": "Karagiri is when you cut a tile from your hand that you just drew. This can add a bit of mindgames if players are watching where you discard from, but low level players usually won't be doing that.",
-    "dama": "Dama is when you're tenpai, and fully closed, but don't call riichi. This increases your winrate, as people won't know to fold, but can decrease your value. See `!link dama` for some guidelines.",
+    "dama": "Dama is when you're tenpai, and fully closed, but don't call riichi. This increases your winrate, as people won't know to fold, but can decrease your value. See `!link dama` for some guidelines. Damaten and yamiten are shorthands for \"dama tenpai\".",
     "takame": "When your hand has multiple outs that give different values, like a <:7p:466437922980102144><:8p:466437922380316683> shape getting tanyao on <:6p:466437922393030657> but not <:9p:466437922854404106>, the takame is the most valuable out.",
     "yasume": "When your hand has multiple outs that give different values, like a <:7p:466437922980102144><:8p:466437922380316683> shape getting tanyao on <:6p:466437922393030657> but not <:9p:466437922854404106>, the yasume is the least valuable out.",
     "sashikomi": "Sashikomi is when you intentionally try to deal into an opponent. For example, if it's South 4, and you're ahead by 25k points, you might want to deal into 3rd's riichi to end the game before 2nd can catch up with dealer repeats.",
@@ -156,6 +156,7 @@ const definitions = {
     "efficiency": "Efficiency means focusing on winning the hand as fast as possible, instead of aiming for value. Ukeire, shanten, and upgrades are tools for measuring efficiency, but the hand's shape matters a lot too.",
     "hms": "Hittori Mahjong Simulator is a tool for checking the expected value and speed of a hand, in a tsumo-only environment. Check `!link hms` for more info.",
     "mentsu": "A mentsu is a completed shape in a hand.",
+    "taatsu": "A taatsu is a partial shape in a hand. It can be either a pair or a protorun.",
     "toitsu": "A toitsu is a pair.",
     "koutsu": "A koutsu is a triplet.",
     "shuntsu": "A shuntsu is a run.",
@@ -193,7 +194,27 @@ const definitions = {
     "free": "Free play in Mahjong parlours (jansou) refers to going to the parlour and being matched up with others, playing for money.",
     "set": "Set play in Mahjong parlours (jansou) refers to going to the parlour as a group of four and renting a table to play with each other.",
     "anime": "Anime are Japanese animated TV shows. There are a few for Mahjong. There's Akagi, Saki, and Tetsuya as the main ones. You can ask me to define any of those for more info.",
-    "manga": "Manga are Japanese comics. There are many for Mahjong. The ones I know about are Akagi, Saki, Tetsuya, Kirinji, Koizumi, and Tohai. You can ask me to define any of those for more info."
+    "manga": "Manga are Japanese comics. There are many for Mahjong. The ones I know about are Akagi, Saki, Tetsuya, Kirinji, Koizumi, and Tohai. You can ask me to define any of those for more info.",
+    "haipai": "A haipai is a starting hand.",
+    "daichisei": "Daichisei (big seven stars) is an optional yakuman that is normally not used. It's a combination of tsuuiisou and chiitoitsu, where you have a pair of each honor. When used, it's a double yakuman.\nExample: <:1z:466437921688518656><:1z:466437921688518656><:2z:466437922594226187><:2z:466437922594226187><:3z:466437922560671744><:3z:466437922560671744><:4z:466437922518728744><:4z:466437922518728744><:5z:466437921550106625><:5z:466437921550106625><:6z:466437922317402143><:6z:466437922317402143><:7z:466437922279784469><:7z:466437922279784469>",
+    "ishinouenimosannen": "First of all, congratulations on spelling that correctly. Ishinouenimosannen (three years on the stone) is an optional/archaic yakuman scored by declaring double riichi and then winning with haitei.",
+    "renchan": "Renchan is the Japanese word for a repeat, such as when the dealer wins a hand.",
+    "paarenchan": "Paarenchan is an optional yakuman. You score it when you win as dealer with eight (paa) honba on the table, regardless of your hand's actual value. Some rulesets require the dealer to actually win eight times, with no draws stacking up honba.",
+    "sanrenkou": "Sanrenkou is an optional yaku, three connected triplets. You score this when you have three triplets, each one higher in value than the other, in the same suit. It's worth two han, and can be open.",
+    "suurenkou": "Suurenkou is an optional yakuman, four connected triplets. You score this when you have four triplets, each one higher in value than the other, in the same suit. It can be open.",
+    "shiisanpuutaa": "Shiisanpuutaa is an optional yakuman awarded for someone having a truly awful starting hand. You score this when you have no partial sets in your opening hand after your first draw, aside from one pair. No protoruns, no completed sets, and only one pair.",
+    "shiisuupuutaa": "Shiisuupuutaa is an optional yakuman awarded for someone having a truly awful starting hand. You score this when you have no partial sets in your opening hand after drawing your first tile. No pairs, no protoruns, no completed sets.",
+    "daisharin": "Daisharin is an optional yakuman awarded for having 22334455667788 in pinzu. It must be closed. Even without the yakuman, it's already tanyao, chinitsu, ryanpeikou, and pinfu for sanbaiman.",
+    "daichikurin": "Daichikurin is an optional yakuman awarded for having 22334455667788 in souzu. It must be closed. Even without the yakuman, it's already tanyao, chinitsu, ryanpeikou, and pinfu for sanbaiman.",
+    "daisuurin": "Daisuurin is an optional yakuman awarded for having 22334455667788 in manzu. It must be closed. Even without the yakuman, it's already tanyao, chinitsu, ryanpeikou, and pinfu for sanbaiman.",
+    "slide": "A slide is when you draw a tile that connects to one of your runs, and discard the opposite end of the run. For example, you could have <:2p:466437922669985823><:3p:466437922426716161><:4p:466437922401550337>, draw <:5p:466437922732769290>, then discard <:2p:466437922669985823>. This is usually done to confirm yaku, such as sanshoku, itsu, or tanyao, to incorporate a dora, or because the other tile is safer.",
+    "karaten": "Karaten, or empty tenpai, is when you're tenpai but don't have the ability to win due to all your tiles being discarded. A karaten riichi is a riichi with no winning tiles available.",
+    "machi": "Machi is the Japanese word for \"wait,\" as in the tiles you are waiting on to win.",
+    "atamahane": "Atamahane, or head bump, is a rule that has it so, when two or more rons are declared simultaneously, the player whose turn is closest gets the points, while the others get nothing.",
+    "bakahon": "Bakahon is a term used when someone wins a hand with only honitsu.",
+    "nomi": "Nomi means \"only.\" For example, tanyao nomi is a hand which has tanyao as its only han.",
+    "kita": "Kita is the call for revealing a North in sanma. See `!explain sanma`.",
+    "nuki": "Nuki dora are the set-aside North tiles in sanma. See `!explain sanma`."
 };
 
 const aliases = {
@@ -201,11 +222,15 @@ const aliases = {
     "block": "blocks",
     "kan-nya": "kannya",
     "damaten": "dama",
+    "yamiten": "dama",
     "ittsu": "itsu",
     "ittsuu": "itsu",
     "dokou": "sanshokudokou",
     "hittori": "hms",
     "chiitoi": "chiitoitsu",
     "shaa": "sha",
-    "xia": "sha"
+    "xia": "sha",
+    "headbump": "atamahane",
+    "tonpuu": "tonpu",
+    "tonpuusen": "tonpu"
 }

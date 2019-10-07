@@ -10,7 +10,7 @@ module.exports = message => {
     }
 
     if (responseObject.request === "") {
-        return sendResponse(message, `I can explain Mahjong, Yaku, Defense, Push Pull, and Furiten. These are kind of long, so please use it sparingly.`);
+        return sendResponse(message, `I can explain Mahjong, Yaku, Defense, Push Pull, Furiten, and Tile Shorthand. These are kind of long, so please use it sparingly.`);
     }
 
     message.channel.send(`I don't have an explanation for ${responseObject.request}. Let me see if I have a definition...`);
@@ -56,6 +56,19 @@ Hello, I'm Natsuki! I'm a bot with a bunch of useful abilities for Riichi Mahjon
 If you just want to get started, I can define a lot of Mahjong terms with \`!define\` or tell you the most efficienct discard with \`!efficiency\`.
 If you don't want to spam the channel with my responses, you can also just PM me the commands. But, no funny business!
 I hope I can be helpful to you! Good luck in your games!
+    `,
+    "tile": `
+You'll often see hands written like 123m456s789p12345z. It's a quick way to describe a hand.
+The characters come from the Japanese suit names. M is for Manzu, S is for Souzu, P is for Pinzu, and Z is for Zihai (an alternate romanization of Jihai).
+The honors go in this order: 1234567z -> <:1z:466437921688518656><:2z:466437922594226187><:3z:466437922560671744><:4z:466437922518728744><:5z:466437921550106625><:6z:466437922317402143><:7z:466437922279784469>
+You also might see a 0, which just represents a red five. 0z isn't used, but might represent a concealed tile or a special haku.
+    `,
+    "sanma": `
+Sanma is a three-player variant of Riichi Mahjong. It follows most of the same rules as four-player, but with a few differences due to the lower number of players.
+All of the manzu tiles from 2~8 are removed, leaving only 1 and 9 so kokushi remains possible. This means sanshoku doujun is impossible, and the 1m as indicator makes 9m dora.
+As there is no North seat, if you draw a North tile, you can set it aside and take a replacement tile from the dead wall. This counts a dora (nuki dora), and you can score rinshan with this.
+Hands are higher valued. Honitsu and yakuman are more prevalent, and the nuki dora increase the scores a lot. Because of this, players usually start with 35k points.
+The one other difference is that you're not allowed to call chii. By the way, since there are only two opponents, tsumo gets less valuable.
     `
 }
 
