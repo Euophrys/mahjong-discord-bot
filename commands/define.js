@@ -216,7 +216,8 @@ const definitions = {
     "kita": "Kita is the call for revealing a North in sanma. See `!explain sanma`.",
     "nuki": "Nuki dora are the set-aside North tiles in sanma. See `!explain sanma`.",
     "meijin": "Meijin is a term for a Tenhou player who is at 7-dan or higher, but with less than 2000R, and so cannot play in the Houou room.",
-    "urasuji": "Ura suji refers to the dangerous tiles that arise from a player upgrading a kanchan to a ryanmen. For example, if you had a 57 kanchan, and drew the 4, you could cut the 7 to wait on 3-6. The 3-6 is the ura suji. This isn't really statistically relevant, so unless you have a strong reason to suspect it, you shouldn't think about it."
+    "urasuji": "Ura suji refers to the dangerous tiles that arise from a player upgrading a kanchan to a ryanmen. For example, if you had a 57 kanchan, and drew the 4, you could cut the 7 to wait on 3-6. The 3-6 is the ura suji. This isn't really statistically relevant, so unless you have a strong reason to suspect it, you shouldn't think about it.",
+    "atozuke": "Atozuke is when a player has multiple outs, one of which has no yaku and can't win. For example, having a <:2p:466437922669985823><:3p:466437922426716161> shape where the <:4p:466437922401550337> giving you tanyao is your only yaku. This often comes up with called hands in particular."
 };
 
 const aliases = {
