@@ -91,7 +91,7 @@ function getDan(gamesList, name) {
         lastStart = game.starttime;
     }
     
-    return danNames[dan];
+    return `${danNames[dan]} ${points}/${requirement[dan]}`;
 }
 
 const maxDifference = 180 * 24 * 60 * 60;
