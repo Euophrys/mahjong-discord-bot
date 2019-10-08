@@ -83,7 +83,10 @@ function getDan(gamesList, name) {
             }
 
             points = starting[dan];
-        }
+        } else if (points < 0 && dan >= 10) {
+            dan--;
+            points = starting[dan];
+        } 
 
         lastStart = game.starttime;
     }
