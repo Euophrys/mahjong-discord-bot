@@ -214,7 +214,9 @@ const definitions = {
     "bakahon": "Bakahon is a term used when someone wins a hand with only honitsu.",
     "nomi": "Nomi means \"only.\" For example, tanyao nomi is a hand which has tanyao as its only han.",
     "kita": "Kita is the call for revealing a North in sanma. See `!explain sanma`.",
-    "nuki": "Nuki dora are the set-aside North tiles in sanma. See `!explain sanma`."
+    "nuki": "Nuki dora are the set-aside North tiles in sanma. See `!explain sanma`.",
+    "meijin": "Meijin is a term for a Tenhou player who is at 7-dan or higher, but with less than 2000R, and so cannot play in the Houou room.",
+    "urasuji": "Ura suji refers to the dangerous tiles that arise from a player upgrading a kanchan to a ryanmen. For example, if you had a 57 kanchan, and drew the 4, you could cut the 7 to wait on 3-6. The 3-6 is the ura suji. This isn't really statistically relevant, so unless you have a strong reason to suspect it, you shouldn't think about it."
 };
 
 const aliases = {
