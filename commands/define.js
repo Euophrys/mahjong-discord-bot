@@ -217,7 +217,12 @@ const definitions = {
     "nuki": "Nuki dora are the set-aside North tiles in sanma. See `!explain sanma`.",
     "meijin": "Meijin is a term for a Tenhou player who is at 7-dan or higher, but with less than 2000R, and so cannot play in the Houou room.",
     "urasuji": "Ura suji refers to the dangerous tiles that arise from a player upgrading a kanchan to a ryanmen. For example, if you had a 57 kanchan, and drew the 4, you could cut the 7 to wait on 3-6. The 3-6 is the ura suji. This isn't really statistically relevant, so unless you have a strong reason to suspect it, you shouldn't think about it.",
-    "atozuke": "Atozuke is when a player has multiple outs, one of which has no yaku and can't win. For example, having a <:2p:466437922669985823><:3p:466437922426716161> shape where the <:4p:466437922401550337> giving you tanyao is your only yaku. This often comes up with called hands in particular."
+    "atozuke": "Atozuke is when a player has multiple outs, one of which has no yaku and can't win. For example, having a <:2p:466437922669985823><:3p:466437922426716161> shape where the <:4p:466437922401550337> giving you tanyao is your only yaku. This often comes up with called hands in particular.",
+    "enchousen": "Enchousen is the sudden death round. If nobody is over the target score (usually 30k in four player games) by the end of the last hand, and additional round (South for tonpu games, West for hanchan) happens and continues until someone gets over the target score. Generally, only one additional wind round is played, and if nobody is over the target score by the end of it, the game will end.",
+    "oorasu": "Oorasu is the Japanese way of saying All Last, the last hand in the normal game. For tonpu, this would be East 4, and for hanchan, it would be South 4.",
+    "agariyame": "Agariyame is a rule that lets the dealer end the game when they would normally get a repeat in the last hand of the game, if they are in first place. This is usually allowed, but if it's not, the game will go on until the seats rotate again, letting the dealer stack up as many points as they can gather.",
+    "wall": "The wall (yama in Japanese) is the stack of tiles that surrounds the table which players draw from.",
+    "deadwall": "The dead wall is the last fourteen tiles in the wall, known as wanpai in Japanese. These are not drawn during the course of the game, except from kans which add another tile to the dead wall from the live wall to compensate."
 };
 
 const aliases = {
@@ -235,5 +240,9 @@ const aliases = {
     "xia": "sha",
     "headbump": "atamahane",
     "tonpuu": "tonpu",
-    "tonpuusen": "tonpu"
+    "tonpuusen": "tonpu",
+    "alllast": "oorasu",
+    "suddendeath": "encohusen",
+    "yama": "wall",
+    "wanpai": "deadwall"
 }
