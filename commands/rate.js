@@ -60,8 +60,6 @@ function getDan(gamesList, name) {
     
     for(let i = 0; i < gamesList.length; i++) {
         let game = gamesList[i];
-        
-        if (game.sctype !== "b") continue;
 
         if (game.starttime - lastStart > maxDifference) {
             dan = 0;
@@ -70,7 +68,7 @@ function getDan(gamesList, name) {
 
         lastStart = game.starttime;
 
-        if (game.playernum !== "4") continue;
+        if (game.sctype !== "b" || game.playernum !== "4") continue;
 
         if (game.player1 === name) {
             points += firstGains[parseInt(game.playlength)][parseInt(game.playerlevel)];
