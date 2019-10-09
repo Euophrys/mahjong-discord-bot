@@ -68,7 +68,7 @@ function getDan(gamesList, name) {
 
         lastStart = game.starttime;
 
-        if (game.sctype !== "b" || game.playernum !== "4") continue;
+        if (game.sctype === "a" || game.playernum !== "4") continue;
 
         if (game.player1 === name) {
             points += firstGains[parseInt(game.playlength)][parseInt(game.playerlevel)];

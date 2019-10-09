@@ -223,7 +223,7 @@ const definitions = {
     "agariyame": "Agariyame is a rule that lets the dealer end the game when they would normally get a repeat in the last hand of the game, if they are in first place. This is usually allowed, but if it's not, the game will go on until the seats rotate again, letting the dealer stack up as many points as they can gather.",
     "wall": "The wall (yama in Japanese) is the stack of tiles that surrounds the table which players draw from.",
     "deadwall": "The dead wall is the last fourteen tiles in the wall, known as wanpai in Japanese. These are not drawn during the course of the game, except from kans which add another tile to the dead wall from the live wall to compensate.",
-    "moupai": "Moupai is the act of reading the face of a drawn tile with your thumb or fingers before looking at it. It's considered bad manners, but people do it often, especially older ones.",
+    "moupai": "Moupai is the act of reading the face of a drawn tile with your thumb or fingers before looking at it. It's considered bad manners, but players do it often, especially older ones.",
     "goumoupai": "Goumoupai is a fictional Mahjong technique from The Legend of Koizumu, in which you scrape off part of the face of a tile with your thumb to turn it into a different tile.",
     "tsubamegaeshi": "Tsubame gaeshi is a cheating technique in which you stack your wall to have a complete hand along the bottom, then move the top of the wall onto your starting hand and back, leaving you with the stacked tiles to score tenhou or chihou.",
     "ganpai": "Ganpai are marked tiles.",
@@ -246,7 +246,8 @@ const definitions = {
     "iishantenhell": "Iishanten hell is when a player is stuck at one tile away from tenpai, unable to draw a useful tile for many turns.",
     "toitsuba": "A toitsuba is a round in which many pairs are drawn.",
     "paifu": "A paifu is a game record that tracks all the draws and discards each players made. Usually this will just be a replay.",
-    "han": "Han are the multipliers for a hand's points. Each han multiplies your minipoints (fu) by two. There's an implicit two han, known as bazoro, so the base score is fu * (2 ^ (2 + han)), rounded up to the nearest 100."
+    "han": "Han are the multipliers for a hand's points. Each han multiplies your minipoints (fu) by two. There's an implicit two han, known as bazoro, so the base score is fu * (2 ^ (2 + han)), rounded up to the nearest 100.",
+    "dorasoba": "A dorasoba is a tile near the dora."
 };
 
 const aliases = {
