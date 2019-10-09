@@ -222,7 +222,31 @@ const definitions = {
     "oorasu": "Oorasu is the Japanese way of saying All Last, the last hand in the normal game. For tonpu, this would be East 4, and for hanchan, it would be South 4.",
     "agariyame": "Agariyame is a rule that lets the dealer end the game when they would normally get a repeat in the last hand of the game, if they are in first place. This is usually allowed, but if it's not, the game will go on until the seats rotate again, letting the dealer stack up as many points as they can gather.",
     "wall": "The wall (yama in Japanese) is the stack of tiles that surrounds the table which players draw from.",
-    "deadwall": "The dead wall is the last fourteen tiles in the wall, known as wanpai in Japanese. These are not drawn during the course of the game, except from kans which add another tile to the dead wall from the live wall to compensate."
+    "deadwall": "The dead wall is the last fourteen tiles in the wall, known as wanpai in Japanese. These are not drawn during the course of the game, except from kans which add another tile to the dead wall from the live wall to compensate.",
+    "moupai": "Moupai is the act of reading the face of a drawn tile with your thumb or fingers before looking at it. It's considered bad manners, but people do it often, especially older ones.",
+    "goumoupai": "Goumoupai is a fictional Mahjong technique from The Legend of Koizumu, in which you scrape off part of the face of a tile with your thumb to turn it into a different tile.",
+    "tsubamegaeshi": "Tsubame gaeshi is a cheating technique in which you stack your wall to have a complete hand along the bottom, then move the top of the wall onto your starting hand and back, leaving you with the stacked tiles to score tenhou or chihou.",
+    "ganpai": "Ganpai are marked tiles.",
+    "nodocchi": "Nodocchi is a stat tracking website for Tenhou users. For example, https://nodocchi.moe/tenhoulog/#!&name=ASAPIN. It's also a character's online handle in the anime/manga Saki.",
+    "musuji": "A musuji tile is a tile which is not suji. A double musuji tile is a middle tile which is not suji on either side.",
+    "benikujaku": "Benikujaku is an archaic yakuman which is mostly the opposite of ryuuiisou. It requires your hand to be comprised only of the souzu tiles that have red on them (1579s), plus the red dragon.",
+    "ariari": "Shorthand for kuitan ari aka ari, a ruleset where open tanyao is allowed and red fives are used.",
+    "bakaze": "The bakaze is the round wind.",
+    "jikaze": "The jikaze is the seat wind.",
+    "otakaze": "Otakaze are wind tiles that are neither the round wind nor the seat wind. Known as guest winds in English.",
+    "yonma": "Yonma means four-player, as opposed to sanma, which is three-player.",
+    "shibori": "Shibori is usually called squeeze play in English. It's when you hold onto tiles that you think your shimocha might call to prevent them from winning easily.",
+    "shibari": "Shibari means restriction. Ryanhan shibari would be a two-han restriction, which means you need two han from yaku instead of one in order to declare a win. In some rulesets, ryanhan shibari goes into effect starting at five honba. There can also be mangan shibari or anything else.",
+    "saburo": "A shorthand for when you're waiting for both a 3 and a 6, usually due to having a 45 ryanmen.",
+    "saburokyuu": "A shortahnd for when you're waiting for a 3, 6, or 9, usually due to having a 45678 sanmenchan.",
+    "kiriage": "Kiriage mangan is a rule that counts 4 han 30 fu and 3 han 60 fu (both 7700 ron, 7900 tsumo) hands as mangan (8000 ron/tsumo).",
+    "kakan": "A kan that was upgraded from a pon.",
+    "jankiryuu": "Jankiryuu is a fairly strict ruleset, with such rules as \"You can't discard a dora unless you're tenpai\", \"Don't discard an honor tile as the first tile\", \"You cannot betaori\", and so on. There's an article about it here: https://riichireporter.com/jankiryuu/",
+    "ippatsu": "Ippatsu is a yaku awarded when you win on your next draw after you riichi, as long as nobody made a call in the meantime. You might also hear ippatsu turn, referring to the time after someone riichis but before they have drawn their next tile. \"Why did I have to draw the dora on the ippatsu turn?\"",
+    "iishantenhell": "Iishanten hell is when a player is stuck at one tile away from tenpai, unable to draw a useful tile for many turns.",
+    "toitsuba": "A toitsuba is a round in which many pairs are drawn.",
+    "paifu": "A paifu is a game record that tracks all the draws and discards each players made. Usually this will just be a replay.",
+    "han": "Han are the multipliers for a hand's points. Each han multiplies your minipoints (fu) by two. There's an implicit two han, known as bazoro, so the base score is fu * (2 ^ (2 + han)), rounded up to the nearest 100."
 };
 
 const aliases = {
@@ -244,5 +268,12 @@ const aliases = {
     "alllast": "oorasu",
     "suddendeath": "encohusen",
     "yama": "wall",
-    "wanpai": "deadwall"
+    "wanpai": "deadwall",
+    "guestwind": "otakaze",
+    "wanzu": "manzu",
+    "shichifukusei": "daichisei",
+    "shabo": "shanpon",
+    "harabote": "nakabukure",
+    "bazoro": "han",
+    "furikomi": "sashikomi"
 }
