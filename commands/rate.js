@@ -54,18 +54,23 @@ module.exports = message => {
 }
 
 function getDan(gamesList, name) {
-    let filteredList = gamesList.filter((game) => game.sctype === "b" && game.playernum === "4");
     let dan = 0;
     let points = 0;
     let lastStart = 0;
     
-    for(let i = 0; i < filteredList.length; i++) {
-        let game = filteredList[i];
+    for(let i = 0; i < gamesList.length; i++) {
+        let game = gamesList[i];
         
+        if (game.sctype !== "b") continue;
+
         if (game.starttime - lastStart > maxDifference) {
             dan = 0;
             points = 0;
         }
+
+        lastStart = game.starttime;
+
+        if (game.playernum !== "4") continue;
 
         if (game.player1 === name) {
             points += firstGains[parseInt(game.playlength)][parseInt(game.playerlevel)];
@@ -87,8 +92,6 @@ function getDan(gamesList, name) {
             dan--;
             points = starting[dan];
         } 
-
-        lastStart = game.starttime;
     }
     
     return `${danNames[dan]} ${points}/${requirement[dan]}`;
