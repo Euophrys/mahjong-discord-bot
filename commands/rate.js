@@ -49,7 +49,7 @@ module.exports = message => {
         let lastPlayed = new Date(parseInt(body.list[body.list.length - 1].starttime) * 1000);
         let dan = getDan(body.list, decodeURI(name));
 
-        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, currently at ${dan} with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString().split("T")[0]}.`);
+        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, currently estimated at ${dan} with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString().split("T")[0]}.`);
     });
 }
 
@@ -67,7 +67,7 @@ function getDan(gamesList, name) {
         }
 
         lastStart = game.starttime;
-        let correctGameType = game.sctype === "b" || game.sctype === "c";
+        let correctGameType = game.sctype === "b" || (game.sctype === "c" && game.rate);
 
         if (!correctGameType || game.playernum !== "4") continue;
 

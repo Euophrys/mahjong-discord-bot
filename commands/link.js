@@ -60,7 +60,8 @@ const links = {
     "pao": "https://pathofhouou.blogspot.com/2019/08/analysis-threat-of-pao.html",
     "wrc": "https://worldriichi.org/wrc-rules",
     "ema": "http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166",
-    "cersius": "https://cdn.discordapp.com/attachments/150412836500275200/629706271288983562/cersius.png"
+    "cersius": "https://cdn.discordapp.com/attachments/150412836500275200/629706271288983562/cersius.png",
+    "horoscope": "https://s3.us-east-2.amazonaws.com/mahjong-horoscopes/index.html"
 }
 
 const aliases = {
@@ -74,5 +75,6 @@ const aliases = {
     "hittori": "hms",
     "efficiency": "trainer",
     "justanother": "jajmb",
-    "path": "pathofhouou"
+    "path": "pathofhouou",
+    "horoscopes": "horoscope"
 }
