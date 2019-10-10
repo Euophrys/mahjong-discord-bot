@@ -249,7 +249,9 @@ const definitions = {
     "han": "Han are the multipliers for a hand's points. Each han multiplies your minipoints (fu) by two. There's an implicit two han, known as bazoro, so the base score is fu * (2 ^ (2 + han)), rounded up to the nearest 100.",
     "dorasoba": "A dorasoba is a tile near the dora.",
     "kyoutaku": "Kyoutaku refers to the points on the table, ie the riichi sticks and honba.",
-    "buttobi": "Buttobi is the state of being tobi (below zero points)."
+    "buttobi": "Buttobi is the state of being tobi (below zero points).",
+    "deadhand": "When you make an error that's severe, but not severe enough to cause the game to be unable to continue, you can be declared to have a dead hand. With a dead hand, you are not allowed to declare a win. Not by ron, not by tsumo. An example of such a mistake could be declaring ron, then realizing you are unable to.",
+    "chombo": "When you make an error that prevents the game from continuing, you have to pay a chombo penalty. Sometimes this will be a reverse mangan, where each other player gets as many points as they would have paid you had you won a mangan tsumo. Sometimes it will be 30,000 points removed from your score at the end of the match. An example of this could be declaring a win, revealing your hand, but your hand not being valid."
 };
 
 const aliases = {
