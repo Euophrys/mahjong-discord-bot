@@ -248,7 +248,8 @@ const definitions = {
     "paifu": "A paifu is a game record that tracks all the draws and discards each players made. Usually this will just be a replay.",
     "han": "Han are the multipliers for a hand's points. Each han multiplies your minipoints (fu) by two. There's an implicit two han, known as bazoro, so the base score is fu * (2 ^ (2 + han)), rounded up to the nearest 100.",
     "dorasoba": "A dorasoba is a tile near the dora.",
-    "kyoutaku": "Kyoutaku refers to the points on the table, ie the riichi sticks and honba."
+    "kyoutaku": "Kyoutaku refers to the points on the table, ie the riichi sticks and honba.",
+    "buttobi": "Buttobi is the state of being tobi (below zero points)."
 };
 
 const aliases = {

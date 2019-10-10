@@ -50,7 +50,11 @@ const links = {
     "bronze": "https://cdn.discordapp.com/attachments/150412836500275200/631874550774235146/ippan.gif",
     "occult": "https://cdn.discordapp.com/attachments/150412836500275200/631878225370415119/316ain-1.jpg",
     "mistakes": "https://cdn.discordapp.com/attachments/150412836500275200/631885275605368880/image0.jpg",
-    "akaari": "https://cdn.discordapp.com/attachments/150412836500275200/631885302298050561/image0.jpg"
+    "akaari": "https://cdn.discordapp.com/attachments/150412836500275200/631885302298050561/image0.jpg",
+    "genbutsu": "https://cdn.discordapp.com/attachments/629737480803057685/631896055830544413/image0.png",
+    "pongo": "https://cdn.discordapp.com/attachments/629737480803057685/631901093458214923/Scr20190224221100.gif",
+    "chuurentenpai": "https://cdn.discordapp.com/attachments/560300317170728970/572592050596216832/TIM20190430091740.gif",
+    "moupai": "https://media.giphy.com/media/seA0bDAug4tJ6/giphy.gif"
 }
 
 const aliases = {
@@ -63,5 +67,6 @@ const aliases = {
     "space": "spacemahjong",
     "bird": "birds",
     "kyuushuu": "kyuushu",
-    "spirit": "damage"
+    "spirit": "damage",
+    "bongo": "pongo"
 }
