@@ -146,7 +146,7 @@ const definitions = {
     "ankan": "An ankan is a closed kan.",
     "kannya": "Kannya is what you say when you declare a kan and are also a cat.",
     "ryuukyoku": "Ryuukyoku is an exhaustive draw. When all the tiles are drawn from the wall, and nobody has won.",
-    "kyuushuu": "Kyuushuu kyuuhai is an abortive draw that a player can opt to call if their starting hand has nine or more unique terminals and honors. It must be weighed against the chance of going for kokushi, but kyuushuu is usually the better option if you have less than 11.",
+    "kyuushu": "Kyuushu kyuuhai is an abortive draw that a player can opt to call if their starting hand has nine or more unique terminals and honors. It must be weighed against the chance of going for kokushi, but kyuushuu is usually the better option if you have less than 11.",
     "aotenjou": "Aotenjou, or skyrocketing, is a ruleset wherein scores are not capped with things like mangan or yakuman. The scores get extremely high, and it's basically never played outside of manga or Touhou games.",
     "wareme": "Wareme is a special rule where the player who has their section of the wall broken has to pay double, the same as the dealer does. This stacks with the dealer's doubled payment. One of the Yakuza games uses this, I think, but it's mostly only a gambling rule.",
     "manzu": "Manzu is the characters suit. You might see tiles written as 1-man <:1m:466437920698531841>.",
@@ -193,8 +193,8 @@ const definitions = {
     "otoshi": "Otoshi is used when someone cuts a partial set from their hand. If they cut a 2s from their hand, then cut another 2s from their hand, it would be a toitsu (pair) otoshi. If they cut a 1m from their hand, then a 2m from their hand, it would be a penchan otoshi. These things usually indicate a good wait.",
     "free": "Free play in Mahjong parlours (jansou) refers to going to the parlour and being matched up with others, playing for money.",
     "set": "Set play in Mahjong parlours (jansou) refers to going to the parlour as a group of four and renting a table to play with each other.",
-    "anime": "Anime are Japanese animated TV shows. There are a few for Mahjong. There's Akagi, Saki, and Tetsuya as the main ones. You can ask me to define any of those for more info.",
-    "manga": "Manga are Japanese comics. There are many for Mahjong. The ones I know about are Akagi, Saki, Tetsuya, Kirinji, Koizumi, and Tohai. You can ask me to define any of those for more info.",
+    "anime": "Anime are Japanese animated TV shows. There are a few for Mahjong. There's Akagi, Saki, and Tetsuya as the main ones, and a very short Koizumi anime. You can ask me to define any of those for more info.",
+    "manga": "Manga are basically Japanese comics. There are many for Mahjong. The ones I know about with English translations available are Akagi, Saki, Tetsuya, Kirinji, Koizumi, and Tohai. You can ask me to define any of those for more info.",
     "haipai": "A haipai is a starting hand.",
     "daichisei": "Daichisei (big seven stars) is an optional yakuman that is normally not used. It's a combination of tsuuiisou and chiitoitsu, where you have a pair of each honor. When used, it's a double yakuman.\nExample: <:1z:466437921688518656><:1z:466437921688518656><:2z:466437922594226187><:2z:466437922594226187><:3z:466437922560671744><:3z:466437922560671744><:4z:466437922518728744><:4z:466437922518728744><:5z:466437921550106625><:5z:466437921550106625><:6z:466437922317402143><:6z:466437922317402143><:7z:466437922279784469><:7z:466437922279784469>",
     "ishinouenimosannen": "First of all, congratulations on spelling that correctly. Ishinouenimosannen (three years on the stone) is an optional/archaic yakuman scored by declaring double riichi and then winning with haitei.",
@@ -252,7 +252,7 @@ const definitions = {
 };
 
 const aliases = {
-    "kyuushu": "kyuushuu",
+    "kyuushuu": "kyuushu",
     "block": "blocks",
     "kan-nya": "kannya",
     "damaten": "dama",

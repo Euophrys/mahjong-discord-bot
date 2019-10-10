@@ -10,6 +10,7 @@ const minefield = require('../commands/minefield');
 const dice = require('../commands/dice');
 const rate = require('../commands/rate');
 const explain = require('../commands/explain');
+const meme = require('../commands/meme');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -45,7 +46,9 @@ commands = {
   "!rate": rate,
   "!rank": rate,
   "!games": rate,
-  "!explain": explain
+  "!explain": explain,
+  "!meme": meme,
+  "!memes": meme
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
