@@ -67,7 +67,7 @@ function getDan(gamesList, name) {
         }
 
         lastStart = game.starttime;
-        let correctGameType = game.sctype === "b" || (game.sctype === "c" && game.rate);
+        let correctGameType = game.sctype === "b" || game.sctype === "c";
 
         if (!correctGameType || game.playernum !== "4") continue;
 
