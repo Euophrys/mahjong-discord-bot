@@ -251,7 +251,14 @@ const definitions = {
     "kyoutaku": "Kyoutaku refers to the points on the table, ie the riichi sticks and honba.",
     "buttobi": "Buttobi is the state of being tobi (below zero points).",
     "deadhand": "When you make an error that's severe, but not severe enough to cause the game to be unable to continue, you can be declared to have a dead hand. With a dead hand, you are not allowed to declare a win. Not by ron, not by tsumo. An example of such a mistake could be declaring ron, then realizing you are unable to.",
-    "chombo": "When you make an error that prevents the game from continuing, you have to pay a chombo penalty. Sometimes this will be a reverse mangan, where each other player gets as many points as they would have paid you had you won a mangan tsumo. Sometimes it will be 30,000 points removed from your score at the end of the match. An example of this could be declaring a win, revealing your hand, but your hand not being valid."
+    "chombo": "When you make an error that prevents the game from continuing, you have to pay a chombo penalty. Sometimes this will be a reverse mangan, where each other player gets as many points as they would have paid you had you won a mangan tsumo. Sometimes it will be 30,000 points removed from your score at the end of the match. An example of this could be declaring a win, revealing your hand, but your hand not being valid.",
+    "sokuri": "Sokuri is the Japanese word for insta-riichi.",
+    "civilwar": "Civil War is an old yaku from the Western Classical ruleset. It involves having a triplet of norths, a triplet of souths, the numbers 1861 in one suit, and the numbers 1865 in another.",
+    "tomato": "Tomato is what people say when someone discards a tile, then a different tile, then the same tile. Example discards: <:3z:466437922560671744><:1p:466437920908378113><:3z:466437922560671744>",
+    "toutenkou": "Toutenkou is a special sanma mode popular in Kanto, currently in beta on Tenhou. The scoring is completely different, and it includes the <:5m:466437922401419274> tiles. Most points come from nukidora (gari) and kans rather than yaku, but hands do still need a yaku. More info at http://arcturus.su/wiki/Toutenkou.",
+    "gari": "Gari is another word for nukidora, ie, the cut <:4z:466437922518728744> in sanma and the cut <:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330> in Toutenkou.",
+    "karasu": "Karasu is a bonus in Toutenkou when your hand has no nukidora, no discarded <:4z:466437922518728744><:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330>, and none of those tiles in your hand. This adds 20 points if closed (as much as a yakuman), and 10 points if open.",
+    "banban": "Banban is a bonus in Toutenkou which adds 2 points to any winning hand."
 };
 
 const aliases = {
@@ -280,5 +287,7 @@ const aliases = {
     "shabo": "shanpon",
     "harabote": "nakabukure",
     "bazoro": "han",
-    "furikomi": "sashikomi"
+    "furikomi": "sashikomi",
+    "sokurii": "sokuri",
+    "南北戦争": "civilwar"
 }

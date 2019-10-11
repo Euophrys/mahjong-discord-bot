@@ -20,7 +20,7 @@ module.exports = message => {
         return sendResponse(message, `I have these memes: ${keys.join(", ")}.`);
     }
 
-    return sendResponse(message, `I don't have a link associated with ${requestArray.join(" ")}. Are you sure you spelt it right?`);
+    return sendResponse(message, `I don't have a link associated with ${responseObject.request}. Are you sure you spelt it right?`);
 }
 
 const responses = ["Here it is: ", "Here you go: ", "Hope it helps: "];
@@ -54,7 +54,9 @@ const links = {
     "genbutsu": "https://cdn.discordapp.com/attachments/629737480803057685/631896055830544413/image0.png",
     "pongo": "https://cdn.discordapp.com/attachments/629737480803057685/631901093458214923/Scr20190224221100.gif",
     "chuurentenpai": "https://cdn.discordapp.com/attachments/560300317170728970/572592050596216832/TIM20190430091740.gif",
-    "moupai": "https://media.giphy.com/media/seA0bDAug4tJ6/giphy.gif"
+    "moupai": "https://media.giphy.com/media/seA0bDAug4tJ6/giphy.gif",
+    "flow": "https://cdn.discordapp.com/attachments/469490857716875285/623881918391517185/1564698197926.png",
+    "disconnected": "https://cdn.discordapp.com/attachments/629737480803057685/631905480746467329/TIM20181211124532.gif"
 }
 
 const aliases = {

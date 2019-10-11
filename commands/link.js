@@ -20,7 +20,7 @@ module.exports = message => {
         return sendResponse(message, `I have links for these things: ${keys.join(", ")}.`);
     }
 
-    return sendResponse(message, `I don't have a link associated with ${requestArray.join(" ")}. Are you sure you spelt it right?`);
+    return sendResponse(message, `I don't have a link associated with ${responseObject.request}. Are you sure you spelt it right?`);
 }
 
 const responses = ["Here's the link: ", "Here you go: ", "Hope it helps: "];
@@ -61,7 +61,10 @@ const links = {
     "wrc": "https://worldriichi.org/wrc-rules",
     "ema": "http://mahjong-europe.org/portal/index.php?option=com_content&view=article&id=30&Itemid=166",
     "cersius": "https://cdn.discordapp.com/attachments/150412836500275200/629706271288983562/cersius.png",
-    "horoscope": "https://s3.us-east-2.amazonaws.com/mahjong-horoscopes/index.html"
+    "horoscope": "https://s3.us-east-2.amazonaws.com/mahjong-horoscopes/index.html",
+    "learningscoring": "https://pathofhouou.blogspot.com/2019/05/tips-for-learning-score-table.html",
+    "countingsuji": "https://pathofhouou.blogspot.com/2019/08/guide-counting-suji.html",
+    "toutenkou": "http://arcturus.su/wiki/Toutenkou"
 }
 
 const aliases = {
@@ -76,5 +79,7 @@ const aliases = {
     "efficiency": "trainer",
     "justanother": "jajmb",
     "path": "pathofhouou",
-    "horoscopes": "horoscope"
+    "horoscopes": "horoscope",
+    "count": "countingsuji",
+    "sujicounting": "countingsuji"
 }
