@@ -1,15 +1,16 @@
 const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
 const handToEmoji = require("../utils/handToEmoji");
+const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
     let command = message.content.split(" ")[0].toLowerCase();
     let handString = message.content.split(" ").slice(1).join("").toLowerCase();
 
     if (command == "!eff" && handString == "you") {
-        return message.channel.send("Hey, that's not nice! Admin, help!");
+        return sendResponse(message, "Hey, that's not nice! Admin, help!");
     } else if (command == "!eff" && handString == "me") {
-        return message.channel.send("You're not really my type. You're, you know... human.");
+        return sendResponse(message, "You're not really my type. You're, you know... human.");
     }
 
     // Parse the string into a hand
@@ -48,15 +49,15 @@ module.exports = message => {
     }
 
     if (tiles == 0) {
-        return message.channel.send("You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")
+        return sendResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")
     }
 
     if (tiles > 14) {
-        return message.channel.send(`That hand has ${tiles - 14} too many tiles.`);
+        return sendResponse(message, `That hand has ${tiles - 14} too many tiles.`);
     }
 
     if (tiles % 3 === 0) {
-        return message.channel.send(`That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
+        return sendResponse(message, `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
     }
 
     let remainingTiles = Array(38).fill(4);
@@ -102,7 +103,7 @@ module.exports = message => {
 
         response += ")";
 
-        return message.channel.send(response);
+        return sendResponse(message, response);
     }
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
@@ -122,7 +123,7 @@ module.exports = message => {
         response += ")\n";
     }
 
-    return message.channel.send(response);
+    return sendResponse(message, response);
 }
 
 let hand = new Array(38);
