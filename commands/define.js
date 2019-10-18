@@ -259,7 +259,9 @@ const definitions = {
     "gari": "Gari is another word for nukidora, ie, the cut <:4z:466437922518728744> in sanma and the cut <:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330> in Toutenkou.",
     "karasu": "Karasu is a bonus in Toutenkou when your hand has no nukidora, no discarded <:4z:466437922518728744><:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330>, and none of those tiles in your hand. This adds 20 points if closed (as much as a yakuman), and 10 points if open.",
     "banban": "Banban is a bonus in Toutenkou which adds 2 points to any winning hand.",
-    "natsuki": "Natsuki is my name! It's written with the characters 那, which the dictionary defines as \"what?\" and 月, which is \"moon\". The ⓝ is what identifies bots on Tenhou."
+    "natsuki": "Natsuki is my name! It's written with the characters 那, which the dictionary defines as \"what?\" and 月, which is \"moon\". The ⓝ is what identifies bots on Tenhou.",
+    "sakizumo": "Sakizumo is the act of drawing earlier than the pace of the game dictates. It's bad manners, usually done to minimize the amount of time the other players have to make calls. In extreme cases, can even be drawing your tile before the player before you has discarded.",
+    "oyakaburi": "Oyakaburi is the dealer payment in a tsumo. So, \"I got fourth because of baiman oyakaburi\" would mean they were dealer when someone had a baiman tsumo, so they had to pay twice as much as the other players."
 };
 
 const aliases = {
