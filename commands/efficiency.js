@@ -2,6 +2,7 @@ const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
 const handToEmoji = require("../utils/handToEmoji");
 const sendResponse = require("../utils/sendResponse");
+const convertHandToTenhouString = require("../utils/convertHandToTenhouString");
 
 module.exports = message => {
     let command = message.content.split(" ")[0].toLowerCase();
@@ -109,42 +110,36 @@ module.exports = message => {
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
     sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
-    let ukeire = createUkeireString(discardUkeire, sortedUkeire, emoji, handActuallyHasTon);
-
-    if (ukeire.length > 1800) {
-        ukeire = createUkeireString(discardUkeire, sortedUkeire, textTiles, handActuallyHasTon);
-    }
-
-    response += ukeire;
-
-    return sendResponse(message, response);
-}
-
-function createUkeireString(discardUkeire, sortedUkeire, tileDisplays, handActuallyHasTon) {
     let ukeire = "";
 
     for (let i = 0; i < sortedUkeire.length; i++) {
         if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
         if (sortedUkeire[i].value == 0) continue;
 
-        ukeire += `Discard ${tileDisplays[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (`;
+        ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (`;
 
         for (let j = 0; j < sortedUkeire[i].tiles.length; j++) {
-            ukeire += tileDisplays[sortedUkeire[i].tiles[j]];
+            ukeire += emoji[sortedUkeire[i].tiles[j]];
         }
 
         ukeire += ")\n";
     }
 
-    return ukeire;
-}
+    if (ukeire.length > 1800) {
+        ukeire = "";
 
-let textTiles = [
-    "0m", "1m", "2m", "3m", "4m", "5m", "6m", "7m", "8m", "9m",
-    "0p", "1p", "2p", "3p", "4p", "5p", "6p", "7p", "8p", "9p",
-    "0s", "1s", "2s", "3s", "4s", "5s", "6s", "7s", "8s", "9s",
-    "0z", "1z", "2z", "3z", "4z", "5z", "6z", "7z"
-]
+        for (let i = 0; i < sortedUkeire.length; i++) {
+            if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
+            if (sortedUkeire[i].value == 0) continue;
+    
+            ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${convertHandToTenhouString(sortedUkeire[i].tiles)})\n`;
+        }
+    }
+
+    response += ukeire;
+
+    return sendResponse(message, response);
+}
 
 let hand = new Array(38);
 let completeSets;
