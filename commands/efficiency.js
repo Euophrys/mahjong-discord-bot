@@ -109,16 +109,18 @@ module.exports = message => {
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
     sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
-    let ukeire = createUkeireString(discardUkeire, sortedUkeire, emoji);
+    let ukeire = createUkeireString(discardUkeire, sortedUkeire, emoji, handActuallyHasTon);
 
     if (ukeire.length > 1800) {
-        ukeire = createUkeireString(discardUkeire, sortedUkeire, textTiles)
+        ukeire = createUkeireString(discardUkeire, sortedUkeire, textTiles, handActuallyHasTon);
     }
+
+    response += ukeire;
 
     return sendResponse(message, response);
 }
 
-function createUkeireString(discardUkeire, sortedUkeire, tileDisplays) {
+function createUkeireString(discardUkeire, sortedUkeire, tileDisplays, handActuallyHasTon) {
     let ukeire = "";
 
     for (let i = 0; i < sortedUkeire.length; i++) {
