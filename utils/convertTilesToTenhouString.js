@@ -32,12 +32,12 @@ module.exports = tiles => {
 
         // Don't add to the hand if there are no values in the suit, to avoid having random letters.
         if (valuesInSuit !== "") {
-            handString += valuesInSuit + SUIT_CHARACTERS[suit];
+            handString += valuesInSuit + SUIT_CHARACTERS[suit] + " ";
             valuesInSuit = "";
         }
     };
 
-    return handString;
+    return handString.trim();
 }
 
 const SUIT_CHARACTERS = ["m", "p", "s", "z"];
