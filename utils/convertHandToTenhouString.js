@@ -27,3 +27,5 @@ module.exports = hand => {
 
     return handString;
 }
+
+const SUIT_CHARACTERS = ["m", "p", "s", "z"];
