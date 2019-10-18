@@ -1,4 +1,4 @@
-module.export = hand => {
+module.exports = hand => {
     let handString = "";
     let valuesInSuit = "";
 
