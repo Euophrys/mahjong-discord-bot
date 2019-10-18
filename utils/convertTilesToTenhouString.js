@@ -1,4 +1,16 @@
-module.exports = hand => {
+module.exports = tiles => {
+    let hand = Array(38).fill(0);
+
+    if (typeof tiles === 'number') {
+        hand[indexes] = 1;
+    } else if (typeof tiles === 'object' && tiles.length) {
+        for (let i = 0; i < tiles.length; i++) {
+            hand[tiles[i]] += 1;
+        }
+    } else {
+        return "Error."
+    }
+
     let handString = "";
     let valuesInSuit = "";
 

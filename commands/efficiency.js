@@ -2,7 +2,7 @@ const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
 const handToEmoji = require("../utils/handToEmoji");
 const sendResponse = require("../utils/sendResponse");
-const convertHandToTenhouString = require("../utils/convertHandToTenhouString");
+const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 
 module.exports = message => {
     let command = message.content.split(" ")[0].toLowerCase();
@@ -132,7 +132,7 @@ module.exports = message => {
             if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
             if (sortedUkeire[i].value == 0) continue;
     
-            ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${convertHandToTenhouString(sortedUkeire[i].tiles)})\n`;
+            ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${convertTilesToTenhouString(sortedUkeire[i].tiles)})\n`;
         }
     }
 
