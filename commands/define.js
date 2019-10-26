@@ -261,7 +261,15 @@ const definitions = {
     "banban": "Banban is a bonus in Toutenkou which adds 2 points to any winning hand.",
     "natsuki": "Natsuki is my name! It's written with the characters 那, which the dictionary defines as \"what?\" and 月, which is \"moon\". The ⓝ is what identifies bots on Tenhou.",
     "sakizumo": "Sakizumo is the act of drawing earlier than the pace of the game dictates. It's bad manners, usually done to minimize the amount of time the other players have to make calls. In extreme cases, can even be drawing your tile before the player before you has discarded.",
-    "oyakaburi": "Oyakaburi is the dealer payment in a tsumo. So, \"I got fourth because of baiman oyakaburi\" would mean they were dealer when someone had a baiman tsumo, so they had to pay twice as much as the other players."
+    "oyakaburi": "Oyakaburi is the dealer payment in a tsumo. So, \"I got fourth because of baiman oyakaburi\" would mean they were dealer when someone had a baiman tsumo, so they had to pay twice as much as the other players.",
+    "shonpai": "A shonpai is a live tile. In other words, one that hasn't been discarded yet.",
+    "riichi": "Riichi is the name of the game. When you reach tenpai, you can call riichi, placing a 1000 point stick in the middle as a bet. After this, you can no longer change your hand. If you win, you get the riichi yaku, increasing your han by one, and get to check the uradora indicator.",
+    "ura": "The uradora indicator is the tile underneath the dora indicator(s). When a player wins by riichi, they reveal the ura indicators, which create new dora, called uradora.",
+    "openriichi": "Open riichi is an optional rule, where when you call riichi, you can reveal your hand or your incomplete shapes. If you win, it counts as two han instead of the one from a normal riichi. If someone who isn't in riichi deals into you, it often counts as yakuman.",
+    "suufon": "Suufon renda is an abortive draw that happens when each player discards the same wind in the first round, eg all four first discards being <:3z:466437922560671744> with no calls.",
+    "suucha": "Suucha riichi is an abortive draw that happens when all four players declare riichi.",
+    "sanchahou": "Sanchahou is an abortive draw that happens when three players call ron on the same tile. Majsoul doesn't use this rule. Sometimes, when a double ron is called, the third player has to reveal their hand to verify that a triple ron wouldn't have happened.",
+    "suukaikan": "Suukaikan is an abortive draw that happens when there are four kans declared by different players. If one player calls all four, they are in suukantsu tenpai, and the game continues."
 };
 
 const aliases = {
@@ -293,5 +301,15 @@ const aliases = {
     "furikomi": "sashikomi",
     "sokurii": "sokuri",
     "南北戦争": "civilwar",
-    "ⓝatsuki": "natsuki"
+    "ⓝatsuki": "natsuki",
+    "livetile": "shonpai",
+    "uradora": "ura",
+    "fourwind": "suufon",
+    "fourwinds": "suufon",
+    "suufonrenda": "suufon",
+    "suuchariichi": "suucha",
+    "fourriichi": "suucha",
+    "tripleron": "sanchahou",
+    "fourkan": "suukaikan",
+    "fourkans": "suukaikan"
 }
