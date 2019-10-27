@@ -56,7 +56,7 @@ module.exports = message => {
     let dora = emoji[tilePool.splice(Math.floor(Math.random() * tilePool.length), 1)[0]];
     let ura = emoji[tilePool.splice(Math.floor(Math.random() * tilePool.length), 1)[0]];
 
-    response += `\nSeat: ${seat}, Round: ${round}, Dora: ${dora}, Ura: ||${ura}||`;
+    response += `\nSeat: ${seat}, Round: ${round}, Indicators: Dora: ${dora}, Ura: ||${ura}||`;
 
     return message.channel.send(response);
 }
