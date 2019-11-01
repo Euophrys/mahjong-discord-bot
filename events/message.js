@@ -69,7 +69,7 @@ module.exports = (client, message) => {
 
   let lower = message.content.toLowerCase();
 
-  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1) {
+  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
     message.react(reactions[Math.floor(Math.random() * reactions.length)]);
   }
 };
