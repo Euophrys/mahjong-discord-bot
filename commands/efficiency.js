@@ -164,6 +164,9 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         if (result == 0) {
             result = b.discards.length - a.discards.length;
         }
+        if (result == 0) {
+            result = a.discards[0] - b.discards[0];
+        }
         return result;
     });
 
