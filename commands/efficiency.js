@@ -109,36 +109,77 @@ module.exports = message => {
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
-    sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
+    let sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
+    let groups = createUkeireGroups(sortedUkeire, discardUkeire, handActuallyHasTon);
+
     let ukeire = "";
 
+    for (group in groups) {
+        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
+    }
+
+    /*
     for (let i = 0; i < sortedUkeire.length; i++) {
         if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
         if (sortedUkeire[i].value == 0) continue;
 
-        ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (`;
-
-        for (let j = 0; j < sortedUkeire[i].tiles.length; j++) {
-            ukeire += emoji[sortedUkeire[i].tiles[j]];
-        }
-
-        ukeire += ")\n";
+        ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${tilesToEmoji(sortedUkeire[i].tiles)})\n`;
     }
+    */
 
     if ((response + ukeire).length > 1800) {
         ukeire = "";
+        
+        for (group in groups) {
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
+        }
 
+        /*
         for (let i = 0; i < sortedUkeire.length; i++) {
             if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
             if (sortedUkeire[i].value == 0) continue;
     
             ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${convertTilesToTenhouString(sortedUkeire[i].tiles)})\n`;
         }
+        */
     }
 
     response += ukeire;
 
     return sendResponse(message, response);
+}
+
+function createUkeireGroups(sortedUkeire, discardUkeire, handActuallyHasTon) {
+    let groups = {};
+
+    for (let i = 0; i < sortedUkeire.length; i++) {
+        if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
+        if (sortedUkeire[i].value == 0) continue;
+
+        let tiles = sortedUkeire[i].tiles.join("");
+
+        if (!groups[tiles]) {
+            groups[tiles] = {
+                discards: [discardUkeire.indexOf(sortedUkeire[i])],
+                value: sortedUkeire[i].value,
+                tiles: sortedUkeire[i].tiles
+            };
+        } else {
+            groups[tiles].discards.push(discardUkeire.indexOf(sortedUkeire[i]));
+        }
+    }
+
+    return groups;
+}
+
+function tilesToEmoji(tiles) {
+    let result = "";
+
+    for (i = 0; i < tiles.length; i++) {
+        result += emoji[tiles[i]];
+    }
+
+    return result;
 }
 
 let hand = new Array(38);
