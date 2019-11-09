@@ -125,7 +125,7 @@ module.exports = message => {
         ukeire += ")\n";
     }
 
-    if (ukeire.length > 1800) {
+    if ((response + ukeire).length > 1800) {
         ukeire = "";
 
         for (let i = 0; i < sortedUkeire.length; i++) {

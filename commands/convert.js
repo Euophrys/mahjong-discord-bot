@@ -1,6 +1,7 @@
 const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
-const conversionRequestRegex = /!(\d+[smzp])+/g
+const sendResponse = require("../utils/sendResponse");
+const conversionRequestRegex = /!(\d+[smzp])+/g;
 
 module.exports = message => {
     var content = String(message.content);
@@ -32,5 +33,6 @@ module.exports = message => {
     })
 
     conversionRequestRegex.lastIndex = 0;
-    return message.channel.send(content);
+    content = `${message.member.user.username} says: "${content}"`;
+    return sendResponse(message, content);
 };
