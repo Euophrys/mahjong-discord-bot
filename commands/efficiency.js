@@ -114,7 +114,10 @@ module.exports = message => {
 
     let ukeire = "";
 
+    console.log(groups);
+
     for (group in groups) {
+        if(!group.tiles) continue;
         ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
 
@@ -131,6 +134,7 @@ module.exports = message => {
         ukeire = "";
         
         for (group in groups) {
+            if(!group.tiles) continue;
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
         }
 
