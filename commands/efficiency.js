@@ -109,43 +109,22 @@ module.exports = message => {
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
-    let sortedUkeire = discardUkeire.slice().sort((a, b) => a.value - b.value);
-    let groups = createUkeireGroups(sortedUkeire, discardUkeire, handActuallyHasTon);
+    let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
     let ukeire = "";
 
-    for (key in groups) {
-        let group = groups[key];
-        if(!group.tiles) continue;
+    for (let i = 0; i < groups.length; i++) {
+        let group = groups[i];
         ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
-
-    /*
-    for (let i = 0; i < sortedUkeire.length; i++) {
-        if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
-        if (sortedUkeire[i].value == 0) continue;
-
-        ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${tilesToEmoji(sortedUkeire[i].tiles)})\n`;
-    }
-    */
 
     if ((response + ukeire).length > 1800) {
         ukeire = "";
         
-        for (key in groups) {
-            let group = groups[key];
-            if(!group.tiles) continue;
+        for (let i = 0; i < groups.length; i++) {
+            let group = groups[i];
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
         }
-
-        /*
-        for (let i = 0; i < sortedUkeire.length; i++) {
-            if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
-            if (sortedUkeire[i].value == 0) continue;
-    
-            ukeire += `Discard ${emoji[discardUkeire.indexOf(sortedUkeire[i])]} -> ${sortedUkeire[i].value} ukeire (${convertTilesToTenhouString(sortedUkeire[i].tiles)})\n`;
-        }
-        */
     }
 
     response += ukeire;
@@ -153,25 +132,34 @@ module.exports = message => {
     return sendResponse(message, response);
 }
 
-function createUkeireGroups(sortedUkeire, discardUkeire, handActuallyHasTon) {
-    let groups = {};
+function createUkeireGroups(discardUkeire, handActuallyHasTon) {
+    let groupsObject = {};
 
-    for (let i = 0; i < sortedUkeire.length; i++) {
-        if (discardUkeire.indexOf(sortedUkeire[i]) === 31 && !handActuallyHasTon) continue;
-        if (sortedUkeire[i].value == 0) continue;
+    for (let i = 0; i < discardUkeire.length; i++) {
+        if (i === 31 && !handActuallyHasTon) continue;
+        if (discardUkeire[i].value == 0) continue;
 
-        let tiles = sortedUkeire[i].tiles.join("");
+        let tiles = discardUkeire[i].tiles.join("");
 
-        if (!groups[tiles]) {
-            groups[tiles] = {
-                discards: [discardUkeire.indexOf(sortedUkeire[i])],
-                value: sortedUkeire[i].value,
-                tiles: sortedUkeire[i].tiles
+        if (!groupsObject[tiles]) {
+            groupsObject[tiles] = {
+                discards: [i],
+                value: discardUkeire[i].value,
+                tiles: discardUkeire[i].tiles
             };
         } else {
-            groups[tiles].discards.push(discardUkeire.indexOf(sortedUkeire[i]));
+            groupsObject[tiles].discards.push(i);
         }
     }
+
+    let groups = [];
+
+    for (key in groupsObject) {
+        if(!groupsObject[key].tiles) continue;
+        groups.push(groupsObject[key]);
+    }
+
+    groups.sort((a, b) => b.value - a.value)
 
     return groups;
 }
