@@ -109,7 +109,7 @@ module.exports = message => {
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
-    let sortedUkeire = discardUkeire.slice().sort((a, b) => b.value - a.value);
+    let sortedUkeire = discardUkeire.slice().sort((a, b) => a.value - b.value);
     let groups = createUkeireGroups(sortedUkeire, discardUkeire, handActuallyHasTon);
 
     let ukeire = "";
@@ -117,6 +117,7 @@ module.exports = message => {
     console.log(groups);
 
     for (group in groups) {
+        console.log(group);
         if(!group.tiles) continue;
         ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
