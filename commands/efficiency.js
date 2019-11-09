@@ -159,7 +159,13 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         groups.push(groupsObject[key]);
     }
 
-    groups.sort((a, b) => b.value - a.value)
+    groups = groups.sort((a, b) => {
+        let result = b.value - a.value;
+        if (result == 0) {
+            result = b.discards.length - a.discards.length;
+        }
+        return result;
+    });
 
     return groups;
 }
