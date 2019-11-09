@@ -80,7 +80,8 @@ module.exports = message => {
         tiles += 3;
     }
     
-    let shanten = calculateMinimumShanten(handTiles);
+    let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
+    let shanten = shantenFunction(handTiles);
 
     if (shanten === -1) {
         response += "(Complete)\n";
@@ -95,7 +96,7 @@ module.exports = message => {
 
     // Check just the ukeire of 13 tile hands (or tiles % 3 === 1 hands)
     if (tiles == 13) {
-        let ukeire = calculateUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
+        let ukeire = calculateUkeire(handTiles, remainingTiles, shantenFunction, shanten);
         response += `Ukeire: ${ukeire.value} (`;
         
         for (let i = 0; i < ukeire.tiles.length; i++) {
@@ -108,7 +109,7 @@ module.exports = message => {
     }
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
-    let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, calculateMinimumShanten, shanten);
+    let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, shantenFunction, shanten);
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
     let ukeire = "";
