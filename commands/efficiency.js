@@ -113,6 +113,7 @@ module.exports = message => {
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
     if(message.content.toLowerCase().indexOf("good") > 0) {
+        console.log("trying to filter");
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
@@ -177,11 +178,13 @@ function filterBadUkeire(hand, groups, remainingTiles) {
         for(let j = 0; j < tiles.length; j++) {
             let tile = tiles[j];
             hand[tile]++;
+            console.log(`Checking ${tile}`);
 
-            let ukeire = calculateDiscardUkeire(hand, remainingTiles, calculateStandardShanten, 0);
+            let ukeire = calculateDiscardUkeire(hand, remainingTiles, calculateStandardShanten, 1);
             let bestUkeire = Math.max(...ukeire.map((u) => u.value));
 
             if (bestUkeire <= 4) {
+                console.log(`Getting ${tile} is bad`);
                 groups[i].tiles.splice(groups[i].tiles.indexOf(tile));
                 groups[i].value -= remainingTiles[tile];
             }
