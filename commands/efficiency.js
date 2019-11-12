@@ -112,6 +112,12 @@ module.exports = message => {
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, shantenFunction, shanten);
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
+    if(message.content.toLowerCase().indexOf("good") > 0) {
+        groups = filterBadUkeire(handTiles, groups, remainingTiles);
+    }
+
+    groups = sortGroups(groups);
+
     let ukeire = "";
 
     for (let i = 0; i < groups.length; i++) {
@@ -160,7 +166,37 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         groups.push(groupsObject[key]);
     }
 
-    groups = groups.sort((a, b) => {
+    return groups;
+}
+
+function filterBadUkeire(hand, groups, remainingTiles) {
+    for(let i = 0; i < groups.length; i++) {
+        hand[groups[i].discards[0]]--;
+        let tiles = groups[i].tiles.splice();
+
+        for(let j = 0; j < tiles.length; j++) {
+            let tile = tiles[j];
+            hand[tile]++;
+
+            let ukeire = calculateDiscardUkeire(hand, remainingTiles, calculateStandardShanten, 0);
+            let bestUkeire = Math.max(...ukeire.map((u) => u.value));
+
+            if (bestUkeire <= 4) {
+                groups[i].tiles.splice(groups[i].tiles.indexOf(tile));
+                groups[i].value -= remainingTiles[tile];
+            }
+
+            hand[tile]--;
+        }
+        hand[groups[i].discards[0]]++;
+    }
+
+    groups = groups.filter((group) => group.value > 0);
+    return groups;
+}
+
+function sortGroups(groups) {
+    return groups.sort((a, b) => {
         let result = b.value - a.value;
         if (result == 0) {
             result = b.discards.length - a.discards.length;
@@ -170,8 +206,6 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         }
         return result;
     });
-
-    return groups;
 }
 
 function tilesToEmoji(tiles) {
