@@ -170,6 +170,16 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
 }
 
 function filterBadUkeire(hand, groups, remainingTiles) {
+    let adjustedRemainingTiles = Array(38).fill(0);
+
+    // Makes it so the ukeire only checks tiles that are possible to improve the hand
+    for(let i = 0; i < groups.length; i++) {
+        let tiles = groups[i].tiles;
+        for(let j = 0; j < tiles.length; j++) {
+            adjustedRemainingTiles[tiles[j]] = remainingTiles[tiles[j]];
+        }
+    }
+
     for(let i = 0; i < groups.length; i++) {
         hand[groups[i].discards[0]]--;
         let tiles = groups[i].tiles.slice();
