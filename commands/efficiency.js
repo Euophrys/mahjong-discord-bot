@@ -113,7 +113,7 @@ module.exports = message => {
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
     if(message.content.toLowerCase().indexOf("good") > 0 && shanten === 1) {
-        groups = filterBadUkeire(handTiles, groups, remainingTiles);
+        //groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
     groups = sortGroups(groups);
