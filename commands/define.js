@@ -20,7 +20,7 @@ module.exports = message => {
         var keys = Object.keys(definitions);
         keys = keys.sort();
         sendResponse(message, `I'll send you a DM, since there are a lot of them.`);
-        return message.member.send(`I have definitions for these things: ${keys.join(", ")}.`);
+        return message.author.send(`I have definitions for these things: ${keys.join(", ")}.`);
     }
 
     wordpos.lookup(responseObject.request, (result, word) => {
