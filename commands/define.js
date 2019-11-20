@@ -20,7 +20,9 @@ module.exports = message => {
         var keys = Object.keys(definitions);
         keys = keys.sort();
         sendResponse(message, `I'll send you a DM, since there are a lot of them.`);
-        return message.author.send(`I have definitions for these things: ${keys.join(", ")}.`);
+        message.author.send(`I have definitions for these things: ${keys.join(", ").substr(0, 1800)}`).then((message) => {
+            message.channel.send(`${keys.join(", ").substr(1800)}.`);
+        });
     }
 
     wordpos.lookup(responseObject.request, (result, word) => {
