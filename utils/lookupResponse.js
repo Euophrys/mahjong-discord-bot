@@ -1,5 +1,6 @@
 module.exports = (message, responses, aliases) => {
-    let requestArray = message.content.split(" ").slice(1);
+    let dashesRemoved = message.content.replace("-", " ");
+    let requestArray = dashesRemoved.split(" ").slice(1);
     let request = requestArray.join("").toLowerCase();
 
     if (aliases[request]) {
