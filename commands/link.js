@@ -64,7 +64,9 @@ const links = {
     "horoscope": "https://s3.us-east-2.amazonaws.com/mahjong-horoscopes/index.html",
     "learningscoring": "https://pathofhouou.blogspot.com/2019/05/tips-for-learning-score-table.html",
     "countingsuji": "https://pathofhouou.blogspot.com/2019/08/guide-counting-suji.html",
-    "toutenkou": "http://arcturus.su/wiki/Toutenkou"
+    "toutenkou": "http://arcturus.su/wiki/Toutenkou",
+    "mattari": "https://drive.google.com/drive/folders/1wddW0x1K84AsP_HFZKRDFM36LnRsZZef",
+    "calling": "https://mahjong.guide/2017/07/22/puyos-guide-to-calling-tiles-part-1/"
 }
 
 const aliases = {
@@ -81,5 +83,6 @@ const aliases = {
     "path": "pathofhouou",
     "horoscopes": "horoscope",
     "count": "countingsuji",
-    "sujicounting": "countingsuji"
+    "sujicounting": "countingsuji",
+    "call": "calling"
 }
