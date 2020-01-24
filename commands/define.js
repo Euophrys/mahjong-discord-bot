@@ -271,7 +271,19 @@ const definitions = {
     "suufon": "Suufon renda is an abortive draw that happens when each player discards the same wind in the first round, eg all four first discards being <:3z:466437922560671744> with no calls.",
     "suucha": "Suucha riichi is an abortive draw that happens when all four players declare riichi.",
     "sanchahou": "Sanchahou is an abortive draw that happens when three players call ron on the same tile. Majsoul doesn't use this rule. Sometimes, when a double ron is called, the third player has to reveal their hand to verify that a triple ron wouldn't have happened.",
-    "suukaikan": "Suukaikan is an abortive draw that happens when there are four kans declared by different players. If one player calls all four, they are in suukantsu tenpai, and the game continues."
+    "suukaikan": "Suukaikan is an abortive draw that happens when there are four kans declared by different players. If one player calls all four, they are in suukantsu tenpai, and the game continues.",
+    "yakuman": "A yakuman is the highest limit a hand can get. As a non-dealer, it's worth 32000 points, and as dealer, it's worth 48000. You get this if you have 13+ hand (kazoe yakuman), or a certain named yakuman, such as Kokushi Musou.",
+    "chii": "A chii is a call where you take a tile from the player to your left in order to finish a run. You always place the called tile on the left side, so it might look like <:c4s:667035333640192061><:3s:466437922258681869><:5s:466437922258812929>",
+    "pon": "A pon is a call where you take a tile a player just discarded to finish a triplet. You place the called tile on the left if you called it from the player to your left <:c7z:667035333648449607><:7z:466437922279784469><:7z:466437922279784469>, in the middle if you called it from the player across <:7z:466437922279784469><:c7z:667035333648449607><:7z:466437922279784469>, and on the right if you called it from the player to your right <:7z:466437922279784469><:7z:466437922279784469><:c7z:667035333648449607>",
+    "kan": "A kan is a call where you either show that you have four of a kind (closed kan / ankan, looks like <:tileBack:466437984216940544><:3s:466437922258681869><:3s:466437922258681869><:tileBack:466437984216940544>) or you take a tile a player just discarded to complete a four of a kind (daiminkan, looks like a longer pon), or you add a tile you just drew to a pon you've already made (shouminkan / added kan, looks like a pon with two sideways tiles on top of each other). When you do this, you draw a new tile from the end of the deadwall as a replacement. If it's a closed kan, you also immediately reveal a new dora indicator, but if it's an open or added kan, the new indicator is revealed after you discard.",
+    "mangan": "A mangan is a hand worth 8000 points as a non-dealer, or 12000 points as the dealer. You score a mangan if you have 5 han, or 4 han 40+ fu, or 3 han 70+ fu. A counted mangan, kiriage mangan, is 4 han 30 fu or 3 han 60 fu, which is worth 7700 ron 7900 tsumo as nondealer. Some rulesets round this up to 8000 for simplicity.",
+    "haneman": "A haneman is a hand worth 12000 points as a non-dealer, or 18000 points as the dealer. You score a haneman if you have 6 or 7 han.",
+    "baiman": "A baiman, double mangan, is a hand worth 16000 points as a non-dealer, or 24000 points as the dealer. You score a baiman if you have 8, 9, or 10 han.",
+    "sanbaiman": "A sanbaiman, triple mangan, is a hand worth 24000 points as a non-dealer, or 36000 points as the dealer. You score a sanbaiman if you have 11 or 12 han. In some rulesets, such as EMA, hands with 13+ han also score sanbaiman instead of being a counted yakuman.",
+    "yaku": "A yaku is a winning condition. You need to have one in order to be able to win. You can have multiple yaku, with each contributing their han value to your hand and increasing the value.",
+    "han": "Han are the multipliers for a hand's score. Dora and yaku both contribute to the number of han a hand has.",
+    "onechance": "A one-chance is when you can see three of a tile near another tile. For example, if you can see three of the 2s tiles, there's only one 2s left to make a 23s shape, so the 1s is a one-chance (there's one chance for an opponent to have that ryanmen). If you can see three of the 2s AND three of the 3s, then the 1s is a double one-chance.",
+    "nochance": "A no-chance tile is when a tile has no chance of dealing in, due to what tiles you can see. This requires all four of each adjacent tile to be visible, as well as three of the tile itself. In this situation, nobody can be waiting on the tile. Honors are no-chance if three of the honor is already visible, and four of another terminal or honor is visible (to make kokushi impossible)."
 };
 
 const aliases = {
@@ -313,5 +325,14 @@ const aliases = {
     "fourriichi": "suucha",
     "tripleron": "sanchahou",
     "fourkan": "suukaikan",
-    "fourkans": "suukaikan"
+    "fourkans": "suukaikan",
+    "minkan": "kan",
+    "daiminkan": "kan",
+    "shouminkan": "kan",
+    "kakan": "kan",
+    "kong": "kan",
+    "pung": "pon",
+    "chow": "chii",
+    "fan": "han",
+    "fanpai": "yakuhai"
 }

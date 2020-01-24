@@ -11,6 +11,7 @@ const dice = require('../commands/dice');
 const rate = require('../commands/rate');
 const explain = require('../commands/explain');
 const meme = require('../commands/meme');
+const viewer = require('../commands/viewer');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -23,6 +24,7 @@ commands = {
   "!whatis": define,
   "!d": define,
   "!link": link,
+  "!links": link,
   "!url": link,
   "!site": link,
   "!efficiency": efficiency,
@@ -48,7 +50,11 @@ commands = {
   "!games": rate,
   "!explain": explain,
   "!meme": meme,
-  "!memes": meme
+  "!memes": meme,
+  "!viewer": viewer,
+  "!watcher": viewer,
+  "!viewers": viewer,
+  "!watchers": viewer
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
