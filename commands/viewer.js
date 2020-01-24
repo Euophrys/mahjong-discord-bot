@@ -5,7 +5,7 @@ module.exports = message => {
         return message.channel.send(`That command isn't supported in this server.`);
     }
 
-    if(message.member.roles.has(role.id)) {
+    if(message.member.roles.has(viewerRole.id)) {
         message.member.removeRole(viewerRole).catch(console.error);
         message.react("❌");
     } else {
