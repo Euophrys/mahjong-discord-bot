@@ -33,7 +33,7 @@ module.exports = message => {
             let dashesRemoved = message.content.replace("-", " ");
             let requestArray = dashesRemoved.split(" ").slice(1);
             let request = requestArray.join("").toLowerCase();
-            var possibilities = spellcheck(request, definitions.keys());
+            var possibilities = spellcheck(request, Object.keys(definitions));
 
             if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
                 return sendResponse(message, possibilities.closest[0]);
