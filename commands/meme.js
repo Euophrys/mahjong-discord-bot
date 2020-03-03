@@ -59,7 +59,8 @@ const links = {
     "disconnected": "https://cdn.discordapp.com/attachments/629737480803057685/631905480746467329/TIM20181211124532.gif",
     "betaori": "https://cdn.discordapp.com/attachments/150412836500275200/682944507293073410/Betaori.png",
     "genesis": "https://cdn.discordapp.com/attachments/150412836500275200/682945383462207510/Genesis.jpg",
-    "corak": "https://cdn.discordapp.com/attachments/150412836500275200/615634616539152384/Screenshot_2019-08-26_at_21.26.26.png"
+    "corak": "https://cdn.discordapp.com/attachments/150412836500275200/615634616539152384/Screenshot_2019-08-26_at_21.26.26.png",
+    "shory": "https://i.imgur.com/LLyIgDm.png"
 }
 
 const aliases = {
