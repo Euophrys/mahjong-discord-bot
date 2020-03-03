@@ -4,7 +4,7 @@ module.exports = (input, keys) => {
     let closest = [];
     let closestDistance = 1000;
 
-    keys.foreach(key => {
+    keys.forEach(key => {
         let distance = levenshtein(input, key);
         if (distance < closestDistance) {
             closest = [key];
