@@ -2,6 +2,7 @@ const WordPos = require("wordpos");
 const wordpos = new WordPos();
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
+const spellcheck = require("../utils/spellcheck");
 
 module.exports = message => {
     let responseObject = lookupResponse(message, definitions, aliases);
@@ -29,7 +30,21 @@ module.exports = message => {
         if(result[0] && result[0].def) {
             return sendResponse(message, `The dictionary says: ${result[0].def}.`);
         } else {
-            return sendResponse(message, `I don't know the definition of ${responseObject.request}. Are you sure you spelt it right?`);
+            let dashesRemoved = message.content.replace("-", " ");
+            let requestArray = dashesRemoved.split(" ").slice(1);
+            let request = requestArray.join("").toLowerCase();
+            var possibilities = spellcheck(request, definitions.keys());
+
+            if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
+                return sendResponse(message, possibilities.closest[0]);
+            }
+
+            if (possibilities.distance > 3) {
+                return sendResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
+            }
+
+            let suggestions = possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
+            return sendResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
         }
     });
 };
