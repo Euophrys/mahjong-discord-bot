@@ -376,6 +376,7 @@ const aliases = {
     "purestraight": "itsu",
     "mixedsequences": "sanshoku",
     "mixedtriplesequence": "sanshoku",
+    "mixedtriplechow": "sanshoku",
     "commonends": "chanta",
     "halfoutsidehand": "chanta",
     "mixedtriplets": "sanshokudokou",
