@@ -36,7 +36,7 @@ module.exports = message => {
             var possibilities = spellcheck(request, Object.keys(definitions));
 
             if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                return sendResponse(message, possibilities.closest[0]);
+                return sendResponse(message, `The closest thing to ${message.content} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`);
             }
 
             if (possibilities.distance > 3) {
