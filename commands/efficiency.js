@@ -4,7 +4,7 @@ const handToEmoji = require("../utils/handToEmoji");
 const sendResponse = require("../utils/sendResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 
-module.exports = message => {
+module.exports = (message, client) => {
     let command = message.content.split(" ")[0].toLowerCase();
     let handString = message.content.split(" ").slice(1).join("").toLowerCase();
 
@@ -12,6 +12,10 @@ module.exports = message => {
         return sendResponse(message, "Hey, that's not nice! Admin, help!");
     } else if (command == "!eff" && handString == "me") {
         return sendResponse(message, "You're not really my type. You're, you know... human.");
+    }
+
+    if (handString == "that" && client.user.lastMessage.content) {
+        handString = client.user.lastMessage.content;
     }
 
     // Parse the string into a hand

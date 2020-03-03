@@ -70,7 +70,7 @@ module.exports = (client, message) => {
   let command = message.content.split(" ")[0].toLowerCase();
 
   if (commands[command]) {
-    return commands[command](message);
+    return commands[command](message, client);
   }
 
   let lower = message.content.toLowerCase();
