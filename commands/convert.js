@@ -3,7 +3,7 @@ const characterToSuit = require("../utils/characterToSuit");
 const sendResponse = require("../utils/sendResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
-module.exports = message => {
+module.exports = (message, client) => {
     var content = String(message.content);
 
     content = content.replace(conversionRequestRegex, (substring) => {
@@ -33,6 +33,11 @@ module.exports = message => {
     })
 
     conversionRequestRegex.lastIndex = 0;
-    content = `${message.member.user.username} says: "${content}"`;
+    if(message.member) {
+        content = `${message.member.user.username} says: "${content}"`;
+    } else {
+        content = `A ghost says: "${content}"`;
+    }
+    
     return sendResponse(message, content);
 };
