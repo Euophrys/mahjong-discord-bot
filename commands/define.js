@@ -37,7 +37,7 @@ module.exports = message => {
 
             // check jisho
             // https://jisho.org/api/v1/search/words?keyword=house
-            npmrequest(`https://jisho.org/api/v1/search/words?keyword=${encodeURI(request)}`, {json:true, timeout:10000}, (err, res, body) => {
+            npmrequest(`https://jisho.org/api/v1/search/words?keyword=${encodeURI(request)}%20%23mahj`, {json:true, timeout:10000}, (err, res, body) => {
                 if(!err && body) {
                     for (let i = 0; i < body.data.length; i++) {
                         for (let j = 0; j < body.data[i].senses.length; j++) {
