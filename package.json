@@ -21,6 +21,7 @@
     "erlpack": "github:discordapp/erlpack",
     "js-levenshtein": "^1.1.6",
     "node-opus": "^0.2.7",
+    "node-schedule": "^1.3.2",
     "opusscript": "0.0.6",
     "request": "^2.88.0",
     "wordpos": "^1.2.0"
