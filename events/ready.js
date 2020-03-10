@@ -15,7 +15,7 @@ module.exports = client => {
     var winner2 = games[i].teams[Math.floor(Math.random() * games[i].teams.length)];
     var teamsString = games[i].teams.slice(0, -1).join(", ") + ', and ' + games[i].teams.slice(-1);
 
-    var message = `Day ${i + 1} of the M-League semi-finals is now live! Playing today is ${teamsString}. Come watch at https://abema.tv/now-on-air/mahjong (or catch the VoD afterwards)! My money is on ${winner1} for the first hanchan, and ${winner2} for the second.`;
+    var message = `Day ${i + 1} of the M-League semi-finals is now live! Playing today is ${teamsString}. Come watch at <https://abema.tv/now-on-air/mahjong> (or catch the VoD afterwards)! My money is on ${winner1} for the first hanchan, and ${winner2} for the second.`;
 
     var job = schedule.scheduleJob(date, function(client, message){
       client.channels.get("669652926037360651").send(message);
