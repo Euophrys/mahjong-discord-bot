@@ -43,7 +43,7 @@ module.exports = message => {
                         for (let j = 0; j < body.data[i].senses.length; j++) {
                             for (let k = 0; k < body.data[i].senses[j].length; k++) {
                                 if (body.data[i].senses[j].tags[k] === "Mahjong term") {
-                                    return sendResponse(message, `Jisho defines ${request} (${body.data[i].slug}) as "${body.data[i].senses[j].english_definitions[0]}."`);
+                                    return sendResponse(message, `Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`);
                                 }
                             }
                         }
