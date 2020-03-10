@@ -42,7 +42,7 @@ module.exports = message => {
                     for (let i = 0; i < body.data.length; i++) {
                         for (let j = 0; j < body.data[i].senses.length; j++) {
                             for (let k = 0; k < body.data[i].senses[j].length; k++) {
-                                if (body.data[i].senses[j].tags[k] === "Mahjong term") {
+                                if (body.data[i].senses[j].tags[k] == "Mahjong term") {
                                     return sendResponse(message, `Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`);
                                 }
                             }
@@ -50,7 +50,7 @@ module.exports = message => {
                     }
     
                     if (body.data.length) {
-                        return sendResponse(message, `Jisho defines ${request} (${body.data[0].slug}) as "${body.data[0].senses[0].english_definitions[0]}."`);
+                        return sendResponse(message, `Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`);
                     }
                 }
 
