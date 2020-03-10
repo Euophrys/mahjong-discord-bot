@@ -50,7 +50,7 @@ module.exports = message => {
                     }
     
                     if (body.data.length) {
-                        return sendResponse(message, `Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`);
+                        return sendResponse(message, `Jisho defines ${request} (${body.data[0].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`);
                     }
                 }
 
