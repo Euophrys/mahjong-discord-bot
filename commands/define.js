@@ -3,7 +3,7 @@ const wordpos = new WordPos();
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 const spellcheck = require("../utils/spellcheck");
-const request = require("request");
+const npmrequest = require("request");
 
 module.exports = message => {
     let responseObject = lookupResponse(message, definitions, aliases);
@@ -37,7 +37,7 @@ module.exports = message => {
 
             // check jisho
             // https://jisho.org/api/v1/search/words?keyword=house
-            request(`https://jisho.org/api/v1/search/words?keyword=${encodeURI(request)}`, {json:true, timeout:10000}, (err, res, body) => {
+            npmrequest(`https://jisho.org/api/v1/search/words?keyword=${encodeURI(request)}`, {json:true, timeout:10000}, (err, res, body) => {
                 if(!err && body) {
                     for (let i = 0; i < body.data.length; i++) {
                         for (let j = 0; j < body.data[i].senses.length; j++) {
