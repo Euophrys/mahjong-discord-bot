@@ -12,6 +12,7 @@ const rate = require('../commands/rate');
 const explain = require('../commands/explain');
 const meme = require('../commands/meme');
 const viewer = require('../commands/viewer');
+const mleague = require('../commands/mleague');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -54,7 +55,8 @@ commands = {
   "!viewer": viewer,
   "!watcher": viewer,
   "!viewers": viewer,
-  "!watchers": viewer
+  "!watchers": viewer,
+  "!mleague": mleague
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
