@@ -3,6 +3,7 @@ const wordpos = new WordPos();
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 const spellcheck = require("../utils/spellcheck");
+const request = require("request");
 
 module.exports = message => {
     let responseObject = lookupResponse(message, definitions, aliases);
@@ -28,23 +29,44 @@ module.exports = message => {
 
     wordpos.lookup(responseObject.request, (result, word) => {
         if(result[0] && result[0].def) {
-            return sendResponse(message, `The dictionary says: ${result[0].def}.`);
+            return sendResponse(message, `The dictionary says: ${result[0].def.trim()}.`);
         } else {
             let dashesRemoved = message.content.replace("-", " ");
             let requestArray = dashesRemoved.split(" ").slice(1);
             let request = requestArray.join("").toLowerCase();
-            var possibilities = spellcheck(request, Object.keys(definitions));
 
-            if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                return sendResponse(message, `The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`);
-            }
+            // check jisho
+            // https://jisho.org/api/v1/search/words?keyword=house
+            request(`https://jisho.org/api/v1/search/words?keyword=${encodeURI(request)}`, {json:true, timeout:10000}, (err, res, body) => {
+                if(!err && body) {
+                    for (let i = 0; i < body.data.length; i++) {
+                        for (let j = 0; j < body.data[i].senses.length; j++) {
+                            for (let k = 0; k < body.data[i].senses[j].length; k++) {
+                                if (body.data[i].senses[j].tags[k] === "Mahjong term") {
+                                    return sendResponse(message, `Jisho defines ${request} (${body.data[i].slug}) as "${body.data[i].senses[j].english_definitions[0]}."`);
+                                }
+                            }
+                        }
+                    }
+    
+                    if (body.data.length) {
+                        return sendResponse(message, `Jisho defines ${request} (${body.data[0].slug}) as "${body.data[0].senses[0].english_definitions[0]}."`);
+                    }
+                }
 
-            if (possibilities.distance > 3) {
-                return sendResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
-            }
+                var possibilities = spellcheck(request, Object.keys(definitions));
 
-            let suggestions = possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
-            return sendResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
+                if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
+                    return sendResponse(message, `The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`);
+                }
+
+                if (possibilities.distance > 3) {
+                    return sendResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
+                }
+
+                let suggestions = possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
+                return sendResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
+            });
         }
     });
 };
