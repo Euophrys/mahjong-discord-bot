@@ -1,8 +1,9 @@
-const games = require('../utils/mleagueGames');
+const mleague = require('../utils/mleague');
 
 module.exports = message => {
     let now = new Date();
-
+    let games = mleague.games;
+    
     for (let i = 0; i < games.length; i++) {
         var date = new Date(2020, games[i].month, games[i].day, games[i].hour, 0, 0, 0);
 
