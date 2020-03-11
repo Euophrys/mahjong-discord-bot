@@ -14,7 +14,7 @@ module.exports = (message, client) => {
         return sendResponse(message, "You're not really my type. You're, you know... human.");
     }
 
-    if ((handString == "that" || handString == "that standard") && client.user.lastMessage.content) {
+    if ((handString == "that" || handString == "thatstandard") && client.user.lastMessage.content) {
         handString = client.user.lastMessage.content;
     }
 
