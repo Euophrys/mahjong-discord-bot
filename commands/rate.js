@@ -90,15 +90,10 @@ function getStats(gamesList, name) {
             pastFive.unshift("3rd");
         }
         
-        if (points >= requirement[dan]) {
+        if (dan < 20 && points >= requirement[dan]) {
             dan++;
-            
-            if (dan === 20) {
-                return "Tenhoui";
-            }
-
             points = starting[dan];
-        } else if (points < 0 && dan >= 10) {
+        } else if (points < 0 && dan >= 10 && dan < 20) {
             dan--;
             points = starting[dan];
         } 
@@ -124,5 +119,5 @@ const fourthGains = [[],
 ];
 const danNames = [
     "10k", "9k", "8k", "7k", "6k", "5k", "4k", "3k", "2k", "1k",
-    "1d", "2d", "3d", "4d", "5d", "6d", "7d", "8d", "9d", "10d"
+    "1d", "2d", "3d", "4d", "5d", "6d", "7d", "8d", "9d", "10d", "Tenhoui"
 ];
