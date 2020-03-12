@@ -1,4 +1,5 @@
 const request = require("request");
+const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 const parens = /\((.+)\)/
 
@@ -6,7 +7,7 @@ module.exports = message => {
     let name = message.content.split(" ")[1];
 
     if (!name || name === "") {
-        return message.channel.send("You'll need to provide a name for me to look up.");
+        return sendDeletableResponse(message, "You'll need to provide a name for me to look up.");
     }
 
     if (name === "me") {
@@ -21,7 +22,7 @@ module.exports = message => {
     }
 
     if (name.length > 8) {
-        return message.channel.send("That name is too long. Tenhou names must be 8 characters or less.");
+        return sendDeletableResponse(message, "That name is too long. Tenhou names must be 8 characters or less.");
     }
 
     name = encodeURI(name);

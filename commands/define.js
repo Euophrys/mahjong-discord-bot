@@ -32,8 +32,7 @@ module.exports = message => {
         if(result[0] && result[0].def) {
             return sendResponse(message, `The dictionary says: ${result[0].def.trim()}.`);
         } else {
-            let dashesRemoved = message.content.replace("-", " ");
-            let requestArray = dashesRemoved.split(" ").slice(1);
+            let requestArray = message.content.split(" ").slice(1);
             let request = requestArray.join("").toLowerCase();
 
             // check jisho

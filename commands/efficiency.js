@@ -2,6 +2,7 @@ const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
 const handToEmoji = require("../utils/handToEmoji");
 const sendResponse = require("../utils/sendResponse");
+const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 
 module.exports = (message, client) => {
@@ -54,15 +55,15 @@ module.exports = (message, client) => {
     }
 
     if (tiles == 0) {
-        return sendResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")
+        return sendDeletableResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")
     }
 
     if (tiles > 14) {
-        return sendResponse(message, `That hand has ${tiles - 14} too many tiles.`);
+        return sendDeletableResponse(message, `That hand has ${tiles - 14} too many tiles.`);
     }
 
     if (tiles % 3 === 0) {
-        return sendResponse(message, `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
+        return sendDeletableResponse(message, `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
     }
 
     let remainingTiles = Array(38).fill(4);

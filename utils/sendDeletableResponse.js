@@ -6,12 +6,12 @@ module.exports = (message, response) => {
     setTimeout(() => {
         message.channel.send(response).then((msg) => {
             msg.react('❌');
-            
+
             const reactionFilter = (reaction, user) => {
                 return reaction.emoji.name === '❌' && user.id === message.author.id;
             };
             
-            msg.awaitReactions(reactionFilter, { max: 1, time: 30000, errors: ['time'] })
+            msg.awaitReactions(reactionFilter, { max: 1, time: 20000, errors: ['time'] })
                 .then(collected => msg.delete())
                 .catch(collected => {
                     const reaction = msg.reactions.get('❌');
