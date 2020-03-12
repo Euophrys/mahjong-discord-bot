@@ -14,7 +14,7 @@ module.exports = (message, response) => {
                 .catch(collected => {
                     const reaction = msg.reactions.get('❌');
                     try {
-                        await reaction.remove('629290905723076609');
+                        reaction.remove('629290905723076609');
                     } catch (error) {
                         console.log('Failed to remove reaction.');
                     }
