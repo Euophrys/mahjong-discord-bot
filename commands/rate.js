@@ -47,16 +47,18 @@ module.exports = message => {
         }
 
         let lastPlayed = new Date(parseInt(body.list[body.list.length - 1].starttime) * 1000);
-        let dan = getDan(body.list, decodeURI(name));
+        let stats = getStats(body.list, decodeURI(name));
 
-        return message.channel.send(`${decodeURI(name)}: ${body.list.length} games played, currently estimated at ${dan} with ${rate}R in four-player${sanmaRate}. Last played on ${lastPlayed.toISOString().split("T")[0]}.`);
+        return message.channel.send(`${decodeURI(name)}: ${stats.games} games played, currently estimated at ${stats.dan} ${stats.points}/${stats.neededPoints} with ${rate}R in four-player${sanmaRate}. Past five results: ${stats.pastFive.join(", ")}. Last played on ${lastPlayed.toISOString().split("T")[0]}.`);
     });
 }
 
-function getDan(gamesList, name) {
+function getStats(gamesList, name) {
     let dan = 0;
     let points = 0;
     let lastStart = 0;
+    let games = 0;
+    let pastFive = ["?", "?", "?", "?", "?"]
     
     for(let i = 0; i < gamesList.length; i++) {
         let game = gamesList[i];
@@ -64,19 +66,27 @@ function getDan(gamesList, name) {
         if (game.starttime - lastStart > maxDifference) {
             dan = 0;
             points = 0;
+            games = 0;
         }
 
+        games++;
         lastStart = game.starttime;
-        let correctGameType = game.sctype === "b" || (game.sctype === "c" && game.rate);
-
+        let correctGameType = game.sctype === "b" || game.rate;
+        
         if (!correctGameType || game.playernum !== "4") continue;
-
+        pastFive.pop();
+        
         if (game.player1 === name) {
             points += firstGains[parseInt(game.playlength)][parseInt(game.playerlevel)];
+            pastFive.unshift("1st");
         } else if (game.player2 === name) {
             points += secondGains[parseInt(game.playlength)][parseInt(game.playerlevel)];
+            pastFive.unshift("2nd");
         } else if (game.player4 === name) {
             points += fourthGains[parseInt(game.playlength)][dan];
+            pastFive.unshift("4th");
+        } else {
+            pastFive.unshift("3rd");
         }
         
         if (points > requirement[dan]) {
@@ -93,7 +103,13 @@ function getDan(gamesList, name) {
         } 
     }
     
-    return `${danNames[dan]} ${points}/${requirement[dan]}`;
+    return {
+        dan: danNames[dan],
+        points,
+        neededPoints: requirement[dan],
+        games,
+        pastFive
+    };
 }
 
 const maxDifference = 180 * 24 * 60 * 60;
