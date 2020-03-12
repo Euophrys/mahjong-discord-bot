@@ -5,6 +5,8 @@ module.exports = (message, response) => {
     
     setTimeout(() => {
         message.channel.send(response).then((msg) => {
+            msg.react('❌');
+            
             const reactionFilter = (reaction, user) => {
                 return reaction.emoji.name === '❌' && user.id === message.author.id;
             };
