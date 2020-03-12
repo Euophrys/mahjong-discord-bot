@@ -1,9 +1,9 @@
 const emoji = require("../utils/emoji");
-const characterToSuit = require("../utils/characterToSuit");
 const handToEmoji = require("../utils/handToEmoji");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
+const parseHandFromString = require("../utils/parseHandFromString");
 
 module.exports = (message, client) => {
     let command = message.content.split(" ")[0].toLowerCase();
@@ -19,40 +19,7 @@ module.exports = (message, client) => {
         handString = client.user.lastMessage.content;
     }
 
-    // Parse the string into a hand
-    let handTiles = Array(38).fill(0);
-    let characters = handString.split('').reverse();
-    let index = 0;
-    let tiles = 0;
-    
-    while (index < characters.length) {
-        do {
-            offset = characterToSuit(characters[index]);
-            index++;
-        } while (offset === -1 && index < characters.length);
-
-        while (!isNaN(characters[index]) && index < characters.length) {
-            let tile = parseInt(characters[index]);
-
-            if (tile >= 0) {
-                tile += offset;
-
-                if (tile == 30) {
-                    index++;
-                    continue;
-                }
-
-                if (tile % 10 == 0) {
-                    tile += 5;
-                }
-
-                handTiles[tile] += 1;
-                tiles++;
-            }
-
-            index++;
-        }
-    }
+    let {tiles, handTiles} = parseHandFromString(handString);
 
     if (tiles == 0) {
         return sendDeletableResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")

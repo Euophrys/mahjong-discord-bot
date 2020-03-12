@@ -1,6 +1,7 @@
 const emoji = require("../utils/emoji");
 const createTilePool = require("../utils/createTilePool");
 const handToEmoji = require("../utils/handToEmoji");
+const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
     let options = message.content.split(" ").slice(1).join("").toLowerCase();
@@ -58,5 +59,5 @@ module.exports = message => {
 
     response += `\nSeat: ${seat}, Round: ${round}, Indicators: Dora: ${dora}, Ura: ||${ura}||`;
 
-    return message.channel.send(response);
+    return sendResponse(message, response);
 }

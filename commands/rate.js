@@ -90,7 +90,7 @@ function getStats(gamesList, name) {
             pastFive.unshift("3rd");
         }
         
-        if (points > requirement[dan]) {
+        if (points >= requirement[dan]) {
             dan++;
             
             if (dan === 20) {
