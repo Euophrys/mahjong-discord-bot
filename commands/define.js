@@ -2,6 +2,7 @@ const WordPos = require("wordpos");
 const wordpos = new WordPos();
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
+const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const spellcheck = require("../utils/spellcheck");
 const npmrequest = require("request");
 
@@ -62,11 +63,11 @@ module.exports = message => {
                 }
 
                 if (possibilities.distance > 3) {
-                    return sendResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
+                    return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
                 }
 
                 let suggestions = possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
-                return sendResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
+                return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
             });
         }
     });
