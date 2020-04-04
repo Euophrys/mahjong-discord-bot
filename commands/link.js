@@ -21,7 +21,7 @@ module.exports = message => {
         return sendResponse(message, `I have links for these things: ${keys.join(", ")}.`);
     }
 
-    return sendDeletableResponse(message, `I don't have a link associated with ${responseObject.request}. Consider making a pull request to add it if you have something in mind.`);
+    return sendDeletableResponse(message, `I don't have a link associated with ${responseObject.request}. Consider making a pull request to Euophrys/mahjong-discord-bot if you have something in mind.`);
 }
 
 const responses = ["Here's the link: ", "Here you go: ", "Hope it helps: "];
