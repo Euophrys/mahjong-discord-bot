@@ -21,7 +21,7 @@ module.exports = message => {
         return sendResponse(message, `I have these memes: ${keys.join(", ")}.`);
     }
 
-    return sendDeletableResponse(message, `I don't have a meme associated with ${responseObject.request}. Consider making a pull request to add it if you have something in mind.`);
+    return sendDeletableResponse(message, `I don't have a meme associated with ${responseObject.request}. Consider making a pull request to Euophrys/mahjong-discord-bot if you have something in mind.`);
 }
 
 const responses = ["Here it is: ", "Here you go: ", "Hope it helps: "];
