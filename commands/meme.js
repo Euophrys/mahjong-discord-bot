@@ -63,7 +63,7 @@ const links = {
     "corak": "https://cdn.discordapp.com/attachments/150412836500275200/615634616539152384/Screenshot_2019-08-26_at_21.26.26.png",
     "shory": "https://i.imgur.com/LLyIgDm.png",
     "3sou": "https://cdn.discordapp.com/attachments/114604012132761600/694519105314881576/unknown.png"
-	"sticks": "https://i.imgur.com/DgvNEoF.jpg"
+    "sticks": "https://i.imgur.com/DgvNEoF.jpg"
 }
 
 const aliases = {
