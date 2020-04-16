@@ -93,9 +93,13 @@ function getStats(gamesList, name) {
         if (dan < 20 && points >= requirement[dan]) {
             dan++;
             points = starting[dan];
-        } else if (points < 0 && dan >= 10 && dan < 20) {
-            dan--;
-            points = starting[dan];
+        } else if (points < 0) {
+            if (dan >= 10 && dan < 20) {
+                dan--;
+                points = starting[dan];
+            } else {
+                points = 0;
+            }
         } 
     }
     
