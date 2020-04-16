@@ -28,7 +28,7 @@ const responses = ["Here's the link: ", "Here you go: ", "Hope it helps: "];
 
 const links = {
     "toitoi": "https://mahjong.guide/2017/11/08/toitoi-dash/",
-    "kokushi": "https://web.archive.org/web/20160730152743/osamuko.com/i-told-you-not-to-go-for-kokushi/",
+    "kokushi": "https://pathofhouou.blogspot.com/2020/04/analysis-kokushi-success-rates.html",
     "pathofhouou": "https://pathofhouou.blogspot.com/",
     "books": "https://docs.google.com/spreadsheets/d/1eQ0-lGFHCsgpPtcsx8YoRMsVUTET3UDFIxNa_opMbP8/edit#gid=0",
     "wiki": "http://arcturus.su/wiki/Main_Page",
