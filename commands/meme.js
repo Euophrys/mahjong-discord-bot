@@ -69,7 +69,7 @@ const links = {
     "3zou": "https://cdn.discordapp.com/attachments/629737480803057685/703785534115414116/3zou.gif",
     "kannya":"https://cdn.discordapp.com/attachments/629737480803057685/703785944360157252/kannya.gif",
     "tsumo":"https://cdn.discordapp.com/attachments/629737480803057685/703786037591146577/orgtsumo.gif",
-    "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703786111406964756/pinfu.gif",
+    "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703791737948209262/pinfu-edit.gif",
     "walltricks":"https://cdn.discordapp.com/attachments/629737480803057685/703786251458707496/walltricks.gif",
 }
 
