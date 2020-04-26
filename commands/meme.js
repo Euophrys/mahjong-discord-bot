@@ -64,13 +64,13 @@ const links = {
     "shory": "https://i.imgur.com/LLyIgDm.png",
     "3sou": "https://cdn.discordapp.com/attachments/114604012132761600/694519105314881576/unknown.png",
     "sticks": "https://i.imgur.com/DgvNEoF.jpg",
-    "dasuke": "https://cdn.discordapp.com/attachments/629737480803057685/699605969302454272/dasuke-sand.png"
-    "ponnya": "https://media.discordapp.net/attachments/698868399484436520/703783498284007434/image0.jpg"
-    "3zou": "https://cdn.discordapp.com/attachments/629737480803057685/703785534115414116/3zou.gif"
-    "kannya":"https://cdn.discordapp.com/attachments/629737480803057685/703785944360157252/kannya.gif"
-    "tsumo":"https://cdn.discordapp.com/attachments/629737480803057685/703786037591146577/orgtsumo.gif"
-    "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703786111406964756/pinfu.gif"
-    "walltricks":"https://cdn.discordapp.com/attachments/629737480803057685/703786251458707496/walltricks.gif"
+    "dasuke": "https://cdn.discordapp.com/attachments/629737480803057685/699605969302454272/dasuke-sand.png",
+    "ponnya": "https://media.discordapp.net/attachments/698868399484436520/703783498284007434/image0.jpg",
+    "3zou": "https://cdn.discordapp.com/attachments/629737480803057685/703785534115414116/3zou.gif",
+    "kannya":"https://cdn.discordapp.com/attachments/629737480803057685/703785944360157252/kannya.gif",
+    "tsumo":"https://cdn.discordapp.com/attachments/629737480803057685/703786037591146577/orgtsumo.gif",
+    "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703786111406964756/pinfu.gif",
+    "walltricks":"https://cdn.discordapp.com/attachments/629737480803057685/703786251458707496/walltricks.gif",
 }
 
 const aliases = {

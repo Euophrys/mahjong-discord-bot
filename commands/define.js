@@ -328,7 +328,12 @@ const definitions = {
     "minjun": "A minjun is a called sequents.",
     "ron": "Ron is when a player declares a win on a tile that another player discarded.",
     "dealin": "A deal-in is when a player discards a tile that another player calls ron on.",
-    "jihai": "Jihai are honor tiles, the four winds and three dragons."
+    "jihai": "Jihai are honor tiles, the four winds and three dragons.",
+    "yaochuu": "Yaochuuhai are the terminal and honor tiles. Ones, nines, winds, and dragons.",
+    "aidayonken": "An aida yon ken is when you see two tiles in your opponent's discards with a gap of four tiles between them, for example, 2 and 7. The enclosed ryanmen wait is slightly more dangerous in this case (3-6).",
+    "7447": "7447 is the custom Tenhou lobby that is used for friendly matches in the English community.",
+    "senki": "I don't know just read this: <https://www.mahjonggem.com/blog/2019/7/23/senki-suji>",
+    "ikasama": "Ikasama refers to cheating."
 };
 
 const aliases = {
@@ -449,5 +454,6 @@ const aliases = {
     "robbingakan": "chankan",
     "blessingofman": "renhou",
     "blessingofearth": "chihou",
-    "blessingofheaven": "tenhou"
+    "blessingofheaven": "tenhou",
+    "yaochuuhai": "yaochuu"
 }
