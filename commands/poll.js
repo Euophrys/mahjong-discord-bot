@@ -16,11 +16,11 @@ module.exports = message => {
     for(let i = 0; i < handTiles.length; i++) {
         if (handTiles[i]) {
             let emoji_id = emoji[i].split(":")[2].split(">")[0];
-            
+
             if (promise == null) {
                 promise = message.react(emoji_id);
             } else {
-                promise.then(() => message.react(emoji_id));
+                promise = promise.then(() => message.react(emoji_id));
             }
         }
     }
