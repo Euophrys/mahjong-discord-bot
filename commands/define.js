@@ -65,7 +65,9 @@ module.exports = message => {
                     return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
                 }
 
-                let suggestions = possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
+                let suggestions = possibilites.closest.length == 1
+                    ? possibilities.closest[0]
+                    : possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
                 return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
             });
         }
@@ -336,7 +338,8 @@ const definitions = {
     "ikasama": "Ikasama refers to cheating.",
     "tengo": "Tengo is a gambling rate, where every 1000 points is worth 50 yen.",
     "tenpin": "Tenpin is a gambling rate, where every 1000 points is worth 100 yen.",
-    "dekapin": "Dekapin is a gambling rate, where every point is worth 1 yen."
+    "dekapin": "Dekapin is a gambling rate, where every point is worth 1 yen.",
+    "kawashite": "Kawashite is when you aim to win a quick hand to prevent your opponents from winning bigger hands."
 };
 
 const aliases = {

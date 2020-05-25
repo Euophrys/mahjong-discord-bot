@@ -13,6 +13,7 @@ const explain = require('../commands/explain');
 const meme = require('../commands/meme');
 const viewer = require('../commands/viewer');
 const mleague = require('../commands/mleague');
+const poll = require('../commands/poll');
 
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
@@ -56,7 +57,9 @@ commands = {
   "!watcher": viewer,
   "!viewers": viewer,
   "!watchers": viewer,
-  "!mleague": mleague
+  "!mleague": mleague,
+  "!poll": poll,
+  "!wwyd": poll
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
@@ -64,20 +67,19 @@ const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
 module.exports = (client, message) => {
   if (message.author.bot) return;
 
-  if (conversionRequestRegex.test(message.content)) {
+  let lower = message.content.toLowerCase();
+  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
+    message.react(reactions[Math.floor(Math.random() * reactions.length)]);
+  }
+
+  if (conversionRequestRegex.test(lower)) {
     conversionRequestRegex.lastIndex = 0;
     return convert(message);
   }
 
-  let command = message.content.split(" ")[0].toLowerCase();
+  let command = lower.split(" ")[0];
 
   if (commands[command]) {
     return commands[command](message, client);
-  }
-
-  let lower = message.content.toLowerCase();
-
-  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
-    message.react(reactions[Math.floor(Math.random() * reactions.length)]);
   }
 };
