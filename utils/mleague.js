@@ -1,11 +1,11 @@
 module.exports = { 
     games: [
-        {month: 3, day: 13, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
-        {month: 3, day: 14, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
-        {month: 3, day: 16, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
-        {month: 3, day: 17, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
-        {month: 3, day: 20, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
-        {month: 3, day: 21, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]}
+        {month: 5, day: 15, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
+        {month: 5, day: 16, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
+        {month: 5, day: 18, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
+        {month: 5, day: 19, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
+        {month: 5, day: 22, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]},
+        {month: 5, day: 23, hour: 19, teams: ["Sakura Knights", "Shibuya Abemas", "SegaSammy Phoenix", "U-Next Pirates"]}
     ],
     teams: {
         "Sakura Knights": { emoji: "686937993377742899" },
