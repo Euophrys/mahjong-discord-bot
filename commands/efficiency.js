@@ -22,7 +22,15 @@ module.exports = (message, client) => {
     let {tiles, handTiles} = parseHandFromString(handString);
 
     if (tiles == 0) {
-        return sendDeletableResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z")
+        // Sometimes people call it with just numbers, so add a p and see if that helps.
+        handString += "p";
+        let added = parseHandFromString(handString);
+        tiles = added.tiles;
+        handTiles = added.handTiles;
+
+        if (tiles == 0) {
+            return sendDeletableResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z");
+        }
     }
 
     if (tiles > 14) {
