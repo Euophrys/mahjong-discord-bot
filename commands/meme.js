@@ -71,6 +71,7 @@ const links = {
     "tsumo":"https://cdn.discordapp.com/attachments/629737480803057685/703786037591146577/orgtsumo.gif",
     "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703791737948209262/pinfu-edit.gif",
     "walltricks":"https://cdn.discordapp.com/attachments/629737480803057685/703786251458707496/walltricks.gif",
+    "chiitoi":"https://cdn.discordapp.com/attachments/560284585829597194/716306206662328350/unknown.png",
 }
 
 const aliases = {
