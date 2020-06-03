@@ -65,7 +65,7 @@ module.exports = message => {
                     return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
                 }
 
-                let suggestions = possibilites.closest.length == 1
+                let suggestions = possibilities.closest.length == 1
                     ? possibilities.closest[0]
                     : possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
                 return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
