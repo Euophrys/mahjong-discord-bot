@@ -106,7 +106,7 @@ module.exports = (message, client) => {
         if (shanten === 1) {
             good = `(${group.good}\\*) `;
         }
-        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${tilesToEmoji(group.tiles)})\n`;
+        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ${good}ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
 
     if ((response + ukeire).length > 1800) {
@@ -119,7 +119,7 @@ module.exports = (message, client) => {
                 good = `(${group.good}\\*) `;
             }
 
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${convertTilesToTenhouString(group.tiles)})\n`;
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ${good}ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
         }
     }
 
