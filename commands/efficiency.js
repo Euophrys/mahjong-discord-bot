@@ -102,11 +102,12 @@ module.exports = (message, client) => {
 
     for (let i = 0; i < groups.length; i++) {
         let group = groups[i];
-        let good = "";
+        
         if (shanten === 1) {
-            good = `(${group.good}\\*) `;
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
+        } else {
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
         }
-        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ${good}ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
 
     if ((response + ukeire).length > 1800) {
@@ -114,12 +115,12 @@ module.exports = (message, client) => {
         
         for (let i = 0; i < groups.length; i++) {
             let group = groups[i];
-            let good = "";
+            
             if (shanten === 1) {
-                good = `(${group.good}\\*) `;
+                ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
+            } else {
+                ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
             }
-
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ${good}ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
         }
     }
 
@@ -173,6 +174,7 @@ function filterBadUkeire(hand, groups, remainingTiles) {
         }
 
         groups[i].good = groups[i].value;
+        groups[i].goodTiles = [];
     }
 
     for(let i = 0; i < groups.length; i++) {
@@ -189,6 +191,9 @@ function filterBadUkeire(hand, groups, remainingTiles) {
             if (bestUkeire <= 4) {
                 groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
                 groups[i].good -= remainingTiles[tile];
+            } else {
+                groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
+                groups[i].goodTiles.push(tile);
             }
 
             hand[tile]--;
