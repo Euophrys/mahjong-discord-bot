@@ -55,7 +55,6 @@ const links = {
     "genbutsu": "https://cdn.discordapp.com/attachments/629737480803057685/631896055830544413/image0.png",
     "pongo": "https://cdn.discordapp.com/attachments/629737480803057685/631901093458214923/Scr20190224221100.gif",
     "chuurentenpai": "https://cdn.discordapp.com/attachments/560300317170728970/572592050596216832/TIM20190430091740.gif",
-    "moupai": "https://media.giphy.com/media/seA0bDAug4tJ6/giphy.gif",
     "flow": "https://cdn.discordapp.com/attachments/469490857716875285/623881918391517185/1564698197926.png",
     "disconnected": "https://cdn.discordapp.com/attachments/629737480803057685/631905480746467329/TIM20181211124532.gif",
     "betaori": "https://cdn.discordapp.com/attachments/150412836500275200/682944507293073410/Betaori.png",
