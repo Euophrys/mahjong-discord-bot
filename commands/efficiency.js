@@ -93,7 +93,7 @@ module.exports = (message, client) => {
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
     if(message.content.toLowerCase().indexOf("good") > 0 && shanten === 1) {
-        //groups = filterBadUkeire(handTiles, groups, remainingTiles);
+        groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
     groups = sortGroups(groups);
@@ -208,17 +208,29 @@ function tilesToEmoji(tiles) {
     return result;
 }
 
+// Todo: Put all these in their own file lol
 let hand = new Array(38);
 let completeSets;
 let pair;
 let partialSets;
 let bestShanten;
 let mininumShanten;
+let hasGivenMinimum;
 
-function calculateMinimumShanten(handToCheck, mininumShanten = -1) {
-    let standardShanten = calculateStandardShanten(handToCheck, mininumShanten);
+function calculateMinimumShanten(handToCheck, mininumShanten = -2) {
     let chiitoiShanten = calculateChiitoitsuShanten(handToCheck);
+    
+    if (chiitoiShanten < 1) {
+        return chiitoiShanten;
+    }
+
     let kokushiShanten = calculateKokushiShanten(handToCheck);
+
+    if (kokushiShanten < 4) {
+        return kokushiShanten;
+    }
+
+    let standardShanten = calculateStandardShanten(handToCheck, mininumShanten);
 
     return Math.min(standardShanten, chiitoiShanten, kokushiShanten);
 }
@@ -265,15 +277,21 @@ function calculateKokushiShanten(handToCheck) {
     return 13 - uniqueTiles - hasPair;
 }
 
-function calculateStandardShanten(handToCheck, mininumShanten_ = -1) {
+function calculateStandardShanten(handToCheck, mininumShanten_ = -2) {
     hand = handToCheck.slice();
-    mininumShanten = mininumShanten_;
 
     // Initialize variables
+    hasGivenMinimum = true;
+    mininumShanten = mininumShanten_;
     completeSets = 0;
     pair = 0;
     partialSets = 0;
     bestShanten = 8;
+
+    if (minimumShanten_ == -2) {
+        hasGivenMinimum = false;
+        minimumShanten = -1;
+    }
 
     // Loop through hand, removing all pair candidates and checking their shanten
     for (let i = 1; i < hand.length; i++) {
@@ -327,6 +345,8 @@ function removeCompletedSets(i) {
 
 function removePotentialSets(i) {
     if (bestShanten <= mininumShanten) return;
+    if (hasGivenMinimum && completeSets < 3 - mininumShanten) return;
+
     // Skip to the next tile that exists in the hand
     for (; i < hand.length && hand[i] === 0; i++) { }
 
@@ -409,10 +429,26 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
     let value = 0;
     let tiles = [];
 
+    let hasManzu = false
+    let hasPinzu = false
+    let hasSouzu = false
+
+    for (let i = 1; i < 10; i++) {
+        if (hand[i] > 0)
+            hasManzu = true;
+        if (hand[i+10] > 0)
+            hasPinzu = true;
+        if (hand[i+20] > 0)
+            hasSouzu = true;
+    }
+
     // Check adding every tile to see if it improves the shanten
     for (let addedTile = 1; addedTile < convertedHand.length; addedTile++) {
         if (remainingTiles[addedTile] === 0) continue;
         if (addedTile % 10 === 0) continue;
+        if (!hasManzu && addedTile > 1 && addedTile < 9) continue;
+        if (!hasPinzu && addedTile > 11 && addedTile < 19) continue;
+        if (!hasSouzu && addedTile > 21 && addedTile < 29) continue;
 
         convertedHand[addedTile]++;
 
