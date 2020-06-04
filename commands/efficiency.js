@@ -115,7 +115,7 @@ module.exports = (message, client) => {
         
         for (let i = 0; i < groups.length; i++) {
             let group = groups[i];
-            
+
             if (shanten === 1) {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
             } else {
@@ -189,7 +189,6 @@ function filterBadUkeire(hand, groups, remainingTiles) {
             let bestUkeire = Math.max(...ukeire.map((u) => u.value));
 
             if (bestUkeire <= 4) {
-                groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
                 groups[i].good -= remainingTiles[tile];
             } else {
                 groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
