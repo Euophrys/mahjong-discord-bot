@@ -72,6 +72,9 @@ const links = {
     "pinfu":"https://cdn.discordapp.com/attachments/629737480803057685/703791737948209262/pinfu-edit.gif",
     "walltricks":"https://cdn.discordapp.com/attachments/629737480803057685/703786251458707496/walltricks.gif",
     "chiitoi":"https://cdn.discordapp.com/attachments/560284585829597194/716306206662328350/unknown.png",
+    "butane":"https://cdn.discordapp.com/attachments/629737480803057685/717912488456355850/butane.png",
+    "tokujou":"https://media.discordapp.net/attachments/202201840887136256/714456318240358451/tokujou_fun2.png",
+    "derinov":"https://media.discordapp.net/attachments/202201840887136256/716745240354226297/deranked.png",
 }
 
 const aliases = {
