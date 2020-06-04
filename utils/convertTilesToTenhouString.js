@@ -8,7 +8,7 @@ module.exports = tiles => {
             hand[tiles[i]] += 1;
         }
     } else {
-        return "Error."
+        return "None";
     }
 
     let handString = "";
