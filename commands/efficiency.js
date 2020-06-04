@@ -105,6 +105,10 @@ module.exports = (message, client) => {
         ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
     }
 
+    if (groups.length == 0) {
+        ukeire = "No discards will lead to a good wait.";
+    }
+
     if ((response + ukeire).length > 1800) {
         ukeire = "";
         
