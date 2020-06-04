@@ -104,7 +104,7 @@ module.exports = (message, client) => {
         let group = groups[i];
         let good = "";
         if (shanten === 1) {
-            good = `(${group.good} with good wait) `;
+            good = `(${group.good}*) `;
         }
         ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${tilesToEmoji(group.tiles)})\n`;
     }
@@ -116,11 +116,15 @@ module.exports = (message, client) => {
             let group = groups[i];
             let good = "";
             if (shanten === 1) {
-                good = `(${group.good} with good wait) `;
+                good = `(${group.good}*) `;
             }
 
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${convertTilesToTenhouString(group.tiles)})\n`;
         }
+    }
+
+    if (shanten === 1) {
+        ukeire += "* Resulting in good wait tenpai"
     }
 
     response += ukeire;
