@@ -238,13 +238,13 @@ let hasGivenMinimum;
 function calculateMinimumShanten(handToCheck, minimumShanten = -2) {
     let chiitoiShanten = calculateChiitoitsuShanten(handToCheck);
     
-    if (chiitoiShanten < 1) {
+    if (chiitoiShanten < 0) {
         return chiitoiShanten;
     }
 
     let kokushiShanten = calculateKokushiShanten(handToCheck);
 
-    if (kokushiShanten < 4) {
+    if (kokushiShanten < 3) {
         return kokushiShanten;
     }
 
