@@ -345,7 +345,7 @@ function removeCompletedSets(i) {
 
 function removePotentialSets(i) {
     if (bestShanten <= minimumShanten) return;
-    if (hasGivenMinimum && completeSets < 3 - mininumShanten) return;
+    if (hasGivenMinimum && completeSets < 3 - minimumShanten) return;
 
     // Skip to the next tile that exists in the hand
     for (; i < hand.length && hand[i] === 0; i++) { }
