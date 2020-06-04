@@ -114,7 +114,12 @@ module.exports = (message, client) => {
         
         for (let i = 0; i < groups.length; i++) {
             let group = groups[i];
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
+            let good = "";
+            if (shanten === 1) {
+                good = `(${group.good} with good wait) `;
+            }
+
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${convertTilesToTenhouString(group.tiles)})\n`;
         }
     }
 
