@@ -214,7 +214,7 @@ let completeSets;
 let pair;
 let partialSets;
 let bestShanten;
-let mininumShanten;
+let minimumShanten;
 let hasGivenMinimum;
 
 function calculateMinimumShanten(handToCheck, minimumShanten = -2) {
@@ -282,7 +282,7 @@ function calculateStandardShanten(handToCheck, minimumShanten_ = -2) {
 
     // Initialize variables
     hasGivenMinimum = true;
-    mininumShanten = minimumShanten_;
+    minimumShanten = minimumShanten_;
     completeSets = 0;
     pair = 0;
     partialSets = 0;
@@ -311,7 +311,7 @@ function calculateStandardShanten(handToCheck, minimumShanten_ = -2) {
 }
 
 function removeCompletedSets(i) {
-    if (bestShanten <= mininumShanten) return;
+    if (bestShanten <= minimumShanten) return;
     // Skip to the next tile that exists in the hand.
     for (; i < hand.length && hand[i] === 0; i++) { }
 
@@ -344,7 +344,7 @@ function removeCompletedSets(i) {
 }
 
 function removePotentialSets(i) {
-    if (bestShanten <= mininumShanten) return;
+    if (bestShanten <= minimumShanten) return;
     if (hasGivenMinimum && completeSets < 3 - mininumShanten) return;
 
     // Skip to the next tile that exists in the hand
