@@ -92,7 +92,7 @@ module.exports = (message, client) => {
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, shantenFunction, shanten);
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
-    if(message.content.toLowerCase().indexOf("good") > 0 && shanten === 1) {
+    if (shanten === 1) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
@@ -102,11 +102,11 @@ module.exports = (message, client) => {
 
     for (let i = 0; i < groups.length; i++) {
         let group = groups[i];
-        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
-    }
-
-    if (groups.length == 0) {
-        ukeire = "No discards will lead to a good wait.";
+        let good = "";
+        if (shanten === 1) {
+            good = `(${group.good} with good wait) `;
+        }
+        ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire ${good}(${tilesToEmoji(group.tiles)})\n`;
     }
 
     if ((response + ukeire).length > 1800) {
@@ -162,6 +162,8 @@ function filterBadUkeire(hand, groups, remainingTiles) {
         for(let j = 0; j < tiles.length; j++) {
             adjustedRemainingTiles[tiles[j]] = remainingTiles[tiles[j]];
         }
+
+        groups[i].good = groups[i].value;
     }
 
     for(let i = 0; i < groups.length; i++) {
@@ -177,7 +179,7 @@ function filterBadUkeire(hand, groups, remainingTiles) {
 
             if (bestUkeire <= 4) {
                 groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
-                groups[i].value -= remainingTiles[tile];
+                groups[i].good -= remainingTiles[tile];
             }
 
             hand[tile]--;
@@ -185,7 +187,6 @@ function filterBadUkeire(hand, groups, remainingTiles) {
         hand[groups[i].discards[0]]++;
     }
 
-    groups = groups.filter((group) => group.value > 0);
     return groups;
 }
 
