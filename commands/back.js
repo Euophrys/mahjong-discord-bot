@@ -243,7 +243,7 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
             continue;
         }
 
-        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction, baseShanten + 1);
+        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction);
         convertedHand[handIndex]++;
 
         results[handIndex] = ukeire;

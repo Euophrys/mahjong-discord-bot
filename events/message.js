@@ -16,6 +16,7 @@ const mleague = require('../commands/mleague');
 const poll = require('../commands/poll');
 const back = require('../commands/back');
 
+const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
 commands = {
@@ -82,6 +83,10 @@ module.exports = (client, message) => {
   let command = lower.split(" ")[0];
 
   if (commands[command]) {
-    return commands[command](message, client);
+    try {
+      return commands[command](message, client);
+    } catch (e) {
+      sendDeletableResponse(message, e.message);
+    }
   }
 };
