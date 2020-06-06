@@ -5,7 +5,7 @@ const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 const parseHandFromString = require("../utils/parseHandFromString");
 const efficiency = require("./efficiency");
-import { calculateMinimumShanten, calculateStandardShanten } from "../utils/shanten";
+const { calculateMinimumShanten, calculateStandardShanten } = require("../utils/shanten");
 
 module.exports = (message, client) => {
     let command = message.content.split(" ")[0].toLowerCase();
