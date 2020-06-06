@@ -4,6 +4,7 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 const parseHandFromString = require("../utils/parseHandFromString");
+const efficiency = require("./efficiency");
 import { calculateMinimumShanten, calculateStandardShanten } from "../utils/shanten";
 
 module.exports = (message, client) => {
@@ -65,35 +66,26 @@ module.exports = (message, client) => {
     let shanten = shantenFunction(handTiles);
 
     if (shanten === -1) {
-        response += "(Complete)\n";
+        response += "(Complete -> Tenpai)\n";
         shanten = 0;
     }
     else if (shanten === 0) {
-        response += "(Tenpai)\n";
+        response += "(Tenpai -> 1-shanten)\n";
     }
     else {
-        response += `(${shanten}-shanten)\n`;
+        response += `(${shanten}-shanten -> ${shanten + 1}-shanten)\n`;
     }
 
     // Check just the ukeire of 13 tile hands (or tiles % 3 === 1 hands)
     if (tiles == 13) {
-        let ukeire = calculateUkeire(handTiles, remainingTiles, shantenFunction, shanten);
-        response += `Ukeire: ${ukeire.value} (`;
-        
-        for (let i = 0; i < ukeire.tiles.length; i++) {
-            response += emoji[ukeire.tiles[i]];
-        }
-
-        response += ")";
-
-        return sendResponse(message, response);
+        return efficiency(message, client);
     }
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, shantenFunction, shanten);
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
-    if (shanten === 1) {
+    if (shanten === 0) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
@@ -101,10 +93,10 @@ module.exports = (message, client) => {
 
     let ukeire = "";
 
-    for (let i = 0; i < groups.length; i++) {
+    for (let i = 0; i < groups.length || i < 6; i++) {
         let group = groups[i];
         
-        if (shanten === 1) {
+        if (shanten === 0) {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
@@ -114,10 +106,10 @@ module.exports = (message, client) => {
     if ((response + ukeire).length > 1800) {
         ukeire = "";
         
-        for (let i = 0; i < groups.length; i++) {
+        for (let i = 0; i < groups.length || i < 6; i++) {
             let group = groups[i];
 
-            if (shanten === 1) {
+            if (shanten === 0) {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
             } else {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
@@ -125,7 +117,7 @@ module.exports = (message, client) => {
         }
     }
 
-    if (shanten === 1) {
+    if (shanten === 0) {
         ukeire += "* Resulting in good wait tenpai"
     }
 
@@ -243,7 +235,14 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
         }
 
         convertedHand[handIndex]--;
-        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction, baseShanten);
+
+        // Look for discards that go back in shanten
+        if (shantenFunction(convertedHand) == baseShanten) {
+            convertedHand[handIndex]++;
+            continue;
+        }
+
+        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction, baseShanten + 1);
         convertedHand[handIndex]++;
 
         results[handIndex] = ukeire;
@@ -287,7 +286,7 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
         convertedHand[addedTile]++;
 
         if (shantenFunction(convertedHand, baseShanten - 1) < baseShanten) {
-            // Improves shanten. Add the number of remaining tiles to the ukeire count
+            // Add the number of remaining tiles to the ukeire count
             value += convertedTiles[addedTile];
             tiles.push(addedTile);
         }
