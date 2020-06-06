@@ -238,6 +238,7 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
 
         // Look for discards that go back in shanten
         if (shantenFunction(convertedHand) == baseShanten) {
+            results[handIndex] = { value: 0, tiles: [] };
             convertedHand[handIndex]++;
             continue;
         }
