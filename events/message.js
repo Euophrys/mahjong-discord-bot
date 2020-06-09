@@ -14,7 +14,6 @@ const meme = require('../commands/meme');
 const viewer = require('../commands/viewer');
 const mleague = require('../commands/mleague');
 const poll = require('../commands/poll');
-const back = require('../commands/back');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
@@ -61,8 +60,7 @@ commands = {
   "!watchers": viewer,
   "!mleague": mleague,
   "!poll": poll,
-  "!wwyd": poll,
-  "!debugback": back
+  "!wwyd": poll
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
