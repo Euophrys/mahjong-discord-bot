@@ -29,3 +29,4 @@ To start, you can have Natsuki introduce herself by saying `!explain yourself`, 
 ![Random Example](./img/random.png)
 * `!dice` - Natsuki will roll 2d6, and tell you which player the wall is broken in front of.
 * `!help <command>` - Natsuki will give a quick explanation of the given command.
+* `!translate <text>` - Natsuki will replace most Japanese mahjong terms in the given text with English equivalents.

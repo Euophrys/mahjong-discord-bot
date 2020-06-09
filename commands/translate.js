@@ -2,7 +2,8 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 module.exports = message => {
-    let request = message.content.substr(message.content.indexOf(" "));
+    let request = message.content.substr(message.content.indexOf(" ") + 1);
+
     if (request === "") {
         return sendDeletableResponse(message, `You... didn't ask me to translate anything.`);
     }
@@ -240,5 +241,8 @@ const translations = new Map([
     [/itsu/gi, "Pure Straight"],
     [/ittsu/gi, "Pure Straight"],
     [/kawashite/gi, "quickly winning to prevent opponents from winning"],
-    [/yakuhai/gi, "valuable honor"]
+    [/yakuhai/gi, "valuable honor"],
+    [/fuuro/gi, "meld"],
+    [/nashi/gi, "disallowed"],
+    [/ari/gi, "allowed"]
 ]);
