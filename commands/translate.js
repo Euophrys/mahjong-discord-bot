@@ -7,6 +7,7 @@ module.exports = message => {
         return sendDeletableResponse(message, `You... didn't ask me to translate anything.`);
     }
 
+    let translatedRequest = request;
     for (let [key, value] of translations) {
         translatedRequest = translatedRequest.replace(key, value);
     }
