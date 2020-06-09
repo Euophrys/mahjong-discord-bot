@@ -50,6 +50,7 @@ const translations = new Map([
     [/iipeikou/gi, "Pure Double Sequence"],
     [/dabuton/gi, "double east"],
     [/chanta/gi, "Half Outside Hand"],
+    [/rinshan kaihou/gi, "After a Kan"],
     [/rinshan/gi, "After a Kan"],
     [/chankan/gi, "Robbing a Kan"],
     [/haitei/gi, "final drawn tile"],
@@ -238,5 +239,6 @@ const translations = new Map([
     [/oka/gi, "ante"],
     [/itsu/gi, "Pure Straight"],
     [/ittsu/gi, "Pure Straight"],
-    [/kawashite/gi, "quickly winning to prevent opponents from winning"]
+    [/kawashite/gi, "quickly winning to prevent opponents from winning"],
+    [/yakuhai/gi, "valuable honor"]
 ]);
