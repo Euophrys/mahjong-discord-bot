@@ -327,7 +327,7 @@ const definitions = {
     "ankou": "An ankou is a closed triplet, three of the same tile in your hand.",
     "anjun": "An anjun is a closed run.",
     "minkou": "A minkou is a called triplet.",
-    "minjun": "A minjun is a called sequents.",
+    "minjun": "A minjun is a called sequence.",
     "ron": "Ron is when a player declares a win on a tile that another player discarded.",
     "dealin": "A deal-in is when a player discards a tile that another player calls ron on.",
     "jihai": "Jihai are honor tiles, the four winds and three dragons.",
