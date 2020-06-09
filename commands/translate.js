@@ -22,7 +22,7 @@ module.exports = message => {
 // Maps iterate in insertion order
 const translations = new Map([
     [/tanyao/gi, "All Simples"],
-    [/kuitan/gi, "open tanyao"],
+    [/kuitan/gi, "open All Simples"],
     [/tenpai/gi, "ready"],
     [/tsumogiri/gi, "drawn tile cut"],
     [/tsumo/gi, "self-draw"],
