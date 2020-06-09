@@ -244,5 +244,10 @@ const translations = new Map([
     [/yakuhai/gi, "valuable honor"],
     [/fuuro/gi, "meld"],
     [/nashi/gi, "disallowed"],
-    [/ari/gi, "allowed"]
+    [/ari/gi, "allowed"],
+    [/mentanpin/gi, "Riichi + All Simples + Pinfu"],
+    [/tanpin/gi, "All Simples + Pinfu"],
+    [/mentan/gi, "Riichi + Tanyao"],
+    [/menhon/gi, "closed Half Flush"],
+    [/menchin/gi, "closed Full Flush"],
 ]);

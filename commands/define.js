@@ -339,7 +339,14 @@ const definitions = {
     "tengo": "Tengo is a gambling rate, where every 1000 points is worth 50 yen.",
     "tenpin": "Tenpin is a gambling rate, where every 1000 points is worth 100 yen.",
     "dekapin": "Dekapin is a gambling rate, where every point is worth 1 yen.",
-    "kawashite": "Kawashite is when you aim to win a quick hand to prevent your opponents from winning bigger hands."
+    "kawashite": "Kawashite is when you aim to win a quick hand to prevent your opponents from winning bigger hands.",
+    "nashi": "Nashi is used after rules to indicate that the rule is not enabled. For example, kuitan nashi would mean that tanyao couldn't be scored while open.",
+    "ari": "Ari is used after rules to indicate that the rule is enabled. For example, aka ari means there are red fives used.",
+    "mentanpin": "Mentanpin is shorthand for Riichi, Tanyao, and Pinfu.",
+    "tanpin": "Tanpin is shorthand for Tanyao combined with Pinfu.",
+    "mentan": "Mentan is shorthand for Tanyao combined with Riichi.",
+    "menhon": "Menhon is shorthand for menzen honitsu, a closed half flush.",
+    "menchin": "Menchin is shorthand for menzen chinitsu, a closed full flush."
 };
 
 const aliases = {
