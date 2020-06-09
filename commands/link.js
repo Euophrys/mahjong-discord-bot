@@ -67,7 +67,9 @@ const links = {
     "countingsuji": "https://pathofhouou.blogspot.com/2019/08/guide-counting-suji.html",
     "toutenkou": "http://arcturus.su/wiki/Toutenkou",
     "mattari": "https://pathofhouou.blogspot.com/2020/01/training-tool-mattari-mahjong.html",
-    "calling": "https://mahjong.guide/2017/07/22/puyos-guide-to-calling-tiles-part-1/"
+    "calling": "https://mahjong.guide/2017/07/22/puyos-guide-to-calling-tiles-part-1/",
+    "push": "https://docs.google.com/spreadsheets/d/172LFySNLUtboZUiDguf8I3QpmFT-TApUfjOs5iRy3os/edit#gid=212618921",
+    "winrate": "https://docs.google.com/spreadsheets/d/1FrgX63D9ct7nWZtcrN3q8EH8BXJURYV4eQgaN-1tNjQ/edit#gid=1942793675"
 }
 
 const aliases = {
@@ -85,5 +87,6 @@ const aliases = {
     "horoscopes": "horoscope",
     "count": "countingsuji",
     "sujicounting": "countingsuji",
-    "call": "calling"
+    "call": "calling",
+    "winrates": "winrate"
 }
