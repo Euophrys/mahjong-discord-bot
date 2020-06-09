@@ -3,6 +3,7 @@ const mleague = require('../utils/mleague');
 
 module.exports = client => {
   console.log(`Logged in as ${client.user.tag}!`);
+  console.log(`Present in ${client.servers.length}`);
   
   let now = new Date();
   let games = mleague.games;
