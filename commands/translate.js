@@ -4,7 +4,7 @@ const sendDeletableResponse = require("../utils/sendDeletableResponse");
 module.exports = message => {
     let request = message.content.substr(message.content.indexOf(" ")).trim();
 
-    if (request === "" || request.split(" ").length === 1) {
+    if (request === "" || message.content.split(" ").length === 1) {
         return sendDeletableResponse(message, `You... didn't ask me to translate anything.`);
     }
 
