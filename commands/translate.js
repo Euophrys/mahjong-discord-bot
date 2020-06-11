@@ -14,7 +14,7 @@ module.exports = message => {
     }
 
     if (request.toUpperCase() == request) {
-        translatedRequest.toUpperCase();
+        translatedRequest = translatedRequest.toUpperCase();
     }
 
     sendResponse(message, `I think that's something like, "${translatedRequest}"`);
@@ -237,7 +237,7 @@ const translations = new Map([
     [/xia/gi, "<:3z:466437922560671744>"],
     [/pei/gi, "<:4z:466437922518728744>"],
     [/uma/gi, "placement bonus"],
-    [/oka/gi, "ante"],
+    [/\boka\b/gi, "ante"],
     [/itsu/gi, "Pure Straight"],
     [/ittsu/gi, "Pure Straight"],
     [/kawashite/gi, "quickly winning to prevent opponents from winning"],
@@ -250,4 +250,5 @@ const translations = new Map([
     [/mentan/gi, "Riichi + Tanyao"],
     [/menhon/gi, "closed Half Flush"],
     [/menchin/gi, "closed Full Flush"],
+    [/\bfu\b/gi, "closed Full Flush"],
 ]);
