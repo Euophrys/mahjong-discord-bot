@@ -250,5 +250,5 @@ const translations = new Map([
     [/mentan/gi, "Riichi + Tanyao"],
     [/menhon/gi, "closed Half Flush"],
     [/menchin/gi, "closed Full Flush"],
-    [/\bfu\b/gi, "closed Full Flush"],
+    [/\bfu\b/gi, "mini-points"],
 ]);
