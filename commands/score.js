@@ -90,7 +90,7 @@ module.exports = message => {
             return sendDeletableResponse("That difference is so small that any hand will overcome it. Were you trying to call something else?");
         }
 
-        response = `With a point difference of ${difference} as ${response.toLowerCase()}, you would need a `;
+        response = `To overcome a point difference of ${difference} as ${response.toLowerCase()}, you would need a `;
 
         let minTsumoVsNondealer = "multiple yakuman";
         for (let i = 0; i < TSUMO_SCORES.length; i++) {
@@ -103,6 +103,7 @@ module.exports = message => {
             }
 
             let adjustedDifference = difference - (dealer ? TSUMO_SCORES[i].dealer : TSUMO_SCORES[i].nondealer);
+            console.log(`${gainedPoints}, ${adjustedDifference}`);
 
             if (gainedPoints > adjustedDifference) {
                 minTsumoVsNondealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
@@ -150,7 +151,7 @@ module.exports = message => {
             }
         }
 
-        response += `, or a ${minRon} ron on a different player to overcome it.`;
+        response += `, or a ${minRon} ron on a different player.`;
 
         return sendResponse(message, response);
     }
