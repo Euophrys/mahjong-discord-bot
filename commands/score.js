@@ -14,6 +14,20 @@ module.exports = message => {
         return sendDeletableResponse(message, `You'll have to give either a hand value, such as [dealer] 4 han 30 fu, or a point differential, such as 5600.`);
     }
 
+    if (request === "me") {
+        let username = message.member.user.username;
+        let tooMuchWorkForThisJoke = 1;
+
+        for (var i = 0; i < username.length; i++) {
+            tooMuchWorkForThisJoke *= username[i].charCodeAt(0)
+        }
+
+        let seriouslyWhatAmIDoing = Math.sin(tooMuchWorkForThisJoke) * 10000;
+        seriouslyWhatAmIDoing -= Math.floor(seriouslyWhatAmIDoing);
+
+        return sendResponse(message, `You score a ${Math.floor(seriouslyWhatAmIDoing * 9) + 1} / 10 in my books.`);
+    }
+
     let {tiles, handTiles} = parseHandFromString(request);
 
     if (tiles > 5) {
