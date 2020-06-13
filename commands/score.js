@@ -34,8 +34,8 @@ module.exports = message => {
     let hanFu = hanFuRegex.exec(request);
 
     if (hanFu) {
-        let han = hanFu[1];
-        let fu = hanFu[2];
+        let han = parseInt(hanFu[1]);
+        let fu = parseInt(hanFu[2]);
 
         if (han > 13 && !aotenjou) {
             response = "You gave a han value of more than 13. Did you mean to call this with aotenjou? " + prefix;
@@ -66,7 +66,11 @@ module.exports = message => {
     let yakuman = yakumanRegex.exec(request);
 
     if (yakuman) {
-        let value = yakuman[1];
+        let value = parseInt(yakuman[1]);
+
+        if (value === 0) {
+            return sendDeletableResponse(message, "I can't calculate a 0x yakuman.");
+        }
 
         if (request.indexOf("tsumo") >= 0) {
             return sendResponse(message, `${response} ${value}x yakuman tsumo is ${getPointsString(1, 20, dealer, true, value)}.`);
@@ -80,7 +84,7 @@ module.exports = message => {
     let number = numberRegex.exec(request);
 
     if (number) {
-        let difference = number[1];
+        let difference = parseInt(number[1]);
 
         if (difference < 1000) {
             return sendDeletableResponse("That difference is so small that any hand will overcome it. Were you trying to call something else?");
