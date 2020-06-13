@@ -23,12 +23,12 @@ module.exports = message => {
     let scoringFunction = getPointsString;
     let aotenjou = false;
 
-    if (request.indexOf("aotenjou") > 0 || request.indexOf("skyrocketing") > 0) {
+    if (request.indexOf("aotenjou") >= 0 || request.indexOf("skyrocketing") >= 0) {
         scoringFunction = getAotenjouPointsString;
         aotenjou = true;
     }
 
-    let dealer = request.indexOf("dealer") > 0;
+    let dealer = request.indexOf("dealer") >= 0;
     let response = "A " + (dealer ? "dealer" : "non-dealer");
 
     let hanFu = hanFuRegex.exec(request);
@@ -54,9 +54,9 @@ module.exports = message => {
             response += ` ${han} han ${fu} fu`;
         }
 
-        if (request.indexOf("tsumo") > 0) {
+        if (request.indexOf("tsumo") >= 0) {
             return sendResponse(message, `${response} tsumo is ${scoringFunction(han, fu, dealer, true)}.`);
-        } else if (request.indexOf("ron") > 0) {
+        } else if (request.indexOf("ron") >= 0) {
             return sendResponse(message, `${response} ron is ${scoringFunction(han, fu, dealer, false)}.`);
         } else {
             return sendResponse(message, `${response} is ${scoringFunction(han, fu, dealer, true)} on tsumo, and ${scoringFunction(han, fu, dealer, false)} on ron.`);
@@ -68,9 +68,9 @@ module.exports = message => {
     if (yakuman) {
         let value = yakuman[1];
 
-        if (request.indexOf("tsumo") > 0) {
+        if (request.indexOf("tsumo") >= 0) {
             return sendResponse(message, `${response} ${value}x yakuman tsumo is ${getPointsString(1, 20, dealer, true, value)}.`);
-        } else if (request.indexOf("ron") > 0) {
+        } else if (request.indexOf("ron") >= 0) {
             return sendResponse(message, `${response} ${value}x yakuman ron is ${getPointsString(1, 20, dealer, false, value)}.`);
         } else {
             return sendResponse(message, `${response} ${value}x yakuman is ${getPointsString(1, 20, dealer, true, value)} on tsumo, and ${getPointsString(1, 20, dealer, false, value)} on ron.`);
@@ -157,9 +157,9 @@ module.exports = message => {
         if (request.indexOf(namedKeys[i]) > 0) {
             let values = namedValue[namedKeys[i]];
 
-            if (request.indexOf("tsumo") > 0) {
+            if (request.indexOf("tsumo") >= 0) {
                 return sendResponse(message, `${response} ${namedKeys[i]} tsumo is ${getPointsString(values.han, values.fu, dealer, true, values.yakuman)}.`);
-            } else if (request.indexOf("ron") > 0) {
+            } else if (request.indexOf("ron") >= 0) {
                 return sendResponse(message, `${response} ${namedKeys[i]} ron is ${getPointsString(values.han, values.fu, dealer, false, values.yakuman)}.`);
             } else {
                 return sendResponse(message, `${response} ${namedKeys[i]} is ${getPointsString(values.han, values.fu, dealer, true, values.yakuman)} on tsumo, and ${getPointsString(values.han, values.fu, dealer, false, values.yakuman)} on ron.`);

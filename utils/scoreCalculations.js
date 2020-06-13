@@ -55,7 +55,7 @@ function calculateBasicPoints(han, fu, yakuman) {
 
 function getAotenjouPointsString(han = 1, fu = 20, dealer = false, tsumo = true) {
     if (han <= 0) return 0;
-    let basicPoints = Math.min(fu * Math.pow(2, han + 2), 2000);
+    let basicPoints = fu * Math.pow(2, han + 2);
 
     if (tsumo) {
         if (dealer) {
