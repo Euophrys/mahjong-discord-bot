@@ -88,7 +88,7 @@ module.exports = message => {
         let difference = parseInt(number[1]);
 
         if (difference < 1000) {
-            return sendDeletableResponse("That difference is so small that any hand will overcome it. Were you trying to call something else?");
+            return sendDeletableResponse(message, "That difference is so small that any hand will overcome it. Were you trying to call something else?");
         }
 
         response = `To overcome a point difference of ${difference} as ${response.toLowerCase()}, you would need a `;
