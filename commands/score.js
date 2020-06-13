@@ -3,7 +3,7 @@ const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const { getPoints, getPointsString, getAotenjouPointsString, TSUMO_SCORES, RON_SCORES } = require("../utils/scoreCalculations")
 const parseHandFromString = require("../utils/parseHandFromString");
 
-const hanFuRegex = /(\d+).+?(\d+)/
+const hanFuRegex = /(\d+)\D+?(\d+)/
 const yakumanRegex = /(\d).+yakuman/i
 const numberRegex = /(\d+)/
 
@@ -38,7 +38,7 @@ module.exports = message => {
         let fu = parseInt(hanFu[2]);
 
         if (han > 13 && !aotenjou) {
-            response = "You gave a han value of more than 13. Did you mean to call this with aotenjou? " + prefix;
+            response = "You gave a han value of more than 13. Did you mean to call this with aotenjou? " + response;
         }
 
         if (han > 4 && !aotenjou) {
