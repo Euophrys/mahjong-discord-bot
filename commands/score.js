@@ -42,7 +42,7 @@ module.exports = message => {
         aotenjou = true;
     }
 
-    let dealer = request.indexOf("dealer") >= 0;
+    let dealer = request.indexOf("dealer") >= 0 || request.indexOf("oya") >= 0;
     let response = "A " + (dealer ? "dealer" : "non-dealer");
 
     let hanFu = hanFuRegex.exec(request);
