@@ -99,11 +99,10 @@ module.exports = message => {
             if (dealer) {
                 gainedPoints = TSUMO_SCORES[i].dealer * 3;
             } else {
-                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES.dealer;
+                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES[i].dealer;
             }
 
             let adjustedDifference = difference - (dealer ? TSUMO_SCORES[i].dealer : TSUMO_SCORES[i].nondealer);
-            console.log(`${gainedPoints}, ${adjustedDifference}`);
 
             if (gainedPoints > adjustedDifference) {
                 minTsumoVsNondealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
@@ -117,7 +116,7 @@ module.exports = message => {
         if (!dealer) {
             for (let i = 0; i < TSUMO_SCORES.length; i++) {
                 let gainedPoints = 0;
-                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES.dealer;
+                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES[i].dealer;
                 let adjustedDifference = difference - TSUMO_SCORES[i].dealer;
     
                 if (gainedPoints > adjustedDifference) {
@@ -135,7 +134,7 @@ module.exports = message => {
             let adjustedDifference = difference - gainedPoints;
 
             if (gainedPoints > adjustedDifference) {
-                minDirectHit = `${RON_SCORES[i].han} han ${RON_SCORES.fu} fu`;
+                minDirectHit = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
             }
         }
 
@@ -147,7 +146,7 @@ module.exports = message => {
             let gainedPoints = dealer ? RON_SCORES[i].dealer : RON_SCORES[i].nondealer;
 
             if (gainedPoints > difference) {
-                minRon = `${RON_SCORES[i].han} han ${RON_SCORES.fu} fu`;
+                minRon = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
             }
         }
 
