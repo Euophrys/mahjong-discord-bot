@@ -84,6 +84,7 @@ module.exports = message => {
     let number = numberRegex.exec(request);
 
     if (number) {
+        let common = request.indexOf("common") >= 0;
         let difference = parseInt(number[1]);
 
         if (difference < 1000) {
@@ -94,6 +95,8 @@ module.exports = message => {
 
         let minTsumoVsNondealer = "multiple yakuman";
         for (let i = 0; i < TSUMO_SCORES.length; i++) {
+            if (common && TSUMO_SCORES[i].fu > 40) continue;
+
             let gainedPoints = 0;
             
             if (dealer) {
@@ -116,6 +119,7 @@ module.exports = message => {
 
         if (!dealer) {
             for (let i = 0; i < TSUMO_SCORES.length; i++) {
+                if (common && TSUMO_SCORES[i].fu > 40) continue;
                 let gainedPoints = 0;
                 gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES[i].dealer;
                 let adjustedDifference = difference - TSUMO_SCORES[i].dealer;
@@ -132,6 +136,7 @@ module.exports = message => {
         let minDirectHit = "multiple yakuman";
 
         for (let i = 0; i < RON_SCORES.length; i++) {
+            if (common && RON_SCORES[i].fu > 40) continue;
             let gainedPoints = dealer ? RON_SCORES[i].dealer : RON_SCORES[i].nondealer;
             let adjustedDifference = difference - gainedPoints;
 
@@ -146,6 +151,7 @@ module.exports = message => {
         let minRon = "multiple yakuman";
 
         for (let i = 0; i < RON_SCORES.length; i++) {
+            if (common && RON_SCORES[i].fu > 40) continue;
             let gainedPoints = dealer ? RON_SCORES[i].dealer : RON_SCORES[i].nondealer;
 
             if (gainedPoints > difference) {
