@@ -3,9 +3,9 @@ const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const { getPoints, getPointsString, getAotenjouPointsString, TSUMO_SCORES, RON_SCORES } = require("../utils/scoreCalculations")
 const parseHandFromString = require("../utils/parseHandFromString");
 
-const hanFuRegex = /(\d+)\D+?(\d+)/
-const yakumanRegex = /(\d).+yakuman/i
-const numberRegex = /(\d+)/
+const hanFuRegex = /(\d+)\D+?(\d+)/;
+const yakumanRegex = /(\d).+yakuman/i;
+const numberRegex = /(\d+)/;
 
 module.exports = message => {
     let request = message.content.substr(message.content.indexOf(" ")).trim();
@@ -16,7 +16,7 @@ module.exports = message => {
 
     let {tiles, handTiles} = parseHandFromString(request);
 
-    if (tiles > 3) {
+    if (tiles > 5) {
         return sendDeletableResponse(message, "Sorry, I can't score hands yet, I'm still learning the yaku.");
     }
 
