@@ -25,7 +25,7 @@ module.exports = message => {
         let seriouslyWhatAmIDoing = Math.sin(tooMuchWorkForThisJoke) * 10000;
         seriouslyWhatAmIDoing -= Math.floor(seriouslyWhatAmIDoing);
 
-        return sendResponse(message, `You score a ${Math.floor(seriouslyWhatAmIDoing * 9) + 1} / 10 in my books.`);
+        return sendResponse(message, `You score a ${Math.floor(seriouslyWhatAmIDoing * 10) + 1} / 10 in my books.`);
     }
 
     let {tiles, handTiles} = parseHandFromString(request);
