@@ -15,6 +15,7 @@ const viewer = require('../commands/viewer');
 const mleague = require('../commands/mleague');
 const poll = require('../commands/poll');
 const translate = require('../commands/translate');
+const score = require('../commands/score');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
@@ -64,7 +65,8 @@ commands = {
   "!wwyd": poll,
   "!translate": translate,
   "!translation": translate,
-  "!english": translate
+  "!english": translate,
+  "!debugscore": score
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
