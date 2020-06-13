@@ -106,6 +106,7 @@ module.exports = message => {
 
             if (gainedPoints > adjustedDifference) {
                 minTsumoVsNondealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                break;
             }
         }
 
@@ -121,6 +122,7 @@ module.exports = message => {
     
                 if (gainedPoints > adjustedDifference) {
                     minTsumoVsDealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                    break;
                 }
             }
 
@@ -135,6 +137,7 @@ module.exports = message => {
 
             if (gainedPoints > adjustedDifference) {
                 minDirectHit = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                break;
             }
         }
 
@@ -147,6 +150,7 @@ module.exports = message => {
 
             if (gainedPoints > difference) {
                 minRon = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                break;
             }
         }
 
