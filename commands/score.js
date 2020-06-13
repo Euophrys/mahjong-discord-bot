@@ -122,7 +122,12 @@ module.exports = message => {
             let adjustedDifference = difference - (dealer ? TSUMO_SCORES[i].dealer : TSUMO_SCORES[i].nondealer);
 
             if (gainedPoints > adjustedDifference) {
-                minTsumoVsNondealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                if (TSUMO_SCORES[i].han > 4) {
+                    minTsumoVsNondealer = hanToName[TSUMO_SCORES[i].han];
+                } else {
+                    minTsumoVsNondealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                }
+
                 break;
             }
         }
@@ -139,7 +144,11 @@ module.exports = message => {
                 let adjustedDifference = difference - TSUMO_SCORES[i].dealer;
     
                 if (gainedPoints > adjustedDifference) {
-                    minTsumoVsDealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                    if (TSUMO_SCORES[i].han > 4) {
+                        minTsumoVsDealer = hanToName[TSUMO_SCORES[i].han];
+                    } else {
+                        minTsumoVsDealer = `${TSUMO_SCORES[i].han} han ${TSUMO_SCORES[i].fu} fu`;
+                    }
                     break;
                 }
             }
@@ -155,7 +164,11 @@ module.exports = message => {
             let adjustedDifference = difference - gainedPoints;
 
             if (gainedPoints > adjustedDifference) {
-                minDirectHit = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                if (RON_SCORES[i].han > 4) {
+                    minDirectHit = hanToName[RON_SCORES[i].han];
+                } else {
+                    minDirectHit = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                }
                 break;
             }
         }
@@ -169,7 +182,11 @@ module.exports = message => {
             let gainedPoints = dealer ? RON_SCORES[i].dealer : RON_SCORES[i].nondealer;
 
             if (gainedPoints > difference) {
-                minRon = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                if (RON_SCORES[i].han > 4) {
+                    minRon = hanToName[RON_SCORES[i].han];
+                } else {
+                    minRon = `${RON_SCORES[i].han} han ${RON_SCORES[i].fu} fu`;
+                }
                 break;
             }
         }
@@ -211,3 +228,8 @@ const namedValue = {
     "pentuple yakuman": {han: 1, fu: 20, yakuman: 5},
     "sextuple yakuman": {han: 1, fu: 20, yakuman: 6}
 }
+
+const hanToName = [
+    //0,1,2, 3, 4,  5,        6,         7,         8,        9,        10,       11,          12,          13
+    "","","","","", "mangan", "haneman", "haneman", "baiman", "baiman", "baiman", "sanbaiman", "sanbaiman", "yakuman"
+]
