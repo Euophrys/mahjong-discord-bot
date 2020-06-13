@@ -14,7 +14,7 @@ module.exports = message => {
         return sendDeletableResponse(message, `You'll have to give either a hand value, such as [dealer] 4 han 30 fu, or a point differential, such as 5600.`);
     }
 
-    let {tiles, handTiles} = parseHandFromString(handString);
+    let {tiles, handTiles} = parseHandFromString(request);
 
     if (tiles > 3) {
         return sendDeletableResponse(message, "Sorry, I can't score hands yet, I'm still learning the yaku.");
