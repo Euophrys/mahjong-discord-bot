@@ -3,7 +3,7 @@ const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const { getPoints, getPointsString, getAotenjouPointsString, TSUMO_SCORES, RON_SCORES } = require("../utils/scoreCalculations")
 const parseHandFromString = require("../utils/parseHandFromString");
 
-const hanFuRegex = /(\d+)\D+?(\d+)/;
+const hanFuRegex = /(\d+\.?\d*)\D+?(\d+)/;
 const yakumanRegex = /(\d).+yakuman/i;
 const numberRegex = /(\d+)/;
 

@@ -30,3 +30,5 @@ To start, you can have Natsuki introduce herself by saying `!explain yourself`, 
 * `!dice` - Natsuki will roll 2d6, and tell you which player the wall is broken in front of.
 * `!help <command>` - Natsuki will give a quick explanation of the given command.
 * `!translate <text>` - Natsuki will replace most Japanese mahjong terms in the given text with English equivalents.
+* `!score <han> <fu> <dealer> <ron|tsumo> <aotenjou>` - Natsuki will convert the han and fu to a score with any of the modifiers. Dealer to change it to a dealer score, ron/tsumo to specify one out, aotenjou to remove the limiting hands.
+* `!score <value> <dealer>` - Natsuki will tell you what hand is required to overcome the given point difference.
