@@ -75,6 +75,7 @@ const links = {
     "butane":"https://cdn.discordapp.com/attachments/629737480803057685/717912488456355850/butane.png",
     "tokujou":"https://media.discordapp.net/attachments/202201840887136256/714456318240358451/tokujou_fun2.png",
     "derinov":"https://media.discordapp.net/attachments/202201840887136256/716745240354226297/deranked.png",
+    "cosmos":"https://cdn.discordapp.com/attachments/629737480803057685/723991767766138930/mudazumo-allwhite.png",
 }
 
 const aliases = {
@@ -89,5 +90,6 @@ const aliases = {
     "kyuushuu": "kyuushu",
     "spirit": "damage",
     "bongo": "pongo",
-    "dan": "corak"
+    "dan": "corak",
+    "allwhite": "cosmos",
 }
