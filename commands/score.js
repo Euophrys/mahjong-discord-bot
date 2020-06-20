@@ -220,13 +220,13 @@ const namedValue = {
     "haneman": {han: 6, fu: 20, yakuman: 0},
     "baiman": {han: 8, fu: 20, yakuman: 0},
     "sanbaiman": {han: 11, fu: 20, yakuman: 0},
-    "yakuman": {han: 1, fu: 20, yakuman: 1},
     "kazoe": {han: 13, fu: 20, yakuman: 0},
     "double yakuman": {han: 1, fu: 20, yakuman: 2},
     "triple yakuman": {han: 1, fu: 20, yakuman: 3},
     "quadruple yakuman": {han: 1, fu: 20, yakuman: 4},
     "pentuple yakuman": {han: 1, fu: 20, yakuman: 5},
-    "sextuple yakuman": {han: 1, fu: 20, yakuman: 6}
+    "sextuple yakuman": {han: 1, fu: 20, yakuman: 6},
+    "yakuman": {han: 1, fu: 20, yakuman: 1}
 }
 
 const hanToName = [

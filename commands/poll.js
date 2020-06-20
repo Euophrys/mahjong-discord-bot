@@ -13,7 +13,7 @@ module.exports = message => {
 
     let promise = null;
 
-    for(let i = 0; i < handTiles.length; i++) {
+    for(let i = 0; i < handTiles.length && i < 14; i++) {
         if (handTiles[i]) {
             let emoji_id = emoji[i].split(":")[2].split(">")[0];
 
