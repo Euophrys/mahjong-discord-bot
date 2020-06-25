@@ -2,7 +2,7 @@ module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
     if (!helpWith || helpWith === "") {
-        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), `!explain`, `!meme`, `!poll <tiles>` (alias: !wwyd), `!translate <text>` (aliases: !translation, !english) and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
+        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), `!explain`, `!meme`, `!poll <tiles>` (alias: !wwyd), `!translate <text>` (aliases: !translation, !english), `!score <han> <fu> <dealer> <ron|tsumo> <aotenjou>`, `!score <point difference> <dealer> <common>`, and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
     }
 
     if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
@@ -49,4 +49,5 @@ const helps = {
     "translate": "Did someone send a message with several strange terms? Copy paste it after a `!translate` call and I'll replace anything I know to make it easier to follow.",
     "translation": "Did someone send a message with several strange terms? Copy paste it after a `!translate` call and I'll replace anything I know to make it easier to follow.",
     "english": "Did someone send a message with several strange terms? Copy paste it after a `!translate` call and I'll replace anything I know to make it easier to follow.",
+    "score": "The score command has two uses. First, you can provide a han and fu value to have it converted to points. You can also specify dealer, or add aotenjou to ignore limiting hands. Second, if you provide a single number, I'll assume it's a point difference and tell you what hands you need minimum to overcome it. Add dealer for dealer scores, or common to ignore fu values over 40."
 }

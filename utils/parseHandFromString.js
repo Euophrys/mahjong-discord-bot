@@ -18,7 +18,7 @@ module.exports = (handString) => {
             if (tile >= 0) {
                 tile += offset;
 
-                if (tile == 30) {
+                if (tile == 30 || tile > 37) {
                     index++;
                     continue;
                 }
