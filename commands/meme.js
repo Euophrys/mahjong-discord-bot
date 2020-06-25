@@ -75,6 +75,7 @@ const links = {
     "butane":"https://cdn.discordapp.com/attachments/629737480803057685/717912488456355850/butane.png",
     "tokujou":"https://media.discordapp.net/attachments/202201840887136256/714456318240358451/tokujou_fun2.png",
     "derinov":"https://media.discordapp.net/attachments/202201840887136256/716745240354226297/deranked.png",
+    "sharks":"https://cdn.discordapp.com/attachments/605624705184956447/720847398116524082/1_ToL0tC3M2E18VXQddR01UA.png",
     "cosmos":"https://cdn.discordapp.com/attachments/629737480803057685/723991767766138930/mudazumo-allwhite.png",
 }
 
@@ -91,5 +92,6 @@ const aliases = {
     "spirit": "damage",
     "bongo": "pongo",
     "dan": "corak",
+    "shark": "sharks",
     "allwhite": "cosmos",
 }
