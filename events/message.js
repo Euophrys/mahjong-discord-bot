@@ -75,7 +75,8 @@ module.exports = (client, message) => {
   if (message.author.bot) return;
 
   let lower = message.content.toLowerCase();
-  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
+  let lowerFiltered = lower.replace(/<:\w+(~\d+)?:\d+>/gi, "");  // filtering emotes <:EmoteName[~Number]:EmoteID>
+  if (lowerFiltered.indexOf("natsuki") > -1 || lowerFiltered.indexOf("ⓝatsuki") > -1 || lowerFiltered.indexOf("那月") > -1) {
     message.react(reactions[Math.floor(Math.random() * reactions.length)]);
   }
 
