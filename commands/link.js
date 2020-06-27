@@ -37,7 +37,7 @@ const links = {
     "trainer": "https://euophrys.itch.io/mahjong-efficiency-trainer",
     "scoretrainer": "https://pathofhouou.blogspot.com/2019/05/training-tool-maru-jan-score-trainer.html",
     "hms": "https://pathofhouou.blogspot.com/2019/05/training-tool-hitori-mahjong-simulator.html",
-    "yaku": "http://mahjong-ny.com/files/YakuSheet.jpg",
+    "yaku": "https://cdn.discordapp.com/attachments/150412836500275200/726425653859319868/yaku.png",
     "table": "http://arcturus.su/mjw/images/Scoring_Table.png",
     "reddit": "https://www.reddit.com/r/Mahjong/",
     "rb1": "https://dainachiba.github.io/RiichiBooks/",
