@@ -1,6 +1,6 @@
 # Adding The Bot To A Server
 
-To add Natsuki to your server, simply click on [this link](https://discordapp.com/api/oauth2/authorize?client_id=629290905723076609&permissions=330816&scope=bot).
+To add Natsuki to your server, simply click on [this link](https://discordapp.com/api/oauth2/authorize?client_id=629290905723076609&permissions=330816&scope=bot). You can also find her on [top.gg](https://top.gg/bot/629290905723076609).
 
 # Commands
 
