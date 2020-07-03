@@ -79,6 +79,7 @@ const links = {
     "sharks":"https://cdn.discordapp.com/attachments/605624705184956447/720847398116524082/1_ToL0tC3M2E18VXQddR01UA.png",
     "cosmos":"https://cdn.discordapp.com/attachments/629737480803057685/723991767766138930/mudazumo-allwhite.png",
     "tripleron": "https://cdn.discordapp.com/attachments/469490857716875285/724995275516674078/4325.png",
+    "chanta": "https://cdn.discordapp.com/attachments/150412836500275200/680857700212539416/no-chanta.png",
 }
 
 const aliases = {
