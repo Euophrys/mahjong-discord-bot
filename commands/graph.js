@@ -1,6 +1,7 @@
 const request = require("request");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
+const { MessageAttachment } = require("discord.js")
 const tenhouRegex = /\/\?log=(.+?)&tw/;
 
 module.exports = (message, client) => {
@@ -73,9 +74,8 @@ module.exports = (message, client) => {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
 
-        message.channel.send("Here's how the scores changed in that game.", {
-            file: `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`
-        });
+        const attachment = new MessageAttachment(`https://quickchart.io/chart?c=${JSON.stringify(graphData)}`)
+        message.channel.send("test", attachment);
         //return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
     });
 };
