@@ -57,8 +57,9 @@ module.exports = (message, client) => {
         let match;
         const nameRegex = /n\d="(.+?)"/g
         while (match = nameRegex.exec(body)) {
-            matches++;
             graphData.data.datasets[matches].label = decodeURIComponent(match[1]);
+            matches++;
+            if (matches == 4) break;
         }
 
         matches = 0;
