@@ -74,8 +74,6 @@ module.exports = (message, client) => {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
 
-        const attachment = new MessageAttachment(`https://quickchart.io/chart?c=${JSON.stringify(graphData)}`)
-        message.channel.send("test", attachment);
-        //return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
+        return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
     });
 };
