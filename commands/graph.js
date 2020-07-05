@@ -47,7 +47,7 @@ module.exports = (message, client) => {
                     label: 'D',
                     data: [ ],
                     fill: false,
-                    borderColor: "pink"
+                    borderColor: "hotpink"
                 }]
             }
         }
