@@ -73,6 +73,9 @@ module.exports = (message, client) => {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
 
-        return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
+        message.channel.send("Here's how the scores changed in that game.", {
+            file: `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`
+        });
+        //return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
     });
 };
