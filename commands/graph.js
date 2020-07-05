@@ -51,11 +51,11 @@ module.exports = (message, client) => {
             matches++;
             graphData.data.labels.push(matches);
 
-            let scores = match.split(",");
+            let scores = match[1].split(",");
 
             for (let i = 0; i < scores.length; i += 2) {
-                score = parseInt(scores[i]) * 100;
-                change = parseInt(scores[i + 1]) * 100;
+                let score = parseInt(scores[i]) * 100;
+                let change = parseInt(scores[i + 1]) * 100;
                 score += change;
                 graphData.data.datasets[i / 2].data.push(score);
             }
