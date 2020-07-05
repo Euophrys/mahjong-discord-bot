@@ -22,7 +22,7 @@ module.exports = (message, client) => {
     
     request(options, (err, res, body) => {
         if(err) {
-            return sendDeletableResponse(message, `${err}`);
+            return sendDeletableResponse(message, `I got this error while trying to get the replay: ${err}`);
         }
         
         let graphData = {
@@ -74,6 +74,25 @@ module.exports = (message, client) => {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
 
-        return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
+        let postOptions = {
+            uri: "https://quickchart.io/chart/create",
+            headers: {'content-type' : 'application/json'},
+            method: "POST",
+            json: {
+                backgroundColor: "white",
+                width: 1000,
+                height: 600,
+                format: "png",
+                chart: graphData,
+                timeout: 10000
+            }
+        };
+        request(postOptions, (err, res, body) => {
+            if(err) {
+                return sendDeletableResponse(message, `I got this error while making the chart: ${err}`);
+            }
+
+            return sendResponse(message, body.url);
+        })
     });
 };
