@@ -1,6 +1,7 @@
 const createTilePool = require("../utils/createTilePool");
 const handToEmoji = require("../utils/handToEmoji");
-const responses = ["Here's a random hand: ", "Fresh from the wall: ", "Is this what you want? "]
+const responses = ["Here's a random hand: ", "Fresh from the wall: ", "Is this what you want? "];
+const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
     let tilePool = createTilePool();
@@ -14,5 +15,5 @@ module.exports = message => {
 
     let result = handToEmoji(hand);
 
-    return message.channel.send(`${responses[Math.floor(Math.random() * responses.length)]}${result}`);
+    return sendResponse(message, `${responses[Math.floor(Math.random() * responses.length)]}${result}`);
 }

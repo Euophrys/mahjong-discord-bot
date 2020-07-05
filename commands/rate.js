@@ -29,11 +29,11 @@ module.exports = message => {
 
     request(`https://nodocchi.moe/api/listuser.php?name=${name}`, {json:true, timeout:10000}, (err, res, body) => {
         if(err) {
-            return message.channel.send(`Nodocchi isn't being nice to me right now. Try again later, maybe. (${err})`);
+            return sendDeletableResponse(message, `Nodocchi isn't being nice to me right now. Try again later, maybe. (${err})`);
         }
 
         if (!body) {
-            return message.channel.send(`${decodeURI(name)} hasn't played any games on Tenhou.`);
+            return sendDeletableResponse(message, `${decodeURI(name)} hasn't played any games on Tenhou.`);
         }
 
         let rate = "less than 1800";

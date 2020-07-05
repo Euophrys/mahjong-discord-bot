@@ -1,4 +1,5 @@
 const mleague = require('../utils/mleague');
+const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
     let now = new Date();
@@ -10,6 +11,6 @@ module.exports = message => {
         if (date < now) continue;
 
         var teamsString = games[i].teams.slice(0, -1).join(", ") + ', and ' + games[i].teams.slice(-1)
-        return message.channel.send(`M-League is a team league tournament. On game days, four teams will play two hanchans, sending out one of their members for each. The next game is on ${date.toString()} between ${teamsString}. You can watch it at <https://abema.tv/now-on-air/mahjong> at that time.`);
+        return sendResponse(message, `M-League is a team league tournament. On game days, four teams will play two hanchans, sending out one of their members for each. The next game is on ${date.toString()} between ${teamsString}. You can watch it at <https://abema.tv/now-on-air/mahjong> at that time.`);
     }
 }

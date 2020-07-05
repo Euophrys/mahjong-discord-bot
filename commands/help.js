@@ -1,16 +1,19 @@
+const sendResponse = require("../utils/sendResponse");
+const sendDeletableResponse = require("../utils/sendDeletableResponse");
+
 module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
     if (!helpWith || helpWith === "") {
-        return message.channel.send("I'll respond to any of these commands: `!efficiency <hand>` (aliases: !eff, !analyze, !ana, !ukeire, !uke), `!link <site>` (alias: !site), `!define <word>` (alias: !def, !whatis), `!tile`, `!hand` (alias: !random), `!platform <name>` (aliases: !platforms, !client, !clients), `!dice` (aliases: !roll, !break), `!minefield <optional: sort>` (alias: !sevensteps), `!rank <name>` (aliases: !rate, !games), `!explain`, `!meme`, `!poll <tiles>` (alias: !wwyd), `!translate <text>` (aliases: !translation, !english), `!score <han> <fu> <dealer> <ron|tsumo> <aotenjou>`, `!score <point difference> <dealer> <common>`, and as you've already found out, `!help <command>`. I'll also convert a hand into emoji if you put an ! before it, like `!123m`.");
+        return sendResponse("You can find the full list of commands on GitHub, here: <https://github.com/Euophrys/mahjong-discord-bot/blob/master/README.md>");
     }
 
     if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
 
     if (helps[helpWith]) {
-        return message.channel.send(helps[helpWith]);
+        return sendResponse(message, helps[helpWith]);
     } else {
-        return message.channel.send(`I don't think I have a ${helpWith} command...`)
+        return sendDeletableResponse(message, `I don't think I have a ${helpWith} command...`)
     }
 }
 
