@@ -68,7 +68,8 @@ commands = {
   "!translation": translate,
   "!english": translate,
   "!score": score,
-  "!graph": graph
+  "!graph": graph,
+  "!chart": graph
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
