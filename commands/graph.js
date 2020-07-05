@@ -31,19 +31,23 @@ module.exports = (message, client) => {
                 datasets: [{
                     label: 'A',
                     data: [ ],
-                    fill: false
+                    fill: false,
+                    borderColor="green"
                 }, {
                     label: 'B',
                     data: [ ],
-                    fill: false
+                    fill: false,
+                    borderColor="red"
                 }, {
                     label: 'C',
                     data: [ ],
-                    fill: false
+                    fill: false,
+                    borderColor="blue"
                 }, {
                     label: 'D',
                     data: [ ],
-                    fill: false
+                    fill: false,
+                    borderColor="yellow"
                 }]
             }
         }
