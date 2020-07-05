@@ -55,6 +55,13 @@ module.exports = (message, client) => {
         
         let matches = 0;
         let match;
+        const nameRegex = /n\d="(.+?)"/g
+        while (match = nameRegex.exec(body)) {
+            matches++;
+            graphData.data.datasets[matches].label = decodeURIComponent(match[1]);
+        }
+
+        matches = 0;
         const endRegex = /[AGARI|RYUUKYOKU].+?sc="(.+?)"/g
         while(match = endRegex.exec(body)) {
             matches++;
@@ -80,7 +87,7 @@ module.exports = (message, client) => {
             method: "POST",
             json: {
                 backgroundColor: "white",
-                width: 1000,
+                width: 600,
                 height: 600,
                 format: "png",
                 chart: graphData,
