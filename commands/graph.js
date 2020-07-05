@@ -88,8 +88,8 @@ module.exports = (message, client) => {
             method: "POST",
             json: {
                 backgroundColor: "white",
-                width: 600,
-                height: 600,
+                width: 700,
+                height: 400,
                 format: "png",
                 chart: graphData,
                 timeout: 10000

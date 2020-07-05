@@ -32,3 +32,4 @@ To start, you can have Natsuki introduce herself by saying `!explain yourself`, 
 * `!translate <text>` - Natsuki will replace most Japanese mahjong terms in the given text with English equivalents.
 * `!score <han> <fu> <dealer> <ron|tsumo> <aotenjou>` - Natsuki will convert the han and fu to a score with any of the modifiers. Dealer to change it to a dealer score, ron/tsumo to specify one out, aotenjou to remove the limiting hands.
 * `!score <value> <dealer> <common>` - Natsuki will tell you what hand is required to overcome the given point difference. Use "common" to ignore fu values higher than 40.
+* `!graph <url>` - Natsuki will fetch a graph showing the point changes that happened in a Tenhou replay.
