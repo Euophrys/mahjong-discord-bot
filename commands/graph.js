@@ -32,22 +32,22 @@ module.exports = (message, client) => {
                     label: 'A',
                     data: [ ],
                     fill: false,
-                    borderColor: "green"
+                    borderColor: "blue"
                 }, {
                     label: 'B',
                     data: [ ],
                     fill: false,
-                    borderColor: "red"
+                    borderColor: "green"
                 }, {
                     label: 'C',
                     data: [ ],
                     fill: false,
-                    borderColor: "blue"
+                    borderColor: "red"
                 }, {
                     label: 'D',
                     data: [ ],
                     fill: false,
-                    borderColor: "yellow"
+                    borderColor: "pink"
                 }]
             }
         }
