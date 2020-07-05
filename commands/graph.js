@@ -42,12 +42,12 @@ module.exports = (message, client) => {
                     label: 'C',
                     data: [ ],
                     fill: false,
-                    borderColor: "red"
+                    borderColor: "yellow"
                 }, {
                     label: 'D',
                     data: [ ],
                     fill: false,
-                    borderColor: "hotpink"
+                    borderColor: "red"
                 }]
             }
         }
