@@ -30,16 +30,20 @@ module.exports = (message, client) => {
                 labels: [],
                 datasets: [{
                     label: 'A',
-                    data: [ ]
+                    data: [ ],
+                    fill: false
                 }, {
                     label: 'B',
-                    data: [ ]
+                    data: [ ],
+                    fill: false
                 }, {
                     label: 'C',
-                    data: [ ]
+                    data: [ ],
+                    fill: false
                 }, {
                     label: 'D',
-                    data: [ ]
+                    data: [ ],
+                    fill: false
                 }]
             }
         }
@@ -67,6 +71,4 @@ module.exports = (message, client) => {
 
         return sendResponse(message, `https://quickchart.io/chart?c=${JSON.stringify(graphData)}`);
     });
-
-    return sendResponse(message, content);
 };
