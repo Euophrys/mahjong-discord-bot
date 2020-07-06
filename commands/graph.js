@@ -2,7 +2,7 @@ const request = require("request");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const { MessageAttachment } = require("discord.js")
-const tenhouRegex = /\/\?log=(.+?)&tw/;
+const tenhouRegex = /\/\?log=(.+?)[&\n\b]/;
 
 module.exports = (message, client) => {
     let match = tenhouRegex.exec(message.content);
