@@ -80,6 +80,7 @@ const links = {
     "cosmos":"https://cdn.discordapp.com/attachments/629737480803057685/723991767766138930/mudazumo-allwhite.png",
     "tripleron": "https://cdn.discordapp.com/attachments/469490857716875285/724995275516674078/4325.png",
     "chanta": "https://cdn.discordapp.com/attachments/150412836500275200/680857700212539416/no-chanta.png",
+    "urasan": "https://cdn.discordapp.com/attachments/605624705184956447/730473247941984256/no_more_urasan.png",
 }
 
 const aliases = {
