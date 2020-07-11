@@ -11,8 +11,9 @@ module.exports = message => {
 
     if (responseObject.request === "" || responseObject.request === "random") {
         var keys = Object.keys(links);
-        var link = links[keys[Math.floor(Math.random() * keys.length)]]
-        return sendResponse(message, `Here's a random meme: ${link}`);
+        var link_key = keys[Math.floor(Math.random() * keys.length)];
+        var link = links[link_key];
+        return sendResponse(message, `Here's a random meme (${link_key}): ${link}`);
     }
 
     if (responseObject.request === "list") {
