@@ -352,7 +352,13 @@ const definitions = {
     "tanpin": "Tanpin is shorthand for Tanyao combined with Pinfu.",
     "mentan": "Mentan is shorthand for Tanyao combined with Riichi.",
     "menhon": "Menhon is shorthand for menzen honitsu, a closed half flush.",
-    "menchin": "Menchin is shorthand for menzen chinitsu, a closed full flush."
+    "menchin": "Menchin is shorthand for menzen chinitsu, a closed full flush.",
+    "kanburi": "Kanburi is an archaic yaku awarded for calling ron on the tile a player discards after calling kan, worth one han.",
+    "shiiaruraotai": "Shiiaruraotai is an archaic yaku awarded for winning a hand while having four open sets, worth one han.",
+    "uumensai": "Uumensai is an archaic yaku awarded for having sets of each type of tile: characters, circles, bamboo, dragons, and winds. Worth two han.",
+    "isshokusanjun": "Isshoku sanjun is an archaic yaku awarded for having three of the same run in your hand, similar to iipeikou. Worth three han closed, two han open.",
+    "iipinmoyue": "Iipin moyue is an archaic yaku awarded for winning by haitei, when the haitei tile is the <:1p:466437920908378113>. Worth mangan.",
+    "chuupinraoyui": "Chuupin raoyui is an archaic yaku awarded for winning by houtei, when the houtei tile is the <:9p:466437922854404106>. Worth mangan.",
 };
 
 const aliases = {
@@ -410,6 +416,8 @@ const aliases = {
     "twinsequences": "iipeikou",
     "puredoublesequence": "iipeikou",
     "puredoublechow": "iipeikou",
+    "puretriplechow": "isshokusanjun",
+    "isshoku": "isshokusanjun",
     "seatwind": "jikaze",
     "roundwind": "bakaze",
     "dragon": "yakuhai",
@@ -474,5 +482,8 @@ const aliases = {
     "blessingofman": "renhou",
     "blessingofearth": "chihou",
     "blessingofheaven": "tenhou",
-    "yaochuuhai": "yaochuu"
+    "yaochuuhai": "yaochuu",
+    "threechainedtriplets": "sanrenkou",
+    "iipinraoyue": "iipinmoyue",
+    "iitonmoyue": "iipinmoyue"
 }
