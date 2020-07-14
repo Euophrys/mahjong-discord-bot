@@ -17,6 +17,7 @@ const poll = require('../commands/poll');
 const translate = require('../commands/translate');
 const score = require('../commands/score');
 const graph = require('../commands/graph');
+const role = require('../commands/role');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
@@ -69,7 +70,8 @@ commands = {
   "!english": translate,
   "!score": score,
   "!graph": graph,
-  "!chart": graph
+  "!chart": graph,
+  "!role": role
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
