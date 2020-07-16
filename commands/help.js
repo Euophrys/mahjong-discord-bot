@@ -5,7 +5,7 @@ module.exports = message => {
     let helpWith = message.content.split(" ")[1];
 
     if (!helpWith || helpWith === "") {
-        return sendResponse("You can find the full list of commands on GitHub, here: <https://github.com/Euophrys/mahjong-discord-bot/blob/master/README.md>");
+        return sendResponse(message, "You can find the full list of commands on GitHub, here: <https://github.com/Euophrys/mahjong-discord-bot/blob/master/README.md>");
     }
 
     if (helpWith.startsWith("!")) helpWith = helpWith.slice(1);
