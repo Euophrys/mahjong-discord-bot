@@ -81,7 +81,7 @@ const aliases = {
     "score": "table",
     "hittori": "hms",
     "efficiency": "trainer",
-    "justanother": "jajmb",
+    "jajmb": "justanother",
     "path": "pathofhouou",
     "horoscopes": "horoscope",
     "count": "countingsuji",
