@@ -359,6 +359,8 @@ const definitions = {
     "isshokusanjun": "Isshoku sanjun is an archaic yaku awarded for having three of the same run in your hand, similar to iipeikou. Worth three han closed, two han open.",
     "iipinmoyue": "Iipin moyue is an archaic yaku awarded for winning by haitei, when the haitei tile is the <:1p:466437920908378113>. Worth mangan.",
     "chuupinraoyui": "Chuupin raoyui is an archaic yaku awarded for winning by houtei, when the houtei tile is the <:9p:466437922854404106>. Worth mangan.",
+    "kutsuki": "Kutsuki is sometimes translated as 'sticking' in English. This is when the hand has floating tiles that it's waiting to connect to. For example, <:2m:466437921550106627><:3m:466437922577580052><:4m:466437922556608522><:5m:466437922401419274><:6m:466437922556739584><:7m:466437922250555393><:3s:466437922258681869><:7s:466437922632105984><:2p:466437922669985823><:2p:466437922669985823><:7p:466437922980102144><:8p:466437922380316683><:9p:466437922854404106> is waiting for a tile to connect to the 3 or 7 of bamboo. It could be 159s for a kanchan wait, or 2468s for a ryanmen wait, or 37s for a shanpon wait. 2p also gives a tanki wait. It's a very wide form of iishanten.",
+    "uchigiri": "Uchigiri refers to when people cut a block starting from the inside. For example, consider a <:1p:466437920908378113><:3p:466437922426716161> shape. Cutting it starting from the 1 gives more flexibility, as the 3 can evolve to a ryanmen, while cutting it from the 3 gives more safety, as the 1 is a less dangerous tile. When someone cuts a block like this starting from the inside, it might indicate that their hand is already set up well.",
 };
 
 const aliases = {

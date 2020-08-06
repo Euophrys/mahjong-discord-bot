@@ -2,6 +2,8 @@
 
 To add Natsuki to your server, simply click on [this link](https://discordapp.com/api/oauth2/authorize?client_id=629290905723076609&permissions=330816&scope=bot). You can also find her on [top.gg](https://top.gg/bot/629290905723076609).
 
+For permissions, she needs `Send Messages` for obvious reasons, `Use External Emoji` for the tile emoji, and `Add Reactions` for polls and her name. She might need `View Channels` and `Read Message History` but I'm not sure.
+
 # Commands
 
 To start, you can have Natsuki introduce herself by saying `!explain yourself`, and get a list of commands with `!help`. Here's a more detailed list.
