@@ -372,6 +372,7 @@ const definitions = {
     "ponten": "Ponten can be used in a couple ways. It could refer to an iishanten that can call pon to get to tenpai, or it could refer to the actual act of calling pon to get tenpai.",
     "chiiten": "Chiiten can be used in a couple ways. It could refer to an iishanten that can call chii to get to tenpai, or it could refer to the actual act of calling chii to get tenpai.",
     "kataagari": "Kataagari is when the hand can only win on some tiles. It's similar to atozuke, but only refers to the final hand shape.",
+    "poncat": "Poncat refers to a player who calls a lot. It comes from the lower ranks of Mahjong Soul, where many players use the character Ichihime, a catgirl, and call with wild abandon as if it were Chinese Mahjong.",
 };
 
 const aliases = {
