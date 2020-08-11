@@ -83,6 +83,7 @@ const links = {
     "chanta": "https://cdn.discordapp.com/attachments/150412836500275200/680857700212539416/no-chanta.png",
     "urasan": "https://cdn.discordapp.com/attachments/605624705184956447/730473247941984256/no_more_urasan.png",
     "erzzy": "https://cdn.discordapp.com/attachments/607685453218447376/731597828996071504/unknown.png",
+    "promotion": "https://cdn.discordapp.com/attachments/150412836500275200/742648950112124928/20190806184127.jpg",
 }
 
 const aliases = {

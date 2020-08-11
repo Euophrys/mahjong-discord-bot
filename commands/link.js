@@ -68,8 +68,16 @@ const links = {
     "mattari": "https://pathofhouou.blogspot.com/2020/01/training-tool-mattari-mahjong.html",
     "calling": "https://mahjong.guide/2017/07/22/puyos-guide-to-calling-tiles-part-1/",
     "push": "https://docs.google.com/spreadsheets/d/172LFySNLUtboZUiDguf8I3QpmFT-TApUfjOs5iRy3os/edit#gid=212618921",
-    "winrate": "https://docs.google.com/spreadsheets/d/1FrgX63D9ct7nWZtcrN3q8EH8BXJURYV4eQgaN-1tNjQ/edit#gid=1942793675",
+    "winrate": "https://docs.google.com/spreadsheets/d/1x1CYlIPYTeOodGY4bmPevlbyeZOIcmHICcQaoSjHJEk/edit#gid=1942793675",
     "nisi": "https://cdn.discordapp.com/attachments/558750531028385792/742161211101282384/unknown.png",
+    "akochan": "https://pathofhouou.blogspot.com/2020/08/training-tool-ako-chan-reviewer.html",
+    "ura": "https://pathofhouou.blogspot.com/2020/08/analysis-ura-rates-by-unique-tiles-in.html",
+    "kabe": "https://pathofhouou.blogspot.com/2020/07/guideanalysis-defense-techniques-kabe.html",
+    "aidayonken": "https://pathofhouou.blogspot.com/2020/07/guide-defense-techniques-aida-yon-ken.html",
+    "winrate": "https://docs.google.com/spreadsheets/d/1x1CYlIPYTeOodGY4bmPevlbyeZOIcmHICcQaoSjHJEk/edit#gid=1942793675",
+    "dealinrate": "https://pathofhouou.blogspot.com/2020/05/analysis-tile-deal-in-rates-by-live-suji.html",
+    "kuinobashi": "https://pathofhouou.blogspot.com/2020/05/guide-defense-techniques-kuinobashi.html",
+    "sotogawa": "https://pathofhouou.blogspot.com/2020/07/analysis-sotogawa-effectiveness-by-turn.html",
 }
 
 const aliases = {
@@ -88,5 +96,6 @@ const aliases = {
     "count": "countingsuji",
     "sujicounting": "countingsuji",
     "call": "calling",
-    "winrates": "winrate"
+    "winrates": "winrate",
+    "dealinrates": "dealinrate"
 }
