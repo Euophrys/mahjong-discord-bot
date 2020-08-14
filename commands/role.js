@@ -1,7 +1,7 @@
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let viewerRole = message.guild.roles.get(roles.viewer);
+    let viewerRole = message.guild.roles.find(r => r.id === roles.viewer);
 
     if(!viewerRole) {
         return sendResponse(message, `That command isn't supported in this server.`);
@@ -18,7 +18,7 @@ module.exports = message => {
         return sendResponse(message, "The valid roles you can request are Viewer, 7447LFG, MajsoulLFG, and AutotableLFG.")
     }
 
-    let requestedRole = message.guild.roles.get(roles[request]);
+    let requestedRole = message.guild.roles.find(r => r.id === roles[request]);
 
     if(message.member.roles.has(requestedRole.id)) {
         message.member.roles.remove(requestedRole).catch(console.error);

@@ -1,7 +1,7 @@
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let viewerRole = message.guild.roles.get("670274611388219402");
+    let viewerRole = message.guild.roles.find(r => r.id === "670274611388219402");
 
     if(!viewerRole) {
         return sendResponse(message, `That command isn't supported in this server.`);
