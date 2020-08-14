@@ -1,4 +1,5 @@
 const request = require("request");
+const QuickChart = require("quickchart-js");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const { MessageAttachment } = require("discord.js")
@@ -82,25 +83,15 @@ module.exports = (message, client) => {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
 
-        let postOptions = {
-            uri: "https://quickchart.io/chart/create",
-            headers: {'content-type' : 'application/json'},
-            method: "POST",
-            json: {
-                backgroundColor: "white",
-                width: 700,
-                height: 400,
-                format: "png",
-                chart: graphData,
-                timeout: 10000
-            }
-        };
-        request(postOptions, (err, res, body) => {
-            if(err) {
-                return sendDeletableResponse(message, `I got this error while making the chart: ${err}`);
-            }
+        const chart = new QuickChart()
+            .setHeight(400)
+            .setWidth(700)
+            .setFormat("png")
+            .setBackgroundColor("white")
+            .setConfig(graphData);
 
-            return sendResponse(message, body.url);
-        })
+        chart.getBinary()
+            .then((buffer) => sendResponse(message, new MessageAttachment(buffer)))
+            .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
     });
 };
