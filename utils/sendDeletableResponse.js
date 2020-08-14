@@ -17,7 +17,7 @@ module.exports = (message, response) => {
                     const userReactions = msg.reactions.cache.filter(reaction => reaction.users.cache.has("629290905723076609"));
                     try {
                         for (const reaction of userReactions.values()) {
-                            await reaction.users.remove("629290905723076609");
+                            reaction.users.remove("629290905723076609");
                         }
                     } catch (error) {
                         console.log('Failed to remove reactions.');
