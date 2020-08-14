@@ -21,10 +21,10 @@ module.exports = message => {
     let requestedRole = message.guild.roles.get(roles[request]);
 
     if(message.member.roles.has(requestedRole.id)) {
-        message.member.removeRole(requestedRole).catch(console.error);
+        message.member.roles.remove(requestedRole).catch(console.error);
         message.react("❌");
     } else {
-        message.member.addRole(requestedRole).catch(console.error);
+        message.member.roles.add(requestedRole).catch(console.error);
         message.react("✅");
     }
 }

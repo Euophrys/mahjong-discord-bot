@@ -12,10 +12,10 @@ module.exports = message => {
     }
 
     if(message.member.roles.has(viewerRole.id)) {
-        message.member.removeRole(viewerRole).catch(console.error);
+        message.member.roles.remove(viewerRole).catch(console.error);
         message.react("❌");
     } else {
-        message.member.addRole(viewerRole).catch(console.error);
+        message.member.roles.add(viewerRole).catch(console.error);
         message.react("✅");
     }
 }

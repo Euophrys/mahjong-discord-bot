@@ -95,7 +95,7 @@ module.exports = (client, message) => {
     try {
       return commands[command](message, client);
     } catch (e) {
-      sendDeletableResponse(message, e.message);
+      sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.message);
     }
   }
 };

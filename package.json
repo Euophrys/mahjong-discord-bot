@@ -16,7 +16,7 @@
   "dependencies": {
     "@discordjs/uws": "^10.149.0",
     "bufferutil": "^4.0.1",
-    "discord.js": "^11.6.4",
+    "discord.js": "^12.2.0",
     "dotenv": "^7.0.0",
     "erlpack": "github:discordapp/erlpack",
     "js-levenshtein": "^1.1.6",
