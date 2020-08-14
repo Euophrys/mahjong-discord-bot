@@ -90,7 +90,7 @@ module.exports = (message, client) => {
             .setBackgroundColor("white")
             .setConfig(graphData);
 
-        chart.getBinary()
+        chart.toBinary()
             .then((buffer) => sendResponse(message, new MessageAttachment(buffer)))
             .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
     });
