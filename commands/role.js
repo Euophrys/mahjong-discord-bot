@@ -20,7 +20,7 @@ module.exports = message => {
 
     let requestedRole = message.guild.roles.resolve(roles[request]);
 
-    if(message.member.roles.has(requestedRole.id)) {
+    if(message.member.roles.cache[requestedRole.id]) {
         message.member.roles.remove(requestedRole).catch(console.error);
         message.react("❌");
     } else {
