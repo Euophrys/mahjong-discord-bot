@@ -2,7 +2,7 @@ const request = require("request");
 const QuickChart = require("quickchart-js");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
-const { Attachment } = require("discord.js")
+const { MessageAttachment } = require("discord.js")
 const tenhouRegex = /\/\?log=(.+?)[&\n\b]/;
 
 module.exports = (message, client) => {
