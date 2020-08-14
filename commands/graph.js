@@ -91,7 +91,10 @@ module.exports = (message, client) => {
             .setConfig(graphData);
 
         chart.toBinary()
-            .then((buffer) => message.channel.send(new MessageAttachment(buffer)))
+            .then((buffer) => {
+                console.log(buffer)
+                message.channel.send(new MessageAttachment(buffer))
+            })
             .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
     });
 };
