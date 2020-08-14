@@ -14,12 +14,7 @@ module.exports = (message, response) => {
             msg.awaitReactions(reactionFilter, { max: 1, time: 20000, errors: ['time'] })
                 .then(collected => msg.delete())
                 .catch(collected => {
-                    const reaction = msg.reactions.get('❌');
-                    try {
-                        reaction.remove('629290905723076609');
-                    } catch (error) {
-                        console.log('Failed to remove reaction.');
-                    }
+                    msg.reactions.removeAll().catch(error => console.log(error))
                 });
         })
     }, 250);
