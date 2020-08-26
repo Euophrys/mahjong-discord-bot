@@ -498,5 +498,11 @@ const aliases = {
     "yaochuuhai": "yaochuu",
     "threechainedtriplets": "sanrenkou",
     "iipinraoyue": "iipinmoyue",
-    "iitonmoyue": "iipinmoyue"
+    "iitonmoyue": "iipinmoyue",
+    "man": "manzu",
+    "m": "manzu",
+    "sou": "souzu",
+    "s": "souzu",
+    "pin": "pinzu",
+    "p": "pinzu"
 }
