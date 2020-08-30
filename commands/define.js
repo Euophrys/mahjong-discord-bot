@@ -327,7 +327,7 @@ const definitions = {
     "sanchahou": "Sanchahou is an abortive draw that happens when three players call ron on the same tile. Majsoul doesn't use this rule. Sometimes, when a double ron is called, the third player has to reveal their hand to verify that a triple ron wouldn't have happened.",
     "suukaikan": "Suukaikan is an abortive draw that happens when there are four kans declared by different players. If one player calls all four, they are in suukantsu tenpai, and the game continues.",
     "yakuman": "A yakuman is the highest limit a hand can get. As a non-dealer, it's worth 32000 points, and as dealer, it's worth 48000. You get this if you have 13+ hand (kazoe yakuman), or a certain named yakuman, such as Kokushi Musou.",
-    "chii": "A chii is a call where you take a tile from the player to your left in order to finish a run. You always place the called tile on the left side, so it might look like <:c4s:667035333640192061><:3s:466437922258681869><:5s:466437922258812929>",
+    "chii": "A chii is a call where you take a tile from the player to your left in order to finish a run. You always place the called tile on the left side, so it might look like <:c4s:667035333640192061><:3s:466437922258681869><:5s:466437922258812929>. Chii could also be used as the word for 'seven' in Mahjong, such as in chiitoitsu, Seven Pairs.",
     "pon": "A pon is a call where you take a tile a player just discarded to finish a triplet. You place the called tile on the left if you called it from the player to your left <:c7z:667035333648449607><:7z:466437922279784469><:7z:466437922279784469>, in the middle if you called it from the player across <:7z:466437922279784469><:c7z:667035333648449607><:7z:466437922279784469>, and on the right if you called it from the player to your right <:7z:466437922279784469><:7z:466437922279784469><:c7z:667035333648449607>",
     "kan": "A kan is a call where you either show that you have four of a kind (closed kan / ankan, looks like <:tileBack:466437984216940544><:3s:466437922258681869><:3s:466437922258681869><:tileBack:466437984216940544>) or you take a tile a player just discarded to complete a four of a kind (daiminkan, looks like a longer pon), or you add a tile you just drew to a pon you've already made (shouminkan / added kan, looks like a pon with two sideways tiles on top of each other). When you do this, you draw a new tile from the end of the deadwall as a replacement. If it's a closed kan, you also immediately reveal a new dora indicator, but if it's an open or added kan, the new indicator is revealed after you discard.",
     "mangan": "A mangan is a hand worth 8000 points as a non-dealer, or 12000 points as the dealer. You score a mangan if you have 5 han, or 4 han 40+ fu, or 3 han 70+ fu. A counted mangan, kiriage mangan, is 4 han 30 fu or 3 han 60 fu, which is worth 7700 ron 7900 tsumo as nondealer. Some rulesets round this up to 8000 for simplicity.",
@@ -372,6 +372,18 @@ const definitions = {
     "chiiten": "Chiiten can be used in a couple ways. It could refer to an iishanten that can call chii to get to tenpai, or it could refer to the actual act of calling chii to get tenpai.",
     "kataagari": "Kataagari is when the hand can only win on some tiles. It's similar to atozuke, but only refers to the final hand shape.",
     "poncat": "Poncat refers to a player who calls a lot. It comes from the lower ranks of Mahjong Soul, where many players use the character Ichihime, a catgirl, and call with wild abandon as if it were Chinese Mahjong.",
+    "doubleriichi": "Double Riichi is a yaku awarded for declaring riichi on your first discard, as long as nobody has made any calls. It's worth 2 han instead of the 1 han from a regular riichi. In some rulesets, it's 1 han but stacks with riichi instead of replacing it.",
+    "sanmentan": "A sanmentan shape is a three-sided tanki wait, like an even longer nobetan. It's formed with seven tiles in a row, such as <:2p:466437922669985823><:3p:466437922426716161><:4p:466437922401550337><:5p:466437922732769290><:6p:466437922393030657><:7p:466437922980102144><:8p:466437922380316683>. This one waits on 258.",
+    "jigoku": "A jigoku wait is known as a hell wait in English. In modern times, it refers to when your wait only has one possible out, such as a tanki with 2 visible in the discards.",
+    "ii": "Ii is the word for 'one' in Mahjong, such as iishanten, 1-shanten. It could also be the Japanese word for 'good.'",
+    "ryan": "Ryan is the word for 'two' in Mahjong, such as in ryanshanten, 2-shanten.",
+    "san": "San is the word for 'three' in Japanese, such as in sansou, 3 of bamboo. It's also a polite honorific added to the end of names.",
+    "suu": "Suu is the word for 'four' in Mahjong, such as in suuankou, Four Concealed Triplets.",
+    "uu": "Uu is the word for 'five' in Mahjong, such as in uumensai, Five Suits Collected.",
+    "rou": "Rou is the word for 'six' in Mahjong, such as in saburo, a three-six wait.",
+    "paa": "Paa is the word for 'eight' in Mahjong, such as in paarenchan, Eight Repeats.",
+    "kyuu": "Kyuu is the word for 'nine' in Mahjong, such as in kyuushukyuuhai, Nine Types Nine Tiles.",
+    "jyuu": "Jyuu is the word for 'ten' in Japanese, such as in kokushi musou jyuusanmen machi, Thirteen Orphans Thirteen-Sided Wait",
 };
 
 const aliases = {
@@ -504,5 +516,10 @@ const aliases = {
     "sou": "souzu",
     "s": "souzu",
     "pin": "pinzu",
-    "p": "pinzu"
+    "p": "pinzu",
+    "daburi": "doubleriichi",
+    "daburii": "doubleriichi",
+    "shiisuu": "shiisuupuutaa",
+    "shiisan": "shiisanpuutaa",
+    "hellwait": "jigoku",
 }
