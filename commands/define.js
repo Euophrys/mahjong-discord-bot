@@ -347,7 +347,7 @@ const definitions = {
     "yaochuu": "Yaochuuhai are the terminal and honor tiles. Ones, nines, winds, and dragons.",
     "aidayonken": "An aida yon ken is when you see two tiles in your opponent's discards with a gap of four tiles between them, for example, 2 and 7. The enclosed ryanmen wait is slightly more dangerous in this case (3-6).",
     "7447": "7447 is the custom Tenhou lobby that is used for friendly matches in the English community.",
-    "senki": "I don't know just read this: <https://www.mahjonggem.com/blog/2019/7/23/senki-suji>",
+    "senki": "Senki suji is the suji two away from a discard. For example, with a 1 discarded, the senki suji would be 3-6. This comes from a player having a 14 shape, cutting the 1, then drawing a 5 to make a ryanmen. This is very minor and not worth thinking about.",
     "ikasama": "Ikasama refers to cheating.",
     "tengo": "Tengo is a gambling rate, where every 1000 points is worth 50 yen.",
     "tenpin": "Tenpin is a gambling rate, where every 1000 points is worth 100 yen.",
