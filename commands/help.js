@@ -53,5 +53,6 @@ const helps = {
     "translation": "Did someone send a message with several strange terms? Copy paste it after a `!translate` call and I'll replace anything I know to make it easier to follow.",
     "english": "Did someone send a message with several strange terms? Copy paste it after a `!translate` call and I'll replace anything I know to make it easier to follow.",
     "score": "The score command has two uses. First, you can provide a han and fu value to have it converted to points. You can also specify dealer, or add aotenjou to ignore limiting hands. Second, if you provide a single number, I'll assume it's a point difference and tell you what hands you need minimum to overcome it. Add dealer for dealer scores, or common to ignore fu values over 40.",
-    "graph": "I can get a graph that shows the point changes that happened in a Tenhou replay if you give me the URL!"
+    "graph": "I can get a graph that shows the point changes that happened in a Tenhou replay if you give me the URL!",
+    "bubblewrap": "I'll individually spoiler a full set of tiles. Reveal them one by one and try to get a complete hand!"
 }

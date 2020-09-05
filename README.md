@@ -35,3 +35,6 @@ To start, you can have Natsuki introduce herself by saying `!explain yourself`, 
 * `!score <han> <fu> <dealer> <ron|tsumo> <aotenjou>` - Natsuki will convert the han and fu to a score with any of the modifiers. Dealer to change it to a dealer score, ron/tsumo to specify one out, aotenjou to remove the limiting hands.
 * `!score <value> <dealer> <common>` - Natsuki will tell you what hand is required to overcome the given point difference. Use "common" to ignore fu values higher than 40.
 * `!graph <url>` - Natsuki will fetch a graph showing the point changes that happened in a Tenhou replay. Alias: `!chart`
+* `!bubblewrap` - Natsuki will shuffle a full set of tiles and send them individually spoilered, so you can click on them one by one to reveal them.
+
+![Bubblewrap Example](./img/bubblewrap.png)
