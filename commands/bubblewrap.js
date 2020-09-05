@@ -20,7 +20,7 @@ module.exports = message => {
 
     tiles = shuffle(tiles);
     
-    let messages = ["\n", "\n"]
+    let messages = ["\u200c\n", "\u200c\n"]
 
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 4; j++) {
