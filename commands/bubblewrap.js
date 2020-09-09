@@ -20,7 +20,8 @@ module.exports = message => {
 
     tiles = shuffle(tiles);
     
-    let messages = ["", ""]
+    const intro = `I got ${hands[~~(Math.pow(Math.random(), 2) * 4 + 0.5)]} after ${Math.floor(18 + Math.random() * 15)}.\n`
+    let messages = [intro, ""]
 
     for (let i = 0; i < 2; i++) {
         for (let j = 0; j < 4; j++) {
@@ -35,6 +36,8 @@ module.exports = message => {
         .then((message) => message.channel.send(messages[1]))
         .catch(console.log);
 }
+
+const hands = ["chiitoi", "a normal hand", "pinfu", "nothing", "kokushi"];
 
 function shuffle(a) {
     var j, x, i;
