@@ -126,7 +126,7 @@ module.exports = (message, client) => {
     }
 
     if (shanten === 1) {
-        ukeire += "* Resulting in good wait tenpai"
+        ukeire += "* Resulting in 5+ tile tenpai"
     }
 
     response += ukeire;
