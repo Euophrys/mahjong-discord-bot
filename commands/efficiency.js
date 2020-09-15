@@ -186,11 +186,11 @@ function filterBadUkeire(hand, groups, remainingTiles) {
             let tile = tiles[j];
             hand[tile]++;
 
-            let ukeire = calculateDiscardUkeire(hand, remainingTiles, calculateStandardShanten, 0);
+            let ukeire = calculateDiscardUkeire(hand, adjustedRemainingTiles, calculateStandardShanten, 0);
             let bestUkeire = Math.max(...ukeire.map((u) => u.value));
 
             if (bestUkeire <= 4) {
-                groups[i].good -= remainingTiles[tile];
+                groups[i].good -= adjustedRemainingTiles[tile];
             } else {
                 groups[i].tiles.splice(groups[i].tiles.indexOf(tile), 1);
                 groups[i].goodTiles.push(tile);
