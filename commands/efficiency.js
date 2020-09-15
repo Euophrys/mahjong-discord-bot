@@ -188,6 +188,7 @@ function filterBadUkeire(hand, groups, remainingTiles) {
 
             let ukeire = calculateDiscardUkeire(hand, adjustedRemainingTiles, calculateStandardShanten, 0);
             let bestUkeire = Math.max(...ukeire.map((u) => u.value));
+            console.log(`Discard ${groups[i].discards[0]} draw ${tile} bestUkeire ${bestUkeire}`);
 
             if (bestUkeire <= 4) {
                 groups[i].good -= adjustedRemainingTiles[tile];
