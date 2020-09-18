@@ -84,6 +84,7 @@ const links = {
     "urasan": "https://cdn.discordapp.com/attachments/605624705184956447/730473247941984256/no_more_urasan.png",
     "erzzy": "https://cdn.discordapp.com/attachments/607685453218447376/731597828996071504/unknown.png",
     "promotion": "https://cdn.discordapp.com/attachments/150412836500275200/742648950112124928/20190806184127.jpg",
+    "shortcut": "https://cdn.discordapp.com/attachments/749368891561738420/749788250477953034/17e1ff61d645259967ee84cf9f5614965863e832dee4576311fa4397f33db5d5.png",
 }
 
 const aliases = {
