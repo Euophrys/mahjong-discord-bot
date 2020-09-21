@@ -1,7 +1,7 @@
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let viewerRole = message.guild.roles.find(r => r.id === "670274611388219402");
+    let viewerRole = message.guild.roles.resolve("670274611388219402");
 
     if(!viewerRole) {
         return sendResponse(message, `That command isn't supported in this server.`);
@@ -11,7 +11,7 @@ module.exports = message => {
         return sendResponse(message, `I can't figure out who you are. Is your status set to Invisible?`);
     }
 
-    if(message.member.roles.has(viewerRole.id)) {
+    if(message.member.roles.cache.has(viewerRole.id)) {
         message.member.roles.remove(viewerRole).catch(console.error);
         message.react("❌");
     } else {
