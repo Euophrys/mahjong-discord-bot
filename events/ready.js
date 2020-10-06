@@ -18,7 +18,7 @@ module.exports = client => {
       var winner2 = game.teams[Math.floor(Math.random() * game.teams.length)];
       var teamsString = game.teams.slice(0, -1).join(", ") + ', and ' + game.teams.slice(-1);
       var message = `Hey, <@&670274611388219402>! Day ${i + 1} of M-League between ${teamsString} is now live! Come watch at <https://abema.tv/now-on-air/mahjong> (or catch the VoD afterwards)! My money is on ${winner1} for the first hanchan, and ${winner2} for the second. Who do you think will win today?`;
-      client.channels.fetch("669652926037360651").send(message).then((msg) => {
+      client.channels.resolve("669652926037360651").send(message).then((msg) => {
         for(let i = 0; i < game.teams.length; i++) {
           msg.react(mleague.teams[game.teams[i]].emoji);
         }
