@@ -4,6 +4,7 @@ const mleague = require('../utils/mleague');
 module.exports = client => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log(`Present in ${client.guilds.cache.size} servers.`);
+  client.guilds.cache.each(guild => console.log(`${guild.name} (${guild.memberCount})`));
   
   let now = new Date();
   let games = mleague.games;
