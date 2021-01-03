@@ -2,7 +2,7 @@ const request = require("request");
 const QuickChart = require("quickchart-js");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
-const { MessageAttachment } = require("discord.js")
+const { MessageAttachment } = require("discord.js");
 const tenhouRegex = /\/\?log=(.+?)[&\n\b]/;
 
 module.exports = (message, client) => {
@@ -19,7 +19,7 @@ module.exports = (message, client) => {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:65.0) Gecko/20100101 Firefox/65.0'
         },
         timeout: 10000
-    }
+    };
     
     request(options, (err, res, body) => {
         if(err) {
@@ -52,19 +52,30 @@ module.exports = (message, client) => {
                     borderColor: "red"
                 }]
             }
-        }
+        };
         
         let matches = 0;
         let match;
-        const nameRegex = /n\d="(.+?)"/g
+        const nameRegex = /n\d="(.+?)"/g;
         while (match = nameRegex.exec(body)) {
             graphData.data.datasets[matches].label = decodeURIComponent(match[1]);
             matches++;
             if (matches == 4) break;
         }
 
+        const initRegex = /<INIT.+?ten="(.+?)"/;
+        match = initRegex.exec(body);
+        if (match !== null) {
+            graphData.data.labels.push(0);
+            let scores = match[1].split(",");
+            for (let i = 0; i < scores.length; i++) {
+                let score = parseInt(scores[i]) * 100;
+                graphData.data.datasets[i].data.push(score);
+            }
+        }
+        
         matches = 0;
-        const endRegex = /[AGARI|RYUUKYOKU].+?sc="(.+?)"/g
+        const endRegex = /[AGARI|RYUUKYOKU].+?sc="(.+?)"/g;
         while(match = endRegex.exec(body)) {
             matches++;
             graphData.data.labels.push(matches);
@@ -80,7 +91,7 @@ module.exports = (message, client) => {
         }
 
         if (matches == 0) {
-            return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
+            return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?");
         }
 
         const chart = new QuickChart()
