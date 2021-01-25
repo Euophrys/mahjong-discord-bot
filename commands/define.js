@@ -384,6 +384,17 @@ const definitions = {
     "paa": "Paa is the word for 'eight' in Mahjong, such as in paarenchan, Eight Repeats.",
     "kyuu": "Kyuu is the word for 'nine' in Mahjong, such as in kyuushukyuuhai, Nine Types Nine Tiles.",
     "jyuu": "Jyuu is the word for 'ten' in Japanese, such as in kokushi musou jyuusanmen machi, Thirteen Orphans Thirteen-Sided Wait",
+    "senten": "A senten is a hand which scores 1000 points.",
+    "urasan": "Urasan means three ura dora.",
+    "nashinashi": "Nashi nashi is shorthand for a ruleset where the two main rules are disallowed. On Tenhou, this would be kuitan nashi and aka nashi. Sometimes a nashi will refer to atozuke nashi.",
+    "mochimochi": "Mochimochi is when two players are both waiting on the same paired yakuhai. For example, if both players had <:7z:466437922279784469><:7z:466437922279784469> in their hand.",
+    "moshimoshi": "Moshimoshi is what you say when you answer the phone to make sure the other person isn't a fox.",
+    "notenbappu": "Noten bappu refers to the payments that players who aren't tenpai at the end of the round have to pay.",
+    "fuuro": "A fuuro is a called set.",
+    "erb": "<:erb:667161389143687169>",
+    "shory": "My future father-in-law.",
+    "hai": "Hai is the japanese word for 'tile.' It will sometimes be 'pai' due to rendaku.",
+    "rendaku": "You're gonna need to ask a Japanese teacher about that one."
 };
 
 const aliases = {
@@ -522,4 +533,9 @@ const aliases = {
     "shiisuu": "shiisuupuutaa",
     "shiisan": "shiisanpuutaa",
     "hellwait": "jigoku",
+    "sanmen": "sanmenchan",
+    "nukidora": "nuki",
+    "chitoi": "chiitoitsu",
+    "tsubame": "tsubamegaeshi",
+    "pai": "hai",
 }

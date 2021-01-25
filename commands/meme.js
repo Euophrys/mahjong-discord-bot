@@ -49,7 +49,6 @@ const links = {
     "damage": "https://cdn.discordapp.com/attachments/150412836500275200/631874802310709299/1560715263727.png",
     "sand": "https://cdn.discordapp.com/attachments/150412836500275200/631874748661628929/1445832212953.png",
     "ippan": "https://cdn.discordapp.com/attachments/150412836500275200/631874550774235146/ippan.gif",
-    "bronze": "https://cdn.discordapp.com/attachments/150412836500275200/631874550774235146/ippan.gif",
     "occult": "https://cdn.discordapp.com/attachments/150412836500275200/631878225370415119/316ain-1.jpg",
     "mistakes": "https://cdn.discordapp.com/attachments/150412836500275200/631885275605368880/image0.jpg",
     "akaari": "https://cdn.discordapp.com/attachments/150412836500275200/631885302298050561/image0.jpg",
@@ -104,4 +103,6 @@ const aliases = {
     "dan": "corak",
     "shark": "sharks",
     "allwhite": "cosmos",
+    "bronze": "ippan",
+    "houton": "ippan"
 }
