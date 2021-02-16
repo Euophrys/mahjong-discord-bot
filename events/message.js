@@ -19,6 +19,7 @@ const score = require('../commands/score');
 const graph = require('../commands/graph');
 const role = require('../commands/role');
 const bubblewrap = require('../commands/bubblewrap');
+const gacha = require('../commands/gacha');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
@@ -73,7 +74,8 @@ commands = {
   "!graph": graph,
   "!chart": graph,
   "!role": role,
-  "!bubblewrap": bubblewrap
+  "!bubblewrap": bubblewrap,
+  "!gacha": gacha
 };
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
