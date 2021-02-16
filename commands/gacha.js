@@ -11,7 +11,7 @@ module.exports = message => {
         let roll = Math.random();
 
         if (i == 9 && pity) {
-            roll = Math.min(0.85, roll);
+            roll = 0.85;
         }
 
         if (roll < 0.24) {
@@ -26,6 +26,7 @@ module.exports = message => {
             // purple
             result += purples[Math.floor(Math.random() * purples.length)];
             result += " 🟪";
+            pity = false;
         } else if (roll < 0.95) {
             // decoration
             result += decorations[Math.floor(Math.random() * decorations.length)];
@@ -43,10 +44,6 @@ module.exports = message => {
                 result = "☄️ " + result
                 hasCharacter = true;
             }
-        }
-
-        if (roll >= 0.8) {
-            pity = false
         }
 
         if (i < 9) {
@@ -74,9 +71,9 @@ const decorations = [
     "Winning - Flame", "Winning - Cyclone", "Winning - Sakura", "Winning - Dark Flame", "Winning - Firestorm", "Winning - Laser Blast", "Winning - Dancing Rose", "Winning - K.O.", "Winning - Dragon Scale", "Winning - Screaming Ghost",
     "Riichi - Blue Flame", "Riichi - Ice", "Riichi - Fire", "Riichi - Phantom", "Riichi - Feather", "Riichi - \"Beep\"!", "Riichi - Dragon", "Riichi - Bat Swarm", 
     "Tablecloth - Green", "Tablecloth - Violet", "Tablecloth - Lavender", "Tablecloth - Melon", 
-    "Tile Back - Yellow", "Tile Back - Green", "Tile Back - Red", "Tile Back - Bumpkin",
+    "Tile Back - Yellow <:tileBack:466437984216940544>", "Tile Back - Green <:tileBack:466437984216940544>", "Tile Back - Red <:tileBack:466437984216940544>", "Tile Back - Bumpkin <:tileBack:466437984216940544>",
     '"Serious Game" 🎵', '"Intensive Battle" 🎵', '"Charge" 🎵', '"On The Edge" 🎵',
-    "Ginger Cat Paw"
+    "Ginger Cat Paw <:NoPonCats:667155145607479296>"
 ]
 const girls = [
     "Kana Fujita", "Chiori Mikami", "Mai Aihara", "Nadeshiko", "Yui Yagi", "Riu Kujou", "Xenia", "Kaavi",
