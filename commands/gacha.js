@@ -12,12 +12,15 @@ module.exports = message => {
         if (roll < 0.24) {
             // green
             result += greens[Math.floor(Math.random() * greens.length)];
+            result += " 🟩";
         } else if (roll < 0.75) {
             // blue
             result += blues[Math.floor(Math.random() * blues.length)];
+            result += " 🟦";
         } else if (roll < 0.8) {
             // purple
             result += purples[Math.floor(Math.random() * purples.length)];
+            result += " 🟪";
         } else if (roll < 0.95) {
             // decoration
             result += decorations[Math.floor(Math.random() * decorations.length)];
@@ -28,6 +31,8 @@ module.exports = message => {
             } else {
                 result += girls[Math.floor(Math.random() * girls.length)];
             }
+
+            result += " ✨";
 
             if (!hasCharacter) {
                 result = "☄️ " + result
@@ -56,12 +61,12 @@ const purples = [
     "Powerful Console", "Valuable Goblet", "Teddy Bear XXL", "Gorgeous Dress"
 ]
 const decorations = [
-    "Riichi Bet - Fish", "Riichi Bet - Green Onion", "Riichi Bet - Bone", "Riichi Bet - Crimson", "Riichi Bet - 24K Gold", "Riichi Bet - Sever", "Riichi Bet - Ice Cream", "Riichi Bet - Impish Bat",   
+    "Riichi Bet - Fish <:pts1000:466438974160764928>", "Riichi Bet - Green Onion <:pts1000:466438974160764928>", "Riichi Bet - Bone <:pts1000:466438974160764928>", "Riichi Bet - Crimson <:pts1000:466438974160764928>", "Riichi Bet - 24K Gold <:pts1000:466438974160764928>", "Riichi Bet - Sever <:pts1000:466438974160764928>", "Riichi Bet - Ice Cream <:pts1000:466438974160764928>", "Riichi Bet - Impish Bat <:pts1000:466438974160764928>",   
     "Winning - Flame", "Winning - Cyclone", "Winning - Sakura", "Winning - Dark Flame", "Winning - Firestorm", "Winning - Laser Blast", "Winning - Dancing Rose", "Winning - K.O.", "Winning - Dragon Scale", "Winning - Screaming Ghost",
     "Riichi - Blue Flame", "Riichi - Ice", "Riichi - Fire", "Riichi - Phantom", "Riichi - Feather", "Riichi - \"Beep\"!", "Riichi - Dragon", "Riichi - Bat Swarm", 
     "Tablecloth - Green", "Tablecloth - Violet", "Tablecloth - Lavender", "Tablecloth - Melon", 
     "Tile Back - Yellow", "Tile Back - Green", "Tile Back - Red", "Tile Back - Bumpkin",
-    '"Serious Game"', '"Intensive Battle"', '"Charge"', '"On The Edge"',
+    '"Serious Game" 🎵', '"Intensive Battle" 🎵', '"Charge" 🎵', '"On The Edge" 🎵',
     "Ginger Cat Paw"
 ]
 const girls = [
