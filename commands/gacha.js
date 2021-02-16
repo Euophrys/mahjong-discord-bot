@@ -5,9 +5,14 @@ module.exports = message => {
 
     let result = "Here are the results of your ten rolls: ";
     let hasCharacter = false;
+    let pity = true;
 
     for(i = 0; i < 10; i++) {
         let roll = Math.random();
+
+        if (i == 9 && pity) {
+            roll = Math.min(0.85, roll);
+        }
 
         if (roll < 0.24) {
             // green
@@ -38,6 +43,10 @@ module.exports = message => {
                 result = "☄️ " + result
                 hasCharacter = true;
             }
+        }
+
+        if (roll >= 0.8) {
+            pity = false
         }
 
         if (i < 9) {
