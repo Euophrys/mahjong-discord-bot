@@ -18,7 +18,7 @@ module.exports = message => {
         let roll = Math.random();
 
         if (i == 9 && pity) {
-            roll = 0.85;
+            roll = 0.78;
         }
 
         if (roll < 0.24) {
