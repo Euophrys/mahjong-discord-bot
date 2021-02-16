@@ -1,9 +1,16 @@
 const sendResponse = require("../utils/sendResponse");
 
+const starting_messages = [
+    "Here are the results of your ten rolls: ",
+    "That'll be thirty dollars. ",
+    "Items not redeemable in-game. ",
+    "Not indicative of any items you may or may not get in-game. "
+] 
+
 module.exports = message => {
     let roll_boys = message.content.indexOf("bamboo") > 0;
 
-    let result = "Here are the results of your ten rolls: ";
+    let result = starting_messages[Math.floor(Math.random() * starting_messages.length)];
     let hasCharacter = false;
     let pity = true;
 
@@ -68,9 +75,9 @@ const purples = [
 ]
 const decorations = [
     "Riichi Bet - Fish <:pts1000:466438974160764928>", "Riichi Bet - Green Onion <:pts1000:466438974160764928>", "Riichi Bet - Bone <:pts1000:466438974160764928>", "Riichi Bet - Crimson <:pts1000:466438974160764928>", "Riichi Bet - 24K Gold <:pts1000:466438974160764928>", "Riichi Bet - Sever <:pts1000:466438974160764928>", "Riichi Bet - Ice Cream <:pts1000:466438974160764928>", "Riichi Bet - Impish Bat <:pts1000:466438974160764928>",   
-    "Winning - Flame", "Winning - Cyclone", "Winning - Sakura", "Winning - Dark Flame", "Winning - Firestorm", "Winning - Laser Blast", "Winning - Dancing Rose", "Winning - K.O.", "Winning - Dragon Scale", "Winning - Screaming Ghost",
-    "Riichi - Blue Flame", "Riichi - Ice", "Riichi - Fire", "Riichi - Phantom", "Riichi - Feather", "Riichi - \"Beep\"!", "Riichi - Dragon", "Riichi - Bat Swarm", 
-    "Tablecloth - Green", "Tablecloth - Violet", "Tablecloth - Lavender", "Tablecloth - Melon", 
+    "Winning - Flame 🔥", "Winning - Cyclone 🌪️", "Winning - Sakura 🌸", "Winning - Dark Flame 🔥", "Winning - Firestorm 🔥", "Winning - Laser Blast 🚨", "Winning - Dancing Rose 🌹", "Winning - K.O. 🥊", "Winning - Dragon Scale 🐉", "Winning - Screaming Ghost 👻",
+    "Riichi - Blue Flame 🔥", "Riichi - Ice ❄️", "Riichi - Fire 🔥", "Riichi - Phantom 👻", "Riichi - Feather 🪶", "Riichi - \"Beep\"! 🪙", "Riichi - Dragon 🐉", "Riichi - Bat Swarm 🦇", 
+    "Tablecloth - Green 🍽️", "Tablecloth - Violet 🍽️", "Tablecloth - Lavender 🍽️", "Tablecloth - Melon 🍉", 
     "Tile Back - Yellow <:tileBack:466437984216940544>", "Tile Back - Green <:tileBack:466437984216940544>", "Tile Back - Red <:tileBack:466437984216940544>", "Tile Back - Bumpkin <:tileBack:466437984216940544>",
     '"Serious Game" 🎵', '"Intensive Battle" 🎵', '"Charge" 🎵', '"On The Edge" 🎵',
     "Ginger Cat Paw <:NoPonCats:667155145607479296>"
