@@ -1,7 +1,7 @@
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
-    let boys = message.content.indexOf("bamboo") > 0;
+    let roll_boys = message.content.indexOf("bamboo") > 0;
 
     let result = "Here are the results of your ten rolls: ";
     let hasCharacter = false;
@@ -23,7 +23,7 @@ module.exports = message => {
             result += decorations[Math.floor(Math.random() * decorations.length)];
         } else {
             // character
-            if (boys) {
+            if (roll_boys) {
                 result += boys[Math.floor(Math.random() * boys.length)];
             } else {
                 result += girls[Math.floor(Math.random() * girls.length)];
