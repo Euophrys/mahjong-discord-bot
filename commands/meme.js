@@ -86,6 +86,7 @@ const links = {
     "shortcut": "https://cdn.discordapp.com/attachments/749368891561738420/749788250477953034/17e1ff61d645259967ee84cf9f5614965863e832dee4576311fa4397f33db5d5.png",
     "fullstraight": "https://cdn.discordapp.com/attachments/726443529764732939/772375852826099722/how-to-make-a-full-straight.gif",
     "ds4": "https://cdn.discordapp.com/attachments/202201840887136256/789720871447166976/image0.jpg",
+    "shanpes": "https://cdn.discordapp.com/attachments/469490857716875285/811265715758956544/unknown.png",
 }
 
 const aliases = {
@@ -104,5 +105,6 @@ const aliases = {
     "shark": "sharks",
     "allwhite": "cosmos",
     "bronze": "ippan",
-    "houton": "ippan"
+    "houton": "ippan",
+    "shapes": "shanpes"
 }
