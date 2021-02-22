@@ -345,7 +345,7 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
         if (shantenFunction(hand, baseShanten - 1) === baseShanten
             && calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value > baseUkeire) {
             // Find the best tile to cut
-            let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten);
+            let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten).map(u => u.value);
             let bestUkeire = Math.max(discards);
             let bestDiscard = discards.indexOf(bestUkeire);
             console.log(discards);
