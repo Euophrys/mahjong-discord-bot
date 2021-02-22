@@ -82,7 +82,6 @@ module.exports = (message, client) => {
 
         let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value);
         if (upgrades.value > 0) {
-            console.log(upgrades);
             upgrades.tiles = upgrades.tiles.map(o => o.tile);
             response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
         }
@@ -100,7 +99,6 @@ module.exports = (message, client) => {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
             groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value);
-            console.log(groups[i].upgrades);
             groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             handTiles[groups[i].discards[0]]++;
         }
@@ -348,9 +346,6 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
             let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten).map(u => u.value);
             let bestUkeire = Math.max(...discards);
             let bestDiscard = discards.indexOf(bestUkeire);
-            console.log(discards);
-            console.log(bestUkeire);
-            console.log(bestDiscard);
 
             if (addedTile !== bestDiscard) {
                 // Check the ukeire of the hand after cutting the best tile
@@ -359,7 +354,7 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
 
                 if (newUkeire > baseUkeire) {
                     value += remainingTiles[addedTile];
-                    tiles.push({ tile: addedTile, discard: bestDiscard, count: remainingTiles[addedTile], resultingUkeire: newUkeire });
+                    tiles.push({ tile: addedTile, discard: bestDiscard, count: remainingTiles[addedTile] + 1, resultingUkeire: newUkeire });
                 }
 
                 hand[bestDiscard]++;
