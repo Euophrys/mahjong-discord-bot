@@ -95,6 +95,12 @@ module.exports = (message, client) => {
 
     if (shanten === 1) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
+    } else if (shanten === 0) {
+        for (let i = 0; i < groups.length; i++) {
+            handTiles[groups[i].discards[0]]--;
+            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, calculateMinimumShanten, 0, groups[i].value);
+            handTiles[groups[i].discards[0]]++;
+        }
     }
 
     groups = sortGroups(groups);
@@ -105,7 +111,9 @@ module.exports = (message, client) => {
         let group = groups[i];
         
         if (shanten === 1) {
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)}) ${group.upgrades[0]} upgrades (${tilesToEmoji(group.upgrades[1])})\n`;
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
+        } else if (shanten === 0) {
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades[0]} upgrades (${tilesToEmoji(group.upgrades[1])})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
         }
@@ -180,7 +188,6 @@ function filterBadUkeire(hand, groups, remainingTiles) {
 
     for(let i = 0; i < groups.length; i++) {
         hand[groups[i].discards[0]]--;
-        groups[i].upgrades = calculateUkeireUpgrades(hand, adjustedRemainingTiles, calculateStandardShanten, 0, groups[i].value);
         let tiles = groups[i].tiles.slice();
 
         for(let j = 0; j < tiles.length; j++) {
