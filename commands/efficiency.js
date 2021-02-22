@@ -78,11 +78,14 @@ module.exports = (message, client) => {
     // Check just the ukeire of 13 tile hands (or tiles % 3 === 1 hands)
     if (tiles == 13) {
         let ukeire = calculateUkeire(handTiles, remainingTiles, shantenFunction, shanten);
-        response += `Ukeire: ${ukeire.value} (${tilesToEmoji(ukeire.tiles)})\n`;
+        response += `Ukeire: ${ukeire.value} (${tilesToEmoji(ukeire.tiles)})`;
 
         let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value);
-        upgrades.tiles = upgrades.tiles.map(o => o.tile);
-        response += `Upgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
+        if (upgrades.value > 0) {
+            upgrades.tiles = upgrades.tiles.map(o => o.tile);
+            console.log(upgrades);
+            response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
+        }
 
         return sendResponse(message, response);
     }
