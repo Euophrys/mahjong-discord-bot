@@ -359,7 +359,7 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
             }
         }
 
-        convertedHand[addedTile]--;
+        hand[addedTile]--;
         remainingTiles[addedTile]++;
     }
 
