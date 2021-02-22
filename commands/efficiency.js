@@ -82,8 +82,8 @@ module.exports = (message, client) => {
 
         let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value);
         if (upgrades.value > 0) {
-            upgrades.tiles = upgrades.tiles.map(o => o.tile);
             console.log(upgrades);
+            upgrades.tiles = upgrades.tiles.map(o => o.tile);
             response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
         }
 
