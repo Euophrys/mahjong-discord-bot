@@ -353,7 +353,7 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
                 let newUkeire = calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value;
 
                 if (newUkeire > baseUkeire) {
-                    value += remainingTiles[addedTile];
+                    value += remainingTiles[addedTile] + 1;
                     tiles.push({ tile: addedTile, discard: bestDiscard, count: remainingTiles[addedTile] + 1, resultingUkeire: newUkeire });
                 }
 
