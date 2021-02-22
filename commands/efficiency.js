@@ -312,7 +312,7 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
  * @param {number} baseShanten The hand's current shanten, if precalculated.
  * @param {number} shantenOffset The hand's current shanten offset, if precalculated.
  */
-export function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1) {
+function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1) {
     if (baseShanten === -2) {
         baseShanten = shantenFunction(hand);
     }
