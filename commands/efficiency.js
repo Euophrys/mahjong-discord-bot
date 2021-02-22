@@ -99,6 +99,7 @@ module.exports = (message, client) => {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
             groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, calculateMinimumShanten, 0, groups[i].value);
+            groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             console.log(groups[i].upgrades);
             handTiles[groups[i].discards[0]]++;
         }
@@ -114,7 +115,7 @@ module.exports = (message, client) => {
         if (shanten === 1) {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
         } else if (shanten === 0) {
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades[0]} Upgrades (${tilesToEmoji(group.upgrades[1])})\n`;
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades.value} Upgrades (${tilesToEmoji(group.upgrades.tiles)})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
         }
