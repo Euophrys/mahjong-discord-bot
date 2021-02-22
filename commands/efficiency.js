@@ -347,6 +347,11 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
             let bestUkeire = Math.max(...discards);
             let bestDiscard = discards.indexOf(bestUkeire);
 
+            console.log(addedTile);
+            console.log(discards);
+            console.log(bestUkeire);
+            console.log(bestDiscard);
+
             if (addedTile !== bestDiscard) {
                 // Check the ukeire of the hand after cutting the best tile
                 hand[bestDiscard]--;
