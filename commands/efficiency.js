@@ -105,7 +105,7 @@ module.exports = (message, client) => {
         let group = groups[i];
         
         if (shanten === 1) {
-            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)}) ${group.upgrades[0]} upgrades (${tilesToEmoji(group.upgrades[1])})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
         }
@@ -118,7 +118,7 @@ module.exports = (message, client) => {
             let group = groups[i];
 
             if (shanten === 1) {
-                ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
+                ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})  ${group.upgrades[0]} upgrades (${convertTilesToTenhouString(group.upgrades[1])})\n`;
             } else {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
             }
@@ -180,6 +180,7 @@ function filterBadUkeire(hand, groups, remainingTiles) {
 
     for(let i = 0; i < groups.length; i++) {
         hand[groups[i].discards[0]]--;
+        groups[i].upgrades = calculateUkeireUpgrades(hand, adjustedRemainingTiles, calculateStandardShanten, 0, groups[i].value);
         let tiles = groups[i].tiles.slice();
 
         for(let j = 0; j < tiles.length; j++) {
@@ -295,6 +296,64 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
         }
 
         convertedHand[addedTile]--;
+    }
+
+    return {
+        value,
+        tiles
+    };
+}
+
+/**
+ * Calculates how many tiles can improve the ukeire of a hand.
+ * @param {TileCounts} hand The number of each tile in the player's hand.
+ * @param {TileCounts} remainingTiles The number of each tile the player cannot see.
+ * @param {Function} shantenFunction The function to use to calculate shanten
+ * @param {number} baseShanten The hand's current shanten, if precalculated.
+ * @param {number} shantenOffset The hand's current shanten offset, if precalculated.
+ */
+export function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1) {
+    if (baseShanten === -2) {
+        baseShanten = shantenFunction(hand);
+    }
+
+    if (baseUkeire === -1) {
+        baseUkeire = calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value;
+    }
+
+    let value = 0;
+    let tiles = [];
+
+    // Check adding every tile to see if it improves the ukeire
+    for (let addedTile = 1; addedTile < hand.length; addedTile++) {
+        if (remainingTiles[addedTile] === 0) continue;
+        if (addedTile % 10 === 0) continue;
+
+        hand[addedTile]++;
+        remainingTiles[addedTile]--;
+
+        if (shantenFunction(hand, baseShanten - 1) === baseShanten
+            && calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value > baseUkeire) {
+            // Find the best tile to cut
+            let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten);
+            let bestDiscard = evaluateBestDiscard(discards);
+
+            if (addedTile !== bestDiscard) {
+                // Check the ukeire of the hand after cutting the best tile
+                hand[bestDiscard]--;
+                let newUkeire = calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value;
+
+                if (newUkeire > baseUkeire) {
+                    value += remainingTiles[addedTile];
+                    tiles.push({ tile: addedTile, discard: bestDiscard, count: remainingTiles[addedTile], resultingUkeire: newUkeire });
+                }
+
+                hand[bestDiscard]++;
+            }
+        }
+
+        convertedHand[addedTile]--;
+        remainingTiles[addedTile]++;
     }
 
     return {
