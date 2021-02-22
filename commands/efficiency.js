@@ -100,8 +100,8 @@ module.exports = (message, client) => {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
             groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value);
-            groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             console.log(groups[i].upgrades);
+            groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             handTiles[groups[i].discards[0]]++;
         }
     }
@@ -348,6 +348,9 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
             let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten);
             let bestUkeire = Math.max(discards);
             let bestDiscard = discards.indexOf(bestUkeire);
+            console.log(discards);
+            console.log(bestUkeire);
+            console.log(bestDiscard);
 
             if (addedTile !== bestDiscard) {
                 // Check the ukeire of the hand after cutting the best tile
