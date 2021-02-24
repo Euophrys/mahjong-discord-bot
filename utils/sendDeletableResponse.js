@@ -23,6 +23,6 @@ module.exports = (message, response) => {
                         console.log('Failed to remove reactions.');
                     }
                 });
-        })
+        }).catch(console.log);
     }, 250);
 }

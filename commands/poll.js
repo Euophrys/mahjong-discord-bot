@@ -23,7 +23,7 @@ module.exports = message => {
             if (promise == null) {
                 promise = message.react(emoji_id);
             } else {
-                promise = promise.then(() => message.react(emoji_id));
+                promise = promise.then(() => message.react(emoji_id)).catch(console.log);
             }
         }
     }
