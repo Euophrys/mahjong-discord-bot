@@ -63,10 +63,12 @@ module.exports = (message, client) => {
     
     let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
     let shanten = shantenFunction(handTiles);
+    let isComplete = false;
 
     if (shanten === -1) {
         response += "(Complete)\n";
         shanten = 0;
+        isComplete = true;
     }
     else if (shanten === 0) {
         response += "(Tenpai)\n";
@@ -95,7 +97,7 @@ module.exports = (message, client) => {
 
     if (shanten === 1) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
-    } else if (shanten === 0) {
+    } else if (shanten === 0 && !isComplete) {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
             groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value);
@@ -113,7 +115,7 @@ module.exports = (message, client) => {
         
         if (shanten === 1) {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
-        } else if (shanten === 0) {
+        } else if (shanten === 0 && !isComplete) {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades.value} upgrades (${tilesToEmoji(group.upgrades.tiles)})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
@@ -128,7 +130,7 @@ module.exports = (message, client) => {
 
             if (shanten === 1) {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
-            } else if (shanten === 0) {
+            } else if (shanten === 0 && !isComplete) {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades[0]} upgrades (${convertTilesToTenhouString(group.upgrades[1])})\n`;
             }else {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
