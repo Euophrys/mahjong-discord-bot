@@ -21,9 +21,9 @@ module.exports = message => {
             let emoji_id = emoji[i].split(":")[2].split(">")[0];
 
             if (promise == null) {
-                promise = message.react(emoji_id);
+                promise = message.react(emoji_id).catch(console.log);
             } else {
-                promise = promise.then(() => message.react(emoji_id)).catch(console.log);
+                promise = promise.then(() => message.react(emoji_id).catch(console.log)).catch(console.log);
             }
         }
     }
