@@ -153,6 +153,7 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         if (discardUkeire[i].value == 0) continue;
 
         let tiles = discardUkeire[i].tiles.join("");
+        console.log(tiles);
 
         if (!groupsObject[tiles]) {
             groupsObject[tiles] = {
@@ -170,6 +171,7 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
     for (key in groupsObject) {
         if(!groupsObject[key].tiles) continue;
         groups.push(groupsObject[key]);
+        console.log(groupsObject[key])
     }
 
     return groups;
@@ -262,7 +264,6 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
         results[handIndex] = ukeire;
     }
 
-    console.log(results);
     return results;
 }
 
