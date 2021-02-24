@@ -262,6 +262,7 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
         results[handIndex] = ukeire;
     }
 
+    console.log(results);
     return results;
 }
 
@@ -276,10 +277,26 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
     let value = 0;
     let tiles = [];
 
+    let hasManzu = false
+    let hasPinzu = false
+    let hasSouzu = false
+
+    for (let i = 1; i < 10; i++) {
+        if (hand[i] > 0)
+            hasManzu = true;
+        if (hand[i+10] > 0)
+            hasPinzu = true;
+        if (hand[i+20] > 0)
+            hasSouzu = true;
+    }
+
     // Check adding every tile to see if it improves the shanten
     for (let addedTile = 1; addedTile < convertedHand.length; addedTile++) {
         if (remainingTiles[addedTile] === 0) continue;
         if (addedTile % 10 === 0) continue;
+        if (!hasManzu && addedTile > 1 && addedTile < 9) continue;
+        if (!hasPinzu && addedTile > 11 && addedTile < 19) continue;
+        if (!hasSouzu && addedTile > 21 && addedTile < 29) continue;
 
         convertedHand[addedTile]++;
 
