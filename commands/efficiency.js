@@ -82,7 +82,7 @@ module.exports = (message, client) => {
         let ukeire = calculateUkeire(handTiles, remainingTiles, shantenFunction, shanten);
         response += `Ukeire: ${ukeire.value} (${tilesToEmoji(ukeire.tiles)})`;
 
-        let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value);
+        let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value, handActuallyHasTon);
         if (upgrades.value > 0) {
             upgrades.tiles = upgrades.tiles.map(o => o.tile);
             response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
@@ -100,7 +100,7 @@ module.exports = (message, client) => {
     } else if (shanten === 0 && !isComplete) {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
-            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value);
+            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value, handActuallyHasTon);
             groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             handTiles[groups[i].discards[0]]++;
         }
@@ -324,7 +324,7 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
  * @param {number} baseShanten The hand's current shanten, if precalculated.
  * @param {number} shantenOffset The hand's current shanten offset, if precalculated.
  */
-function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1) {
+function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1, handActuallyHasTon = false) {
     if (baseShanten === -2) {
         baseShanten = shantenFunction(hand);
     }
@@ -340,6 +340,7 @@ function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShan
     for (let addedTile = 1; addedTile < hand.length; addedTile++) {
         if (remainingTiles[addedTile] === 0) continue;
         if (addedTile % 10 === 0) continue;
+        if (addedTile === 31 && !handActuallyHasTon) continue;
 
         hand[addedTile]++;
         remainingTiles[addedTile]--;
