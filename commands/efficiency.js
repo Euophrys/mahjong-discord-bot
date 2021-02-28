@@ -97,16 +97,18 @@ module.exports = (message, client) => {
 
     if (shanten === 1) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
-    } else if (shanten === 0 && !isComplete) {
+    }
+
+    groups = sortGroups(groups);
+
+    if (shanten === 0 && !isComplete) {
         for (let i = 0; i < groups.length; i++) {
             handTiles[groups[i].discards[0]]--;
-            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[i].value, handActuallyHasTon);
+            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[0].value, handActuallyHasTon);
             groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
             handTiles[groups[i].discards[0]]++;
         }
     }
-
-    groups = sortGroups(groups);
 
     let ukeire = "";
 
