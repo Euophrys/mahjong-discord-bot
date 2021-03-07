@@ -129,7 +129,7 @@ module.exports = (client, message) => {
       }
     }
   }
-  else if (commands[command]) {
+  else {
     if (conversionRequestRegex.test(lower)) {
       conversionRequestRegex.lastIndex = 0;
       return convert(message);
