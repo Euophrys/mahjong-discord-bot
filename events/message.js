@@ -23,6 +23,7 @@ const gacha = require('../commands/gacha');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
+const majsoul_conversionRequestRegex = /\/(\d+[smzp])+/g;
 
 commands = {
   "!hand": randomHand,
@@ -78,6 +79,30 @@ commands = {
   "!gacha": gacha
 };
 
+majsoul_commands = {
+    "/hand": randomHand,
+    "/random": randomHand,
+    "/tile": randomTile,
+    "/def": define,
+    "/define": define,
+    "/whatis": define,
+    "/d": define,
+    "/efficiency": efficiency,
+    "/eff": efficiency,
+    "/ukeire": efficiency,
+    "/uke": efficiency,
+    "/analyze": efficiency,
+    "/ana": efficiency,
+    "/poll": poll,
+    "/wwyd": poll,
+    "/translate": translate,
+    "/translation": translate,
+    "/english": translate,
+    "/explain": explain,
+    "/help": help,
+    "/score": score,
+}
+
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
 
 module.exports = (client, message) => {
@@ -87,15 +112,31 @@ module.exports = (client, message) => {
   if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
     message.react(reactions[Math.floor(Math.random() * reactions.length)]).catch(console.log);
   }
+  
+  if (message.guild && message.guild.id == "391257802347118592") {
+    if (majsoul_conversionRequestRegex.test(lower)) {
+      majsoul_conversionRequestRegex.lastIndex = 0;
+      return convert(message);
+    }
+      
+    let command = lower.split(" ")[0];
 
-  if (conversionRequestRegex.test(lower)) {
-    conversionRequestRegex.lastIndex = 0;
-    return convert(message);
+    if (majsoul_commands[command]) {
+      try {
+        return majsoul_commands[command](message, client);
+      } catch (e) {
+        sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+      }
+    }
   }
+  else if (commands[command]) {
+    if (conversionRequestRegex.test(lower)) {
+      conversionRequestRegex.lastIndex = 0;
+      return convert(message);
+    }
+    
+    let command = lower.split(" ")[0];
 
-  let command = lower.split(" ")[0];
-
-  if (commands[command]) {
     try {
       return commands[command](message, client);
     } catch (e) {

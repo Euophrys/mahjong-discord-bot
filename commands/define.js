@@ -7,6 +7,16 @@ const spellcheck = require("../utils/spellcheck");
 const npmrequest = require("request");
 
 module.exports = message => {
+    let definitions = {...base_definitions};
+
+    if (message.guild && message.guild.id == "391257802347118592") {
+        for (let i = 0; i < majsoul_removals.length; i++) {
+            delete definitions[majsoul_removals[i]];
+        }
+        
+        definitions = Object.assign(definitions, majsoul_edits);
+    }
+
     if (message.content == "!whatis love") {
         return sendResponse(message, "I'll hurt you.");
     }
@@ -90,7 +100,7 @@ module.exports = message => {
     });
 };
 
-const definitions = {
+const base_definitions = {
     "tanyao": "Tanyao is a hand that contains only number tiles from 2 through 8. It's worth one han, and is usually allowed to be open. See kuitan for more on that.\nExample: <:2m:466437921550106627><:3m:466437922577580052><:4m:466437922556608522><:7m:466437922250555393><:7m:466437922250555393><:7m:466437922250555393><:5p:466437922732769290><:6p:466437922393030657><:7p:466437922980102144><:2s:466437921663352842><:2s:466437921663352842><:6s:466437922586099723><:7s:466437922632105984><:8s:466437922380316673>.",
     "kuitan": "Kuitan is a rule that allows open tanyao. Kuitan ari means open tanyao is allowed, while kuitan nashi means it's not allowed, and you can only score tanyao if your hand is closed. Kuitan ari is the more popular option.",
     "tenpai": "A hand is tenpai if it's one tile away from winning.",
@@ -233,8 +243,8 @@ const definitions = {
     "koizumi": "Koizumi is a ridiculous Mahjong manga about world leaders playing Mahjong with insane luck. If you want to see the Pope, George Bush, and Putin playing Mahjong, you're in luck.",
     "ten": "Ten could refer to the points in a Mahjong game, or it could be the manga Ten - The Nice Guy on the Path of Tenhou. The manga takes place in the same universe as Akagi, set in the future by a few decades. It has a similar theme as Akagi, but with more cheating.",
     "tenbo": "Tenbo are the point sticks.",
-    "uma": "The uma is the point spread. At the end of the game, each player has their score increased or decreased by some amount. For example, on Tenhou, it's +20/+10/-10/-20, which means first place gets an extra 20k points, second gets an extra 10k points, and so on.",
-    "oka": "The oka is the difference between the starting score and the target score. On Tenhou, the starting score is 25k, and the target score is 30k. The total difference is 20k (5k per player), and this is granted to first place at the end of the game if oka is used.",
+    "uma": "The uma is the point spread. At the end of the game, each player has their score increased or decreased by some amount. For example, on Mahjong Soul, it's +15/+5/-5/-15, which means first place gets an extra 15k points, second gets an extra 5k points, and so on.",
+    "oka": "The oka is the difference between the starting score and the target score. Normally, the starting score is 25k, and the target score is 30k. The total difference is 20k (5k per player), and this is granted to first place at the end of the game if oka is used.",
     "yakitori": "Yakitori is a grilled chicken skewer. In Mahjong, it's used to describe a game in which the player never won a hand.",
     "washizu": "Washizu Mahjong is a variant from the manga/anime Akagi. It uses normal Riichi rules, but 3/4 of the tiles are transparent, and tiles are drawn from a bag instead of a wall. It's often played as a 2v2 game.",
     "kuinobashi": "Kuinobashi is when you call a tile to turn a kanchan into a ryanmen. For example, with a 23457 shape, you can call 1 or 4 and discard 7 to end up with a 45 ryanmen. When someone calls, then discards a suji of the called tile, this could be likely.",
@@ -311,7 +321,7 @@ const definitions = {
     "sokuri": "Sokuri is the Japanese word for insta-riichi.",
     "civilwar": "Civil War is an old yaku from the Western Classical ruleset. It involves having a triplet of norths, a triplet of souths, the numbers 1861 in one suit, and the numbers 1865 in another.",
     "tomato": "Tomato is what people say when someone discards a tile, then a different tile, then the same tile. Example discards: <:3z:466437922560671744><:1p:466437920908378113><:3z:466437922560671744>",
-    "toutenkou": "Toutenkou is a special sanma mode popular in Kanto, currently in beta on Tenhou. The scoring is completely different, and it includes the <:5m:466437922401419274> tiles. Most points come from nukidora (gari) and kans rather than yaku, but hands do still need a yaku. More info at http://arcturus.su/wiki/Toutenkou.",
+    "toutenkou": "Toutenkou is a special sanma mode popular in Kanto. The scoring is completely different, and it includes the <:5m:466437922401419274> tiles. Most points come from nukidora (gari) and kans rather than yaku, but hands do still need a yaku. More info at http://arcturus.su/wiki/Toutenkou.",
     "gari": "Gari is another word for nukidora, ie, the cut <:4z:466437922518728744> in sanma and the cut <:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330> in Toutenkou.",
     "karasu": "Karasu is a bonus in Toutenkou when your hand has no nukidora, no discarded <:4z:466437922518728744><:1m:466437920698531841><:5m:466437922401419274><:9m:466437922430648330>, and none of those tiles in your hand. This adds 20 points if closed (as much as a yakuman), and 10 points if open.",
     "banban": "Banban is a bonus in Toutenkou which adds 2 points to any winning hand.",
@@ -386,7 +396,7 @@ const definitions = {
     "jyuu": "Jyuu is the word for 'ten' in Japanese, such as in kokushi musou jyuusanmen machi, Thirteen Orphans Thirteen-Sided Wait",
     "senten": "A senten is a hand which scores 1000 points.",
     "urasan": "Urasan means three ura dora.",
-    "nashinashi": "Nashi nashi is shorthand for a ruleset where the two main rules are disallowed. On Tenhou, this would be kuitan nashi and aka nashi. Sometimes a nashi will refer to atozuke nashi.",
+    "nashinashi": "Nashi nashi is shorthand for a ruleset where the two main rules are disallowed. Typically, this would be kuitan nashi and aka nashi. Sometimes a nashi will refer to atozuke nashi.",
     "mochimochi": "Mochimochi is when two players are both waiting on the same paired yakuhai. For example, if both players had <:7z:466437922279784469><:7z:466437922279784469> in their hand.",
     "moshimoshi": "Moshimoshi is what you say when you answer the phone to make sure the other person isn't a fox.",
     "notenbappu": "Noten bappu refers to the payments that players who aren't tenpai at the end of the round have to pay.",
@@ -538,4 +548,13 @@ const aliases = {
     "chitoi": "chiitoitsu",
     "tsubame": "tsubamegaeshi",
     "pai": "hai",
+}
+
+majsoul_removals = [
+    "ippan", "joukyuu", "tokujou", "houou", "meijin", "nodocchi", "7447", "natsuki", "akagi", "saki", "tetsuya", "tohai", "kirinji", "ten"
+]
+
+majsoul_edits = {
+    "tenhou": "Tenhou is a yakuman awarded for winning on your first draw as the dealer.",
+    "ryuuiisou": "Ryuuiisou is a yakuman awarded for having a hand that consists only of <:2s:466437921663352842><:3s:466437922258681869><:4s:466437922527248384><:6s:466437922586099723><:8s:466437922380316673><:6z:466437922317402143>, the tiles with green and only green. Some rulesets require the hand to include <:6z:466437922317402143>, but Mahjong Soul does not.\nExample: <:2s:466437921663352842><:2s:466437921663352842><:3s:466437922258681869><:3s:466437922258681869><:4s:466437922527248384><:4s:466437922527248384><:6s:466437922586099723><:6s:466437922586099723><:6s:466437922586099723><:8s:466437922380316673><:8s:466437922380316673><:6z:466437922317402143><:6z:466437922317402143><:6z:466437922317402143>",
 }
