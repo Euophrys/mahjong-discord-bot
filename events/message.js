@@ -130,7 +130,6 @@ module.exports = (client, message) => {
     }
   }
   else {
-      return;
     if (conversionRequestRegex.test(lower)) {
       conversionRequestRegex.lastIndex = 0;
       return convert(message);
@@ -138,10 +137,12 @@ module.exports = (client, message) => {
     
     let command = lower.split(" ")[0];
 
-    try {
-      return commands[command](message, client);
-    } catch (e) {
-      sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+    if (commands[command]) {
+        try {
+          return commands[command](message, client);
+        } catch (e) {
+          sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+        }
     }
   }
 };
