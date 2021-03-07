@@ -130,6 +130,7 @@ module.exports = (client, message) => {
     }
   }
   else {
+      return;
     if (conversionRequestRegex.test(lower)) {
       conversionRequestRegex.lastIndex = 0;
       return convert(message);
