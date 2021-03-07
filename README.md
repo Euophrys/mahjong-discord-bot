@@ -6,6 +6,8 @@ For permissions, she needs `Send Messages` for obvious reasons, `Use External Em
 
 # Commands
 
+Note: On the Mahjong Soul server, commands use `/` instead of `!`. So, `!eff` would be `/eff`. See the pins in `#bot-spam` for the Mahjong Soul server's specific details.
+
 To start, you can have Natsuki introduce herself by saying `!explain yourself`, and get a list of commands with `!help`. Here's a more detailed list.
 
 * `!define <word>` - Natsuki knows the definitions of many Mahjong words and can recall them with this command. She also has a built-in dictionary for a large number of English words as an added bonus. If you don't specify a word, she'll pick a random Mahjong term that she knows. For a list of all the terms, call `!define list` or check the `commands/define.js` file. Aliases: `!def, !whatis, !d`
