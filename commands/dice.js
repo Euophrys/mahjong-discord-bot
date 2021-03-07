@@ -1,6 +1,10 @@
 const sendResponse = require("../utils/sendResponse");
 
 module.exports = message => {
+    if(message.guild && message.guild.id == "391257802347118592") {
+        return sendResponse(message, "Succeeded.");
+    }
+
     let diceOne = Math.floor(Math.random() * 6) + 1;
     let diceTwo = Math.floor(Math.random() * 6) + 1;
     let total = diceOne + diceTwo;
