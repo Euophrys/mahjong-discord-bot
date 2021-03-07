@@ -113,7 +113,7 @@ module.exports = (client, message) => {
     message.react(reactions[Math.floor(Math.random() * reactions.length)]).catch(console.log);
   }
   
-  if (message.guild && message.guild.id == "391257802347118592") {
+  if (message.guild && message.guild.id == "548440972997033996") {
     if (majsoul_conversionRequestRegex.test(lower)) {
       majsoul_conversionRequestRegex.lastIndex = 0;
       return convert(message);

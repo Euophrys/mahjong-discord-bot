@@ -9,7 +9,7 @@ const npmrequest = require("request");
 module.exports = message => {
     let definitions = {...base_definitions};
 
-    if (message.guild && message.guild.id == "391257802347118592") {
+    if (message.guild && message.guild.id == "548440972997033996") {
         for (let i = 0; i < majsoul_removals.length; i++) {
             delete definitions[majsoul_removals[i]];
         }
