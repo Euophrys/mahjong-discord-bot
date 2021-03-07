@@ -2,11 +2,17 @@ const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
 const sendResponse = require("../utils/sendResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
+const majsoul_conversionRequestRegex = /\/(\d+[smzp])+/g;
 
 module.exports = (message, client) => {
     var content = String(message.content);
+    var regex = conversionRequestRegex;
 
-    content = content.replace(conversionRequestRegex, (substring) => {
+    if (message.guild && message.guild.id == "548440972997033996") {
+        regex = majsoul_conversionRequestRegex;
+    }
+
+    content = content.replace(regex, (substring) => {
         converted = []
         characters = substring.split('').reverse();
         index = 0;
@@ -32,7 +38,7 @@ module.exports = (message, client) => {
         return converted.reverse().join('');
     })
 
-    conversionRequestRegex.lastIndex = 0;
+    regex.lastIndex = 0;
     if(message.member) {
         content = `${message.member.user.username} says: "${content}"`;
     } else {
