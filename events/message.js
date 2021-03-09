@@ -109,9 +109,6 @@ module.exports = (client, message) => {
   if (message.author.bot) return;
 
   let lower = message.content.toLowerCase();
-  if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
-    message.react(reactions[Math.floor(Math.random() * reactions.length)]).catch(console.log);
-  }
   
   if (message.guild && message.guild.id == "548440972997033996") {
     if (majsoul_conversionRequestRegex.test(lower)) {
@@ -120,16 +117,20 @@ module.exports = (client, message) => {
     }
       
     let command = lower.split(" ")[0];
-
+    
     if (majsoul_commands[command]) {
-      try {
+        try {
         return majsoul_commands[command](message, client);
-      } catch (e) {
+    } catch (e) {
         sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
-      }
     }
-  }
-  else {
+}
+}
+else {
+    if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
+      message.react(reactions[Math.floor(Math.random() * reactions.length)]).catch(console.log);
+    }
+
     if (conversionRequestRegex.test(lower)) {
       conversionRequestRegex.lastIndex = 0;
       return convert(message);
