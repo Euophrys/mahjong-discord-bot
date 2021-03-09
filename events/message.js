@@ -23,7 +23,6 @@ const gacha = require('../commands/gacha');
 
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
-const majsoul_conversionRequestRegex = /\/(\d+[smzp])+/g;
 
 commands = {
   "!hand": randomHand,
@@ -101,6 +100,7 @@ majsoul_commands = {
     "/explain": explain,
     "/help": help,
     "/score": score,
+    "/convert": convert
 }
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
@@ -111,20 +111,15 @@ module.exports = (client, message) => {
   let lower = message.content.toLowerCase();
   
   if (message.guild && message.guild.id == "548440972997033996") {
-    if (majsoul_conversionRequestRegex.test(lower)) {
-      majsoul_conversionRequestRegex.lastIndex = 0;
-      return convert(message);
-    }
-      
     let command = lower.split(" ")[0];
     
     if (majsoul_commands[command]) {
         try {
-        return majsoul_commands[command](message, client);
-    } catch (e) {
-        sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+            return majsoul_commands[command](message, client);
+        } catch (e) {
+            sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+        }
     }
-}
 }
 else {
     if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
