@@ -120,8 +120,8 @@ module.exports = (client, message) => {
             sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
         }
     }
-}
-else {
+  }
+  else {
     if (lower.indexOf("natsuki") > -1 || lower.indexOf("ⓝatsuki") > -1 || lower.indexOf("那月") > -1) {
       message.react(reactions[Math.floor(Math.random() * reactions.length)]).catch(console.log);
     }

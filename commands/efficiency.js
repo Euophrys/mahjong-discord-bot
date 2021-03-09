@@ -6,7 +6,25 @@ const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString"
 const parseHandFromString = require("../utils/parseHandFromString");
 const { calculateMinimumShanten, calculateStandardShanten } = require("../utils/shanten");
 
+var cooldown_users = [];
+
 module.exports = (message, client) => {
+    if (message.guild && message.guild.id == "548440972997033996") {
+        let name = "invisible user";
+        if (message.member) {
+            name = message.member.user.username;
+        }
+
+        if (cooldown_users.indexOf(name) >= 0) {
+            return sendResponse(message, "You've already called this command recently. Please wait a bit.");
+        } else {
+            cooldown_users.push(name);
+            setTimeout(() => {
+                cooldown_users.splice(cooldown_users.indexOf(name), 1);
+            }, 30000)
+        }
+    }
+
     let command = message.content.split(" ")[0].toLowerCase();
     let handString = message.content.split(" ").slice(1).join("").toLowerCase();
 
