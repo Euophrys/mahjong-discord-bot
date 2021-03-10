@@ -56,7 +56,7 @@ module.exports = (message, client) => {
             cooldown_users.push(name);
             setTimeout(() => {
                 cooldown_users.splice(cooldown_users.indexOf(name), 1);
-            }, 30000)
+            }, 300000)
         }
     }
 
