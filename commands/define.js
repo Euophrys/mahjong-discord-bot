@@ -7,6 +7,7 @@ const spellcheck = require("../utils/spellcheck");
 const npmrequest = require("request");
 var Filter = require('bad-words'),
     filter = new Filter();
+filter.addWords("sexual");
 
 module.exports = message => {
     let definitions = {...base_definitions};
