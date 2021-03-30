@@ -5,6 +5,8 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const spellcheck = require("../utils/spellcheck");
 const npmrequest = require("request");
+var Filter = require('bad-words'),
+    filter = new Filter();
 
 module.exports = message => {
     let definitions = {...base_definitions};
@@ -48,6 +50,15 @@ module.exports = message => {
 
     wordpos.lookup(responseObject.request, (result, word) => {
         if(result[0] && result[0].def) {
+            if (filter.isProfane(result[0].def)) {
+                if (result[1] && result[1].def) {
+                    if (filter.isProfane(result[1].def)) {
+                        return sendResponse(message, `The dictionary definition for that is NSFW.`);
+                    }
+                    return sendResponse(message, `The dictionary says: ${result[1].def.trim()}.`);
+                }
+                return sendResponse(message, `The dictionary definition for that is NSFW.`);
+            }
             return sendResponse(message, `The dictionary says: ${result[0].def.trim()}.`);
         } else {
             let requestArray = message.content.split(" ").slice(1);
