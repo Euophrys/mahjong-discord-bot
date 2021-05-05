@@ -26,6 +26,7 @@ module.exports = (message, client) => {
             return sendDeletableResponse(message, `I got this error while trying to get the replay: ${err}`);
         }
         
+        let playerCount = 4;
         let graphData = {
             type: 'line',
             data: {
@@ -56,12 +57,13 @@ module.exports = (message, client) => {
         
         let matches = 0;
         let match;
-        const nameRegex = /n\d="(.+?)"/g
+        const nameRegex = /n\d="(.*?)"/g
         while (match = nameRegex.exec(body)) {
             graphData.data.datasets[matches].label = decodeURIComponent(match[1]);
             matches++;
             if (matches == 4) break;
         }
+        playerCount = matches;
 
         matches = 0;
         const endRegex = /[AGARI|RYUUKYOKU].+?sc="(.+?)"/g
@@ -82,6 +84,8 @@ module.exports = (message, client) => {
         if (matches == 0) {
             return sendDeletableResponse("Hm, something went wrong. Was that link really a replay?")
         }
+
+        graphData.data.datasets.splice(playerCount);
 
         const chart = new QuickChart()
             .setHeight(400)
