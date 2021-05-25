@@ -87,6 +87,7 @@ const links = {
     "fullstraight": "https://cdn.discordapp.com/attachments/726443529764732939/772375852826099722/how-to-make-a-full-straight.gif",
     "ds4": "https://cdn.discordapp.com/attachments/202201840887136256/789720871447166976/image0.jpg",
     "shanpes": "https://cdn.discordapp.com/attachments/469490857716875285/811265715758956544/unknown.png",
+    "tileback": "https://cdn.discordapp.com/attachments/202201840887136256/846648127720521748/Scr20210525150636.gif",
 }
 
 const aliases = {
