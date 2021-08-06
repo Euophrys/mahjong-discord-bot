@@ -17,7 +17,7 @@
     "@discordjs/uws": "^10.149.0",
     "bad-words": "^3.0.4",
     "bufferutil": "^4.0.1",
-    "discord.js": "^12.2.0",
+    "discord.js": "^13.0.0",
     "dotenv": "^7.0.0",
     "erlpack": "github:discordapp/erlpack",
     "js-levenshtein": "^1.1.6",
@@ -30,7 +30,7 @@
     "nodemon": "^2.0.4"
   },
   "engines": {
-    "node": "12.18.3"
+    "node": "16.6.1"
   },
   "respository": {
     "type": "git",

@@ -1,28 +1,178 @@
-const schedule = require('node-schedule');
-const mleague = require('../utils/mleague');
-
 module.exports = client => {
-  console.log(`Logged in as ${client.user.tag}!`);
-  console.log(`Present in ${client.guilds.cache.size} servers.`);
-  
-  let now = new Date();
-  let games = mleague.games;
+    console.log(`Logged in as ${client.user.tag}!`);
+    console.log(`Present in ${client.guilds.cache.size} servers.`);
 
-  for (let i = 0; i < games.length; i++) {
-    var date = new Date(2020, games[i].month, games[i].day, games[i].hour, 0, 0, 0);
-
-    if (date < now) continue; // game already happened
-
-    var job = schedule.scheduleJob(date, function(client, game){
-      var winner1 = game.teams[Math.floor(Math.random() * game.teams.length)];
-      var winner2 = game.teams[Math.floor(Math.random() * game.teams.length)];
-      var teamsString = game.teams.slice(0, -1).join(", ") + ', and ' + game.teams.slice(-1);
-      var message = `Hey, <@&670274611388219402>! Day ${i + 1} of M-League between ${teamsString} is now live! Come watch at <https://abema.tv/now-on-air/mahjong> (or catch the VoD afterwards)! My money is on ${winner1} for the first hanchan, and ${winner2} for the second. Who do you think will win today?`;
-      client.channels.resolve("669652926037360651").send(message).then((msg) => {
-        for(let i = 0; i < game.teams.length; i++) {
-          msg.react(mleague.teams[game.teams[i]].emoji);
+    const commands = [
+        {
+            name: "convert",
+            description: "Converts any tile strings prefixed with ! to emoji.",
+            options: [{
+            name: "message",
+            type: "STRING",
+            description: "The message to convert.",
+            required: true
+            }]
+        },
+        {
+            name: "randomhand",
+            description: "Generates a random hand of 14 tiles."
+        },
+        {
+            name: "randomtile",
+            description: "Generates a random tile."
+        },
+        {
+            name: "define",
+            description: "Looks up the definition of the provided term.",
+            options: [{
+                name: "term",
+                type: "STRING",
+                description: "The term to define.",
+                required: true
+            }]
+        },
+        {
+            name: "link",
+            description: "Provides the link to the given resource.",
+            options: [{
+                name: "resource",
+                type: "STRING",
+                description: "The resource to fetch.",
+                required: true
+            }]
+        },
+        {
+            name: "efficiency",
+            description: "Calculates the ukeire of the hand, if 13 tiles, or each discard, if 14 tiles.",
+            options: [{
+                name: "hand",
+                type: "STRING",
+                description: "The hand in 123s456p789m123z format.",
+                required: true
+            }]
+        },
+        {
+            name: "minefield",
+            description: "Provides 34 random tiles for playing minefield mahjong with.",
+            options: [{
+                name: "sort",
+                type: "BOOLEAN",
+                description: "Whether to sort the tiles.",
+                required: false
+            }]
+        },
+        {
+            name: "break",
+            description: "Rolls two dice and indicates whose wall would be broken by the roll."
+        },
+        {
+            name: "rate",
+            description: "Checks the given player's Nodocchi information to see their rank.",
+            options: [{
+                name: "name",
+                type: "STRING",
+                description: "The name of the player's tenhou account, or 'me'.",
+                required: true
+            }]
+        },
+        {
+            name: "explain",
+            description: "Provides lengthy explanations for a few terms.",
+            options: [{
+                name: "term",
+                type: "STRING",
+                description: "The term to explain.",
+                required: true
+            }]
+        },
+        {
+            name: "score",
+            description: "Calculates the score of the given hand.",
+            options: [{
+                name: "han",
+                type: "INTEGER",
+                description: "The han value of the hand.",
+                required: true
+            },
+            {
+                name: "fu",
+                type: "INTEGER",
+                description: "The fu value of the hand.",
+                required: true
+            },
+            {
+                name: "dealer",
+                type: "BOOLEAN",
+                description: "Whether the player scoring the hand is the dealer.",
+                required: false
+            },
+            {
+                name: "skyrocketing",
+                type: "BOOLEAN",
+                description: "Whether to use skyrocketing (aotenjou) rules which have no limit hands.",
+                required: false
+            },
+            ]
+        },
+        {
+            name: "translate",
+            description: "Replaces Japanese mahjong terms in the given message with English ones.",
+            options: [{
+                name: "message",
+                type: "STRING",
+                description: "The message to translate.",
+                required: true
+            }]
+        },
+        {
+            name: "graph",
+            description: "Generates a graph of the scores in the given Tenhou replay.",
+            options: [{
+                name: "replay",
+                type: "STRING",
+                description: "A link to the replay.",
+                required: true
+            }]
+        },
+        {
+            name: "bubblewrap",
+            description: "Shuffles all of the tiles and posts them with individual spoilers for stress relief."
+        },
+        {
+            name: "meme",
+            description: "Provides the link to the requested meme.",
+            options: [{
+                name: "meme",
+                type: "STRING",
+                description: "The meme to link to.",
+                required: true
+            }]
+        },
+        {
+            name: "role",
+            description: "Applies or removes the requested role to you.",
+            options: [{
+                name: "role",
+                type: "STRING",
+                description: "The role you want.",
+                required: true
+            }]
+        },
+        {
+            name: "gacha",
+            description: "Simulates a pull on the MajSoul gacha.",
+            options: [{
+                name: "bamboo",
+                type: "BOOLEAN",
+                description: "Whether to pull for boys or not.",
+                required: false
+            }]
         }
-      }).catch(console.log);
-    }.bind(null, client, games[i]));
-  }
+    ]
+
+    const command = await client.guilds.cache.get('391257802347118592').commands.create(data);
 };
+
+const platforms = require('../commands/platforms');
+const mleague = require('../commands/mleague');
+const poll = require('../commands/poll');
