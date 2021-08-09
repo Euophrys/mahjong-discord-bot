@@ -6,8 +6,7 @@ module.exports = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('term'), explanations, aliases);
 
     if (responseObject.response) {
-        await interaction.reply(responseObject.response);
-        return;
+        return interaction.reply(responseObject.response);
     }
 
     message.channel.send(`I don't have an explanation for ${responseObject.request}. Let me see if I have a definition...`);

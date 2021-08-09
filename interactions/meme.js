@@ -1,6 +1,4 @@
 const lookupResponse = require("../utils/lookupResponse");
-const sendResponse = require("../utils/sendResponse");
-const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 module.exports = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('meme'), links, aliases);
@@ -19,7 +17,7 @@ module.exports = async interaction => {
     if (responseObject.request === "list") {
         var keys = Object.keys(links);
         keys = keys.sort();
-        return interaction.reply(`I have these memes: ${keys.join(", ")}.`);
+        return interaction.reply({content:`I have these memes: ${keys.join(", ")}.`, ephemeral:true});
     }
 
     return interaction.reply({content:`I don't have a meme associated with ${responseObject.request}. Consider making a pull request to Euophrys/mahjong-discord-bot if you have something in mind.`, ephemeral:true});

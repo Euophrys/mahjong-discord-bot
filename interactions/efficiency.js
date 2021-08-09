@@ -97,8 +97,7 @@ module.exports = async interaction => {
             response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
         }
 
-        await interaction.reply(response);
-        return;
+        return interaction.reply(response);
     }
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)

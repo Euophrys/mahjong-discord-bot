@@ -27,15 +27,13 @@ module.exports = async interaction => {
     let responseObject = lookupResponse(term, definitions, aliases);
 
     if (responseObject.response) {
-        await interaction.reply(responseObject.response);
-        return;
+        return interaction.reply(responseObject.response);
     }
 
     if (responseObject.request === "") {
         var keys = Object.keys(definitions);
         var suggestion = keys[Math.floor(Math.random() * keys.length)];
-        await interaction.reply(`You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
-        return;
+        return interaction.reply(`You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
     }
 
     wordpos.lookup(responseObject.request, (result, word) => {
@@ -43,13 +41,13 @@ module.exports = async interaction => {
             if (filter.isProfane(result[0].def)) {
                 if (result[1] && result[1].def) {
                     if (filter.isProfane(result[1].def)) {
-                        await interaction.reply(`The dictionary definition for that is NSFW.`); return;
+                        return interaction.reply(`The dictionary definition for that is NSFW.`); 
                     }
-                    await interaction.reply(`The dictionary says: ${result[1].def.trim()}.`); return;
+                    return interaction.reply(`The dictionary says: ${result[1].def.trim()}.`); 
                 }
-                await interaction.reply(`The dictionary definition for that is NSFW.`); return;
+                return interaction.reply(`The dictionary definition for that is NSFW.`); 
             }
-            await interaction.reply(`The dictionary says: ${result[0].def.trim()}.`); return;
+            return interaction.reply(`The dictionary says: ${result[0].def.trim()}.`); 
         } else {
             let requestArray = message.content.split(" ").slice(1);
             let request = requestArray.join("").toLowerCase();
@@ -63,43 +61,43 @@ module.exports = async interaction => {
                             for (let k = 0; k < body.data[i].senses[j].length; k++) {
                                 console.log(body.data[i].senses[j].tags[k]);
                                 if (body.data[i].senses[j].tags[k] == "Mahjong term") {
-                                    await interaction.reply(`Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`); return;
+                                    return interaction.reply(`Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`);
                                 }
                             }
                         }
                     }
     
                     if (body.data.length) {
-                        await interaction.reply(`Jisho defines ${request} (${body.data[0].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`); return;
+                        return interaction.reply(`Jisho defines ${request} (${body.data[0].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`);
                     }
                 }
 
                 var possibilities = spellcheck(request, Object.keys(definitions));
 
                 if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                    await interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`); return;
+                    return interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`);
                 }
 
                 if (possibilities.distance > 3) {
                     possibilities = spellcheck(request, Object.keys(aliases));
 
                     if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                        await interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[aliases[possibilities.closest[0]]]}`); return;
+                        return interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[aliases[possibilities.closest[0]]]}`);
                     }
 
                     if (possibilities.distance > 3) {
-                        await interaction.reply(`I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`); return;
+                        return interaction.reply(`I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
                     }
                 }
 
                 let suggestions = possibilities.closest.length == 1
                     ? possibilities.closest[0]
                     : possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
-                await interaction.reply(`I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`); return;
+                return interaction.reply(`I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
             });
         }
     });
-};
+}
 
 const base_definitions = {
     "tanyao": "Tanyao is a hand that contains only number tiles from 2 through 8. It's worth one han, and is usually allowed to be open. See kuitan for more on that.\nExample: <:2m:466437921550106627><:3m:466437922577580052><:4m:466437922556608522><:7m:466437922250555393><:7m:466437922250555393><:7m:466437922250555393><:5p:466437922732769290><:6p:466437922393030657><:7p:466437922980102144><:2s:466437921663352842><:2s:466437921663352842><:6s:466437922586099723><:7s:466437922632105984><:8s:466437922380316673>.",
