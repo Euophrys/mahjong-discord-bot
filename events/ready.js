@@ -160,9 +160,6 @@ module.exports = async client => {
     ]
 
     const majsoul_commands = [
-
-    ]
-    majsoul_commands = [
         {
             name: "convert",
             description: "Converts any tile strings prefixed with ! to emoji.",
