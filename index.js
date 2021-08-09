@@ -1,9 +1,8 @@
 require("dotenv").config();
 const Discord = require("discord.js");
-const fs = require("fs");
 
 const client = new Discord.Client({
-    intents:[Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGES],
+    intents:[Discord.Intents.FLAGS.GUILDS, Discord.Intents.FLAGS.GUILD_MESSAGES, Discord.Intents.FLAGS.DIRECT_MESSAGES],
     partials: ['MESSAGE', 'CHANNEL']
 });
 
