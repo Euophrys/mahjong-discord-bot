@@ -169,5 +169,5 @@ module.exports = async client => {
         }
     ]
 
-    //client.guilds.cache.get('391257802347118592').commands.create(commands);
+    client.guilds.cache.get('391257802347118592').commands.create(commands);
 };
