@@ -1,7 +1,7 @@
 require("dotenv").config();
 const Discord = require("discord.js");
 const fs = require("fs");
-const client = new Discord.Client();
+const client = new Discord.Client({intents:[Intents.FLAGS.GUILD_MESSAGES]});
 
 fs.readdir("./events/", (err, files) => {
   files.forEach(file => {
