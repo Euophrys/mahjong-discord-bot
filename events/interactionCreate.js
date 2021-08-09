@@ -10,8 +10,6 @@ const dice = require('../interactions/dice');
 const rate = require('../interactions/rate');
 const explain = require('../interactions/explain');
 const meme = require('../interactions/meme');
-const mleague = require('../interactions/mleague');
-const poll = require('../interactions/poll');
 const translate = require('../interactions/translate');
 const score = require('../interactions/score');
 const graph = require('../interactions/graph');
@@ -32,9 +30,6 @@ const commands = {
     "rate": rate,
     "explain": explain,
     "meme": meme,
-    "mleague": mleague,
-    "poll": poll,
-    "wwyd": poll,
     "translate": translate,
     "score": score,
     "graph": graph,
