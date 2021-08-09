@@ -249,7 +249,7 @@ module.exports = async client => {
     ]
 
     let guilds = await client.guilds.fetch();
-    guilds.each(guild => {
+    guilds.each(async guild => {
         try {
             if (guild.id == "548440972997033996") {
                 await client.guilds.cache.get('548440972997033996').commands.set(majsoul_commands);
