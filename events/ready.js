@@ -7,10 +7,10 @@ module.exports = async client => {
             name: "convert",
             description: "Converts any tile strings prefixed with ! to emoji.",
             options: [{
-            name: "message",
-            type: "STRING",
-            description: "The message to convert.",
-            required: true
+                name: "message",
+                type: "STRING",
+                description: "The message to convert.",
+                required: true
             }]
         },
         {
@@ -111,8 +111,7 @@ module.exports = async client => {
                 type: "BOOLEAN",
                 description: "Whether to use skyrocketing (aotenjou) rules which have no limit hands.",
                 required: false
-            },
-            ]
+            }]
         },
         {
             name: "translate",
@@ -170,5 +169,5 @@ module.exports = async client => {
         }
     ]
 
-    const command = await client.guilds.cache.get('391257802347118592').commands.create(commands);
+    //client.guilds.cache.get('391257802347118592').commands.create(commands);
 };
