@@ -43,7 +43,7 @@ module.exports = async interaction => {
 
     if (commands[interaction.commandName]) {
         try {
-            await commands[command](interaction);
+            await commands[interaction.commandName](interaction);
         } catch (e) {
             await interaction.reply({content: "There was an error: " + e.stack, ephemeral: true})
         }
