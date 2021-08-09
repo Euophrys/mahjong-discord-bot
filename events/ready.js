@@ -252,9 +252,9 @@ module.exports = async client => {
     guilds.each(guild => {
         try {
             if (guild.id == "548440972997033996") {
-                client.guilds.cache.get('548440972997033996').commands.set(majsoul_commands);
+                await client.guilds.cache.get('548440972997033996').commands.set(majsoul_commands);
             } else {
-                client.guilds.cache.get(guild.id).commands.set(global_commands);
+                await client.guilds.cache.get(guild.id).commands.set(global_commands);
             }
         } catch(e) {
             console.log("No permission for this guild.");
