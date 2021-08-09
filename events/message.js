@@ -105,7 +105,7 @@ majsoul_commands = {
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
 
-module.exports = (client, message) => {
+module.exports = message => {
   if (message.author.bot) return;
 
   let lower = message.content.toLowerCase();
@@ -115,7 +115,7 @@ module.exports = (client, message) => {
     
     if (majsoul_commands[command]) {
         try {
-            return majsoul_commands[command](message, client);
+            return majsoul_commands[command](message);
         } catch (e) {
             sendDeletableResponse(message, "I'm currently being upgraded to v13 and slash commands. Things might be broken in the meantime. Please wait.");
         }
@@ -135,7 +135,7 @@ module.exports = (client, message) => {
 
     if (commands[command]) {
         try {
-          return commands[command](message, client);
+          return commands[command](message);
         } catch (e) {
           sendDeletableResponse(message, "I'm currently being upgraded to v13 and slash commands. Things might be broken in the meantime. Please wait.");
         }

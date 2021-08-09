@@ -18,9 +18,11 @@ module.exports = (message, client) => {
         return sendResponse(message, "You're not really my type. You're, you know... human.");
     }
 
+    /*
     if ((handString == "that" || handString == "thatstandard") && client.user.lastMessage.content) {
         handString = client.user.lastMessage.content;
     }
+    */
 
     let {tiles, handTiles} = parseHandFromString(handString);
 

@@ -11,9 +11,9 @@ const messageCreate = require(`./events/message.js`);
 const interactionCreate = require(`./events/interactionCreate.js`);
 const ready = require(`./events/ready.js`);
 
-client.on('messageCreate', (client, message) => {
+client.on('messageCreate', message => {
     console.log("message");
-    messageCreate(client, message);
+    messageCreate(message);
 });
 
 client.on('interactionCreate', async interaction => interactionCreate(interaction));

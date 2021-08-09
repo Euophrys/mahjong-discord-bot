@@ -38,12 +38,12 @@ const commands = {
     "gacha": gacha
 }
 
-module.exports = async (client, interaction) => {
+module.exports = async interaction => {
     if (!interaction.isCommand()) return;
 
     if (commands[interaction.commandName]) {
         try {
-            await commands[command](message, client);
+            await commands[command](interaction);
         } catch (e) {
             await interaction.reply({content: "There was an error: " + e.stack, ephemeral: true})
         }
