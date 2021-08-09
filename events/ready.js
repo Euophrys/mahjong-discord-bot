@@ -249,5 +249,9 @@ module.exports = async client => {
     ]
 
     let guilds = await client.guilds.fetch();
-    guilds.each(guild => console.log(guild));
+    guilds.each(guild => {
+        if (guild.id == "548440972997033996") {
+            print("found");
+        }
+    });
 };
