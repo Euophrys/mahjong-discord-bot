@@ -3,7 +3,7 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 module.exports = async interaction => {
-    let responseObject = lookupResponse(interaction.options.getString('term'), links, aliases);
+    let responseObject = lookupResponse(interaction.options.getString('resource'), links, aliases);
 
     if (responseObject.response) {
         return interaction.reply(responses[Math.floor(Math.random() * responses.length)] + responseObject.response);
