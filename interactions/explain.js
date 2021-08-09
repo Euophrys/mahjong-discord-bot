@@ -2,20 +2,16 @@ const define = require("./define");
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 
-module.exports = message => {
-    let content = message.content.split(" ").splice(1).join(" ");
-    let responseObject = lookupResponse(content, explanations, aliases);
+module.exports = async interaction => {
+    let responseObject = lookupResponse(interaction.options.getString('term'), explanations, aliases);
 
     if (responseObject.response) {
-        return sendResponse(message, responseObject.response);
-    }
-
-    if (responseObject.request === "") {
-        return sendResponse(message, `I can explain Mahjong, Yaku, Defense, Push Pull, Furiten, and Tile Shorthand. These are kind of long, so please use it sparingly.`);
+        await interaction.reply(responseObject.response);
+        return;
     }
 
     message.channel.send(`I don't have an explanation for ${responseObject.request}. Let me see if I have a definition...`);
-    return define(message);
+    await define(interaction);
 }
 
 const explanations = {

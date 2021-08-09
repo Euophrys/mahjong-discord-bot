@@ -9,9 +9,10 @@ var Filter = require('bad-words'),
     filter = new Filter();
 filter.addWords("sexual");
 
-module.exports = message => {
+module.exports = async interaction => {
     let definitions = {...base_definitions};
 
+    /*
     if (message.guild && message.guild.id == "548440972997033996") {
         for (let i = 0; i < majsoul_removals.length; i++) {
             delete definitions[majsoul_removals[i]];
@@ -19,35 +20,22 @@ module.exports = message => {
         
         definitions = Object.assign(definitions, majsoul_edits);
     }
+    */
 
-    if (message.content == "!whatis love") {
-        return sendResponse(message, "I'll hurt you.");
-    }
+    let term = interaction.options.getString('term');
 
-    if (message.content == "!whatis a man") {
-        return sendResponse(message, "Haha, very funny.");
-    }
-
-    let content = message.content.split(" ").splice(1).join(" ");
-    let responseObject = lookupResponse(content, definitions, aliases);
+    let responseObject = lookupResponse(term, definitions, aliases);
 
     if (responseObject.response) {
-        return sendResponse(message, responseObject.response);
+        await interaction.reply(responseObject.response);
+        return;
     }
 
     if (responseObject.request === "") {
         var keys = Object.keys(definitions);
         var suggestion = keys[Math.floor(Math.random() * keys.length)];
-        return sendResponse(message, `You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
-    }
-
-    if (responseObject.request === "list") {
-        var keys = Object.keys(definitions);
-        keys = keys.sort();
-        sendResponse(message, `I'll send you a DM, since there are a lot of them.`);
-        return message.author.send(`I have definitions for these things: ${keys.join(", ").substr(0, 1800)}`)
-            .then((message) => message.channel.send(`${keys.join(", ").substr(1800)}.`))
-            .catch(console.log);
+        await interaction.reply(`You... didn't ask me to define anything. How about... ${suggestion}. ${definitions[suggestion]}`);
+        return;
     }
 
     wordpos.lookup(responseObject.request, (result, word) => {
@@ -55,13 +43,13 @@ module.exports = message => {
             if (filter.isProfane(result[0].def)) {
                 if (result[1] && result[1].def) {
                     if (filter.isProfane(result[1].def)) {
-                        return sendResponse(message, `The dictionary definition for that is NSFW.`);
+                        await interaction.reply(`The dictionary definition for that is NSFW.`); return;
                     }
-                    return sendResponse(message, `The dictionary says: ${result[1].def.trim()}.`);
+                    await interaction.reply(`The dictionary says: ${result[1].def.trim()}.`); return;
                 }
-                return sendResponse(message, `The dictionary definition for that is NSFW.`);
+                await interaction.reply(`The dictionary definition for that is NSFW.`); return;
             }
-            return sendResponse(message, `The dictionary says: ${result[0].def.trim()}.`);
+            await interaction.reply(`The dictionary says: ${result[0].def.trim()}.`); return;
         } else {
             let requestArray = message.content.split(" ").slice(1);
             let request = requestArray.join("").toLowerCase();
@@ -75,39 +63,39 @@ module.exports = message => {
                             for (let k = 0; k < body.data[i].senses[j].length; k++) {
                                 console.log(body.data[i].senses[j].tags[k]);
                                 if (body.data[i].senses[j].tags[k] == "Mahjong term") {
-                                    return sendResponse(message, `Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`);
+                                    await interaction.reply(`Jisho defines ${request} (${body.data[i].japanese[0].word}) as "${body.data[i].senses[j].english_definitions[0]}."`); return;
                                 }
                             }
                         }
                     }
     
                     if (body.data.length) {
-                        return sendResponse(message, `Jisho defines ${request} (${body.data[0].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`);
+                        await interaction.reply(`Jisho defines ${request} (${body.data[0].japanese[0].word}) as "${body.data[0].senses[0].english_definitions[0]}."`); return;
                     }
                 }
 
                 var possibilities = spellcheck(request, Object.keys(definitions));
 
                 if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                    return sendResponse(message, `The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`);
+                    await interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[possibilities.closest[0]]}`); return;
                 }
 
                 if (possibilities.distance > 3) {
                     possibilities = spellcheck(request, Object.keys(aliases));
 
                     if (possibilities.distance <= 2 && possibilities.closest.length == 1) {
-                        return sendResponse(message, `The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[aliases[possibilities.closest[0]]]}`);
+                        await interaction.reply(`The closest thing to ${request} I know is ${possibilities.closest[0]}. ${definitions[aliases[possibilities.closest[0]]]}`); return;
                     }
 
                     if (possibilities.distance > 3) {
-                        return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`);
+                        await interaction.reply(`I don't know the definition of ${responseObject.request}. Can anyone give me a hand?`); return;
                     }
                 }
 
                 let suggestions = possibilities.closest.length == 1
                     ? possibilities.closest[0]
                     : possibilities.closest.slice(0, -1).join(", ") + ', or ' + possibilities.closest.slice(-1);
-                return sendDeletableResponse(message, `I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`);
+                await interaction.reply(`I don't know the definition of ${responseObject.request}. Did you mean ${suggestions}?`); return;
             });
         }
     });

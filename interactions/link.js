@@ -3,8 +3,7 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 module.exports = message => {
-    let content = message.content.split(" ").splice(1).join(" ");
-    let responseObject = lookupResponse(content, links, aliases);
+    let responseObject = lookupResponse(message, links, aliases);
 
     if (responseObject.response) {
         return sendResponse(message, responses[Math.floor(Math.random() * responses.length)] + responseObject.response);

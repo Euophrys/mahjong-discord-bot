@@ -4,22 +4,12 @@ const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 const parseHandFromString = require("../utils/parseHandFromString");
-const efficiency = require("./efficiency");
 const { calculateMinimumShanten, calculateStandardShanten } = require("../utils/shanten");
 
-module.exports = (message, client) => {
-    let command = message.content.split(" ")[0].toLowerCase();
-    let handString = message.content.split(" ").slice(1).join("").toLowerCase();
+var cooldown_users = [];
 
-    if (command == "!eff" && handString == "you") {
-        return sendResponse(message, "Hey, that's not nice! Admin, help!");
-    } else if (command == "!eff" && handString == "me") {
-        return sendResponse(message, "You're not really my type. You're, you know... human.");
-    }
-
-    if ((handString == "that" || handString == "thatstandard") && client.user.lastMessage.content) {
-        handString = client.user.lastMessage.content;
-    }
+module.exports = async interaction => {
+    let handString = interaction.options.getString('hand');
 
     let {tiles, handTiles} = parseHandFromString(handString);
 
@@ -31,17 +21,35 @@ module.exports = (message, client) => {
         handTiles = added.handTiles;
 
         if (tiles == 0) {
-            return sendDeletableResponse(message, "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z");
+            return interaction.reply({content: "You'll need to give me a hand to calculate. The format is like this: 1236m4568p789s111z", ephemeral: true});
         }
     }
 
     if (tiles > 14) {
-        return sendDeletableResponse(message, `That hand has ${tiles - 14} too many tiles.`);
+        return interaction.reply({content: `That hand has ${tiles - 14} too many tiles.`, ephemeral: true});
     }
 
     if (tiles % 3 === 0) {
-        return sendDeletableResponse(message, `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`);
+        return interaction.reply({content: `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`, ephemeral: true});
     }
+
+    /*
+    if (message.guild && message.guild.id == "548440972997033996") {
+        let name = "invisible user";
+        if (message.member) {
+            name = message.member.user.username;
+        }
+
+        if (cooldown_users.indexOf(name) >= 0) {
+            return sendResponse(message, "You've already called this command recently. Please wait a bit.");
+        } else {
+            cooldown_users.push(name);
+            setTimeout(() => {
+                cooldown_users.splice(cooldown_users.indexOf(name), 1);
+            }, 300000)
+        }
+    }
+    */
 
     let remainingTiles = Array(38).fill(4);
     remainingTiles[0] = 0;
@@ -64,40 +72,63 @@ module.exports = (message, client) => {
     
     let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
     let shanten = shantenFunction(handTiles);
+    let isComplete = false;
 
     if (shanten === -1) {
-        response += "(Complete -> Tenpai)\n";
+        response += "(Complete)\n";
         shanten = 0;
+        isComplete = true;
     }
     else if (shanten === 0) {
-        response += "(Tenpai -> 1-shanten)\n";
+        response += "(Tenpai)\n";
     }
     else {
-        response += `(${shanten}-shanten -> ${shanten + 1}-shanten)\n`;
+        response += `(${shanten}-shanten)\n`;
     }
 
     // Check just the ukeire of 13 tile hands (or tiles % 3 === 1 hands)
     if (tiles == 13) {
-        return efficiency(message, client);
+        let ukeire = calculateUkeire(handTiles, remainingTiles, shantenFunction, shanten);
+        response += `Ukeire: ${ukeire.value} (${tilesToEmoji(ukeire.tiles)})`;
+
+        let upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, shanten, ukeire.value, handActuallyHasTon);
+        if (upgrades.value > 0) {
+            upgrades.tiles = upgrades.tiles.map(o => o.tile);
+            response += `\nUpgrades: ${upgrades.value} (${tilesToEmoji(upgrades.tiles)})`;
+        }
+
+        await interaction.reply(response);
+        return;
     }
 
     // Check the ukeire of each discard for 14 tile hands (or tiles % 3 === 2 hands)
     let discardUkeire = calculateDiscardUkeire(handTiles, remainingTiles, shantenFunction, shanten);
     let groups = createUkeireGroups(discardUkeire, handActuallyHasTon);
 
-    if (shanten === 0) {
+    if (shanten === 1) {
         groups = filterBadUkeire(handTiles, groups, remainingTiles);
     }
 
     groups = sortGroups(groups);
 
+    if (shanten === 0 && !isComplete) {
+        for (let i = 0; i < groups.length; i++) {
+            handTiles[groups[i].discards[0]]--;
+            groups[i].upgrades = calculateUkeireUpgrades(handTiles, remainingTiles, shantenFunction, 0, groups[0].value, handActuallyHasTon);
+            groups[i].upgrades.tiles = groups[i].upgrades.tiles.map(o => o.tile);
+            handTiles[groups[i].discards[0]]++;
+        }
+    }
+
     let ukeire = "";
 
-    for (let i = 0; i < groups.length || i < 6; i++) {
+    for (let i = 0; i < groups.length; i++) {
         let group = groups[i];
         
-        if (shanten === 0) {
+        if (shanten === 1) {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${tilesToEmoji(group.goodTiles)}\\*${tilesToEmoji(group.tiles)})\n`;
+        } else if (shanten === 0 && !isComplete) {
+            ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades.value} upgrades (${tilesToEmoji(group.upgrades.tiles)})\n`;
         } else {
             ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)})\n`;
         }
@@ -106,24 +137,26 @@ module.exports = (message, client) => {
     if ((response + ukeire).length > 1800) {
         ukeire = "";
         
-        for (let i = 0; i < groups.length || i < 6; i++) {
+        for (let i = 0; i < groups.length; i++) {
             let group = groups[i];
 
-            if (shanten === 0) {
+            if (shanten === 1) {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} (${group.good}\\*) ukeire (${convertTilesToTenhouString(group.goodTiles)} \\* ${convertTilesToTenhouString(group.tiles)})\n`;
-            } else {
+            } else if (shanten === 0 && !isComplete) {
+                ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${tilesToEmoji(group.tiles)}), ${group.upgrades[0]} upgrades (${convertTilesToTenhouString(group.upgrades[1])})\n`;
+            }else {
                 ukeire += `Discard ${tilesToEmoji(group.discards)} -> ${group.value} ukeire (${convertTilesToTenhouString(group.tiles)})\n`;
             }
         }
     }
 
-    if (shanten === 0) {
-        ukeire += "* Resulting in good wait tenpai"
+    if (shanten === 1) {
+        ukeire += "* Resulting in 5+ tile tenpai"
     }
 
     response += ukeire;
 
-    return sendResponse(message, response);
+    await interaction.reply(response);
 }
 
 function createUkeireGroups(discardUkeire, handActuallyHasTon) {
@@ -133,7 +166,7 @@ function createUkeireGroups(discardUkeire, handActuallyHasTon) {
         if (i === 31 && !handActuallyHasTon) continue;
         if (discardUkeire[i].value == 0) continue;
 
-        let tiles = discardUkeire[i].tiles.join("");
+        let tiles = discardUkeire[i].tiles.join(",");
 
         if (!groupsObject[tiles]) {
             groupsObject[tiles] = {
@@ -177,8 +210,9 @@ function filterBadUkeire(hand, groups, remainingTiles) {
         for(let j = 0; j < tiles.length; j++) {
             let tile = tiles[j];
             hand[tile]++;
+            adjustedRemainingTiles[tile]--;
 
-            let ukeire = calculateDiscardUkeire(hand, remainingTiles, calculateStandardShanten, 0);
+            let ukeire = calculateDiscardUkeire(hand, adjustedRemainingTiles, calculateStandardShanten, 0);
             let bestUkeire = Math.max(...ukeire.map((u) => u.value));
 
             if (bestUkeire <= 4) {
@@ -189,6 +223,7 @@ function filterBadUkeire(hand, groups, remainingTiles) {
             }
 
             hand[tile]--;
+            adjustedRemainingTiles[tile]++;
         }
         hand[groups[i].discards[0]]++;
     }
@@ -235,15 +270,7 @@ function calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShant
         }
 
         convertedHand[handIndex]--;
-
-        // Look for discards that go back in shanten
-        if (shantenFunction(convertedHand) == baseShanten) {
-            results[handIndex] = { value: 0, tiles: [] };
-            convertedHand[handIndex]++;
-            continue;
-        }
-
-        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction);
+        let ukeire = calculateUkeire(convertedHand, remainingTiles, shantenFunction, baseShanten);
         convertedHand[handIndex]++;
 
         results[handIndex] = ukeire;
@@ -287,12 +314,72 @@ function calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten = -2
         convertedHand[addedTile]++;
 
         if (shantenFunction(convertedHand, baseShanten - 1) < baseShanten) {
-            // Add the number of remaining tiles to the ukeire count
+            // Improves shanten. Add the number of remaining tiles to the ukeire count
             value += convertedTiles[addedTile];
             tiles.push(addedTile);
         }
 
         convertedHand[addedTile]--;
+    }
+
+    return {
+        value,
+        tiles
+    };
+}
+
+/**
+ * Calculates how many tiles can improve the ukeire of a hand.
+ * @param {TileCounts} hand The number of each tile in the player's hand.
+ * @param {TileCounts} remainingTiles The number of each tile the player cannot see.
+ * @param {Function} shantenFunction The function to use to calculate shanten
+ * @param {number} baseShanten The hand's current shanten, if precalculated.
+ * @param {number} shantenOffset The hand's current shanten offset, if precalculated.
+ */
+function calculateUkeireUpgrades(hand, remainingTiles, shantenFunction, baseShanten = -2, baseUkeire = -1, handActuallyHasTon = false) {
+    if (baseShanten === -2) {
+        baseShanten = shantenFunction(hand);
+    }
+
+    if (baseUkeire === -1) {
+        baseUkeire = calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value;
+    }
+
+    let value = 0;
+    let tiles = [];
+
+    // Check adding every tile to see if it improves the ukeire
+    for (let addedTile = 1; addedTile < hand.length; addedTile++) {
+        if (remainingTiles[addedTile] === 0) continue;
+        if (addedTile % 10 === 0) continue;
+
+        hand[addedTile]++;
+        remainingTiles[addedTile]--;
+
+        if (shantenFunction(hand, baseShanten) === baseShanten
+            && calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value > baseUkeire) {
+            // Find the best tile to cut
+            let discards = calculateDiscardUkeire(hand, remainingTiles, shantenFunction, baseShanten).map(u => u.value);
+            if (!handActuallyHasTon) discards[31] = 0;
+            let bestUkeire = Math.max(...discards);
+            let bestDiscard = discards.indexOf(bestUkeire);
+
+            if (addedTile !== bestDiscard) {
+                // Check the ukeire of the hand after cutting the best tile
+                hand[bestDiscard]--;
+                let newUkeire = calculateUkeire(hand, remainingTiles, shantenFunction, baseShanten).value;
+
+                if (newUkeire > baseUkeire) {
+                    value += remainingTiles[addedTile] + 1;
+                    tiles.push({ tile: addedTile, discard: bestDiscard, count: remainingTiles[addedTile] + 1, resultingUkeire: newUkeire });
+                }
+
+                hand[bestDiscard]++;
+            }
+        }
+
+        hand[addedTile]--;
+        remainingTiles[addedTile]++;
     }
 
     return {

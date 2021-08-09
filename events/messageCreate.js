@@ -117,7 +117,7 @@ module.exports = (client, message) => {
         try {
             return majsoul_commands[command](message, client);
         } catch (e) {
-            sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+            sendDeletableResponse(message, "I'm currently being upgraded to v13 and slash commands. Things might be broken in the meantime. " + e.stack);
         }
     }
   }
@@ -137,7 +137,7 @@ module.exports = (client, message) => {
         try {
           return commands[command](message, client);
         } catch (e) {
-          sendDeletableResponse(message, "I recently updated to Discord v12, so there may be issues. Tell Erzzy about this. " + e.stack);
+          sendDeletableResponse(message, "I'm currently being upgraded to v13 and slash commands. Things might be broken in the meantime. " + e.stack);
         }
     }
   }

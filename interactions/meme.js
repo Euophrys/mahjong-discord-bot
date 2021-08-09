@@ -2,28 +2,27 @@ const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
-module.exports = message => {
-    let content = message.content.split(" ").splice(1).join(" ");
-    let responseObject = lookupResponse(content, links, aliases);
+module.exports = async interaction => {
+    let responseObject = lookupResponse(interaction.options.getString('meme'), links, aliases);
 
     if (responseObject.response) {
-        return sendResponse(message, responses[Math.floor(Math.random() * responses.length)] + responseObject.response);
+        return interaction.reply(responses[Math.floor(Math.random() * responses.length)] + responseObject.response);
     }
 
-    if (responseObject.request === "" || responseObject.request === "random") {
+    if (responseObject.request === "random") {
         var keys = Object.keys(links);
         var link_key = keys[Math.floor(Math.random() * keys.length)];
         var link = links[link_key];
-        return sendResponse(message, `Here's a random meme (${link_key}): ${link}`);
+        return interaction.reply(`Here's a random meme (${link_key}): ${link}`);
     }
 
     if (responseObject.request === "list") {
         var keys = Object.keys(links);
         keys = keys.sort();
-        return sendResponse(message, `I have these memes: ${keys.join(", ")}.`);
+        return interaction.reply(`I have these memes: ${keys.join(", ")}.`);
     }
 
-    return sendDeletableResponse(message, `I don't have a meme associated with ${responseObject.request}. Consider making a pull request to Euophrys/mahjong-discord-bot if you have something in mind.`);
+    return interaction.reply({content:`I don't have a meme associated with ${responseObject.request}. Consider making a pull request to Euophrys/mahjong-discord-bot if you have something in mind.`, ephemeral:true});
 }
 
 const responses = ["Here it is: ", "Here you go: ", "Hope it helps: "];

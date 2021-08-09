@@ -1,16 +1,11 @@
 const lookupResponse = require("../utils/lookupResponse");
 const sendResponse = require("../utils/sendResponse");
 
-module.exports = message => {
-    let content = message.content.split(" ").splice(1).join(" ");
-    let responseObject = lookupResponse(content, platforms, aliases);
+module.exports = async interaction => {
+    let responseObject = lookupResponse(message, platforms, aliases);
 
     if (responseObject.response) {
         return sendResponse(message, responseObject.response);
-    }
-
-    if (responseObject.request === "") {
-        return sendResponse(message, "The Mahjong platforms I know about are Tenhou, Mahjong Soul, Final Fantasy XIV, Kemono Mahjong, Sega MJ, and Mahjong Hime. Ask for more details with `!platform <name>`.");
     }
 
     return sendResponse(message, `I don't know about a Mahjong platform named ${responseObject.request}. You're on your own.`);
