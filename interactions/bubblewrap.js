@@ -33,7 +33,7 @@ module.exports = async interaction => {
     }
     
     await interaction.reply(messages[0])
-    await interaction.followUp(message[1])
+    //await interaction.followUp(message[1])
 }
 
 const hands = ["chiitoi", "a normal hand", "pinfu", "nothing", "kokushi"];
