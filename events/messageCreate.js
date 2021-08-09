@@ -105,7 +105,7 @@ majsoul_commands = {
 
 const reactions = ["274070288474439681", "👀", "🤔", "563201111184375808"]
 
-module.exports = (client, message) => {
+module.exports = async (client, message) => {
   if (message.author.bot) return;
 
   let lower = message.content.toLowerCase();

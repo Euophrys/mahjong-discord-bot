@@ -1,4 +1,4 @@
-module.exports = client => {
+module.exports = async client => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`Present in ${client.guilds.cache.size} servers.`);
 

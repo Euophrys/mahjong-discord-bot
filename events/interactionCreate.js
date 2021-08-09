@@ -43,10 +43,8 @@ const commands = {
     "gacha": gacha
 }
 
-module.exports = (client, interaction) => {
+module.exports = async (client, interaction) => {
     if (!interaction.isCommand()) return;
-  
-    let lower = message.content.toLowerCase();
 
     if (commands[interaction.commandName]) {
         try {
