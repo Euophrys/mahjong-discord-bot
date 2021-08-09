@@ -170,9 +170,5 @@ module.exports = client => {
         }
     ]
 
-    const command = await client.guilds.cache.get('391257802347118592').commands.create(data);
+    const command = await client.guilds.cache.get('391257802347118592').commands.create(commands);
 };
-
-const platforms = require('../commands/platforms');
-const mleague = require('../commands/mleague');
-const poll = require('../commands/poll');
