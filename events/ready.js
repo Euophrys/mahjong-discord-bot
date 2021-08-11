@@ -124,16 +124,6 @@ module.exports = async client => {
             }]
         },
         {
-            name: "graph",
-            description: "Generates a graph of the scores in the given Tenhou replay.",
-            options: [{
-                name: "replay",
-                type: "STRING",
-                description: "A link to the replay.",
-                required: true
-            }]
-        },
-        {
             name: "bubblewrap",
             description: "Shuffles all of the tiles and posts them with individual spoilers for stress relief."
         },

@@ -45,6 +45,7 @@ module.exports = async interaction => {
         try {
             await commands[interaction.commandName](interaction);
         } catch (e) {
+            console.log(e.stack);
             await interaction.reply({content: "There was an error: " + e.stack, ephemeral: true})
         }
     }
