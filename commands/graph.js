@@ -2,7 +2,7 @@ const request = require("request");
 const QuickChart = require("quickchart-js");
 const sendResponse = require("../utils/sendResponse");
 const sendDeletableResponse = require("../utils/sendDeletableResponse");
-const { MessageAttachment } = require("discord.js")
+const { MessageAttachment, MessageEmbed } = require("discord.js")
 const tenhouRegex = /\/\?log=(.+?)[&\n\b]/;
 
 module.exports = (message, client) => {
@@ -95,7 +95,12 @@ module.exports = (message, client) => {
             .setConfig(graphData);
 
         chart.toBinary()
-            .then((buffer) => message.channel.send(new MessageAttachment(buffer, "graph.png")))
+            .then((buffer) => {
+                message.channel.send({
+                    content:"Here's your chart.",
+                    embeds: [new MessageEmbed({title:"chart", files: [new MessageAttachment(buffer, "graph.png")]})]
+                })
+            })
             .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
     });
 };
