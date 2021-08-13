@@ -100,8 +100,7 @@ module.exports = (message, client) => {
                 const exampleEmbed = new MessageEmbed()
                     .setTitle('Score Graph')
                     .setImage('attachment://graph.png');
-
-                message.channel.send({ embeds: [exampleEmbed], files: [file] });
+                message.channel.send({ files: [file] });
             })
             .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
     });
