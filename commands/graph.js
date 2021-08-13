@@ -97,9 +97,6 @@ module.exports = (message, client) => {
         chart.toBinary()
             .then((buffer) => {
                 const file = new MessageAttachment(buffer, 'graph.png');
-                const exampleEmbed = new MessageEmbed()
-                    .setTitle('Score Graph')
-                    .setImage('attachment://graph.png');
                 message.channel.send({ files: [file] });
             })
             .catch((err) => sendDeletableResponse(message, `I got this error while making the chart: ${err}`));
