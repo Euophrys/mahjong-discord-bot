@@ -53,7 +53,7 @@ module.exports = async client => {
                 name: "standard",
                 type: "BOOLEAN",
                 description: "Whether to only look at standard ukeire (no Seven Pairs or Thirteen Orphans)",
-                required: true
+                required: false
             }]
         },
         {
