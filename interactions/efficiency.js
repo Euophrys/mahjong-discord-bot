@@ -70,7 +70,7 @@ module.exports = async interaction => {
         tiles += 3;
     }
     
-    let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
+    let shantenFunction = interaction.options.getBoolean('standard') ? calculateStandardShanten : calculateMinimumShanten;
     let shanten = shantenFunction(handTiles);
     let isComplete = false;
 

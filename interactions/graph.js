@@ -95,7 +95,10 @@ module.exports = async interaction => {
             .setConfig(graphData);
 
         chart.toBinary()
-            .then((buffer) => interaction.reply(new MessageAttachment(buffer, "graph.png")))
+            .then((buffer) => {
+                const file = new MessageAttachment(buffer, 'graph.png');
+                interaction.reply({ files: [file] });
+            })
             .catch((err) => interaction.reply({content:`I got this error while making the chart: ${err}`, ephemeral:true}))
     });
 };

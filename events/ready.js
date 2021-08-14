@@ -49,6 +49,11 @@ module.exports = async client => {
                 type: "STRING",
                 description: "The hand in 123s456p789m123z format.",
                 required: true
+            },{
+                name: "standard",
+                type: "BOOLEAN",
+                description: "Whether to only look at standard ukeire (no Seven Pairs or Thirteen Orphans)",
+                required: true
             }]
         },
         {
