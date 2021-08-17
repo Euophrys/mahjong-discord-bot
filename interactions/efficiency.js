@@ -63,6 +63,10 @@ module.exports = async interaction => {
 
     let response = `${handToEmoji(handTiles)} `;
     let handActuallyHasTon = handTiles[31] > 0;
+    let shantenFunction = interaction.options.getBoolean('standard') ? calculateStandardShanten : calculateMinimumShanten;
+    if (tiles < 13) {
+        shantenFunction = calculateStandardShanten;
+    }
 
     // We add East triplets just to make the shanten calculation accurate for called hands.
     while (tiles < 13) {
@@ -70,7 +74,6 @@ module.exports = async interaction => {
         tiles += 3;
     }
     
-    let shantenFunction = interaction.options.getBoolean('standard') ? calculateStandardShanten : calculateMinimumShanten;
     let shanten = shantenFunction(handTiles);
     let isComplete = false;
 

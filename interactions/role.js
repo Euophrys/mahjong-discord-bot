@@ -1,44 +1,29 @@
 const sendResponse = require("../utils/sendResponse");
 
-module.exports = message => {
-    let viewerRole = message.guild.roles.resolve(roles.viewer);
-
-    if(!viewerRole) {
-        return sendResponse(message, `That command isn't supported in this server.`);
+module.exports = async interaction => {
+    if(!interaction.inGuild() || !interaction.guild.roles.resolve(roles.viewer)) {
+        return interaction.reply({content:`That command isn't supported in this server.`,ephemeral:true});
     }
 
-    if(!message.member) {
-        return sendResponse(message, `I can't figure out who you are. Is your status set to Invisible?`);
+    if(!interaction.member) {
+        return interaction.reply({content:`I can't figure out who you are. Is your status set to Invisible?`,ephemeral:true});
     }
 
-    let requestArray = message.content.split(" ").slice(1);
-    let request = requestArray.join("").toLowerCase();
+    let request = interaction.options.getString('role');
+    let requestedRole = interaction.guild.roles.resolve(roles[request]);
 
-    if (!roles[request]) {
-        return sendResponse(message, "The valid roles you can request are Viewer, 7447LFG, MajsoulLFG, and AutotableLFG.")
-    }
-
-    let requestedRole = message.guild.roles.resolve(roles[request]);
-
-    if(message.member.roles.cache.has(requestedRole.id)) {
-        message.member.roles.remove(requestedRole).catch(console.error);
-        message.react("❌");
+    if(interaction.member.roles.cache.has(requestedRole.id)) {
+        interaction.member.roles.remove(requestedRole).catch(console.error);
+        return interaction.reply({content:"You already had that role, so I removed it.",ephemeral:true});
     } else {
-        message.member.roles.add(requestedRole).catch(console.error);
-        message.react("✅");
+        interaction.member.roles.add(requestedRole).catch(console.error);
+        return interaction.reply({content:"Role added!",ephemeral:true});
     }
 }
 
 const roles = {
     "viewer": "670274611388219402",
-    "viewers": "670274611388219402",
     "7447lfg": "732369555133038682",
-    "7447": "732369555133038682",
-    "tenhou": "732369555133038682",
     "majsoullfg": "732369495011622992",
-    "majsoul": "732369495011622992",
-    "mahjongsoul": "732369495011622992",
     "autotablelfg": "732340351875940472",
-    "autotable": "732340351875940472",
-    "auto": "732340351875940472"
 }

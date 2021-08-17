@@ -1,6 +1,5 @@
 const define = require("./define");
 const lookupResponse = require("../utils/lookupResponse");
-const sendResponse = require("../utils/sendResponse");
 
 module.exports = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('term'), explanations, aliases);

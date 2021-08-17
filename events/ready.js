@@ -87,7 +87,41 @@ module.exports = async client => {
                 name: "term",
                 type: "STRING",
                 description: "The term to explain.",
-                required: true
+                required: true,
+                choices: [
+                    {
+                        name:"mahjong",
+                        value:"mahjong"
+                    },
+                    {
+                        name:"yaku",
+                        value:"yaku"
+                    },
+                    {
+                        name:"furiten",
+                        value:"mahjong"
+                    },
+                    {
+                        name:"defense",
+                        value:"defense"
+                    },
+                    {
+                        name:"tile shorthand",
+                        value:"tile"
+                    },
+                    {
+                        name:"three-player mahjong",
+                        value:"sanma"
+                    },
+                    {
+                        name:"push/pull",
+                        value:"push"
+                    },
+                    {
+                        name:"yourself",
+                        value:"yourself"
+                    },
+                ]
             }]
         },
         {

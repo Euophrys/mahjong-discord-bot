@@ -74,6 +74,10 @@ module.exports = (message, client) => {
 
     let response = `${handToEmoji(handTiles)} `;
     let handActuallyHasTon = handTiles[31] > 0;
+    let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
+    if (tiles < 13) {
+        shantenFunction = calculateStandardShanten;
+    }
 
     // We add East triplets just to make the shanten calculation accurate for called hands.
     while (tiles < 13) {
@@ -81,7 +85,6 @@ module.exports = (message, client) => {
         tiles += 3;
     }
     
-    let shantenFunction = message.content.toLowerCase().indexOf("standard") > 0 ? calculateStandardShanten : calculateMinimumShanten;
     let shanten = shantenFunction(handTiles);
     let isComplete = false;
 
