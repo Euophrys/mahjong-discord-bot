@@ -49,7 +49,7 @@ module.exports = async interaction => {
             }
             return interaction.reply(`The dictionary says: ${result[0].def.trim()}.`); 
         } else {
-            let requestArray = message.content.split(" ").slice(1);
+            let requestArray = term.split(" ");
             let request = requestArray.join("").toLowerCase();
 
             // check jisho
