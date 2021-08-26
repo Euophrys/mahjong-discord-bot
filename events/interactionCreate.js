@@ -16,6 +16,7 @@ const graph = require('../interactions/graph');
 const role = require('../interactions/role');
 const bubblewrap = require('../interactions/bubblewrap');
 const gacha = require('../interactions/gacha');
+const comeback = require('../interactions/comeback');
 
 const commands = {
     "convert": convert,
@@ -35,7 +36,8 @@ const commands = {
     "graph": graph,
     "role": role,
     "bubblewrap": bubblewrap,
-    "gacha": gacha
+    "gacha": gacha,
+    "comeback": comeback
 }
 
 module.exports = async interaction => {
