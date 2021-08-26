@@ -99,6 +99,7 @@ module.exports = message => {
 
     if (number) {
         let common = request.indexOf("common") >= 0;
+        let sanma = request.indexOf("sanma") >= 0 ? 1 : 0;
         let difference = parseInt(number[1]);
 
         if (difference < 1000) {
@@ -114,9 +115,9 @@ module.exports = message => {
             let gainedPoints = 0;
             
             if (dealer) {
-                gainedPoints = TSUMO_SCORES[i].dealer * 3;
+                gainedPoints = TSUMO_SCORES[i].dealer * (3 - sanma);
             } else {
-                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES[i].dealer;
+                gainedPoints = TSUMO_SCORES[i].nondealer * (2 - sanma) + TSUMO_SCORES[i].dealer;
             }
 
             let adjustedDifference = difference - (dealer ? TSUMO_SCORES[i].dealer : TSUMO_SCORES[i].nondealer);
@@ -140,7 +141,7 @@ module.exports = message => {
             for (let i = 0; i < TSUMO_SCORES.length; i++) {
                 if (common && TSUMO_SCORES[i].fu > 40) continue;
                 let gainedPoints = 0;
-                gainedPoints = TSUMO_SCORES[i].nondealer * 2 + TSUMO_SCORES[i].dealer;
+                gainedPoints = TSUMO_SCORES[i].nondealer * (2 - sanma) + TSUMO_SCORES[i].dealer;
                 let adjustedDifference = difference - TSUMO_SCORES[i].dealer;
     
                 if (gainedPoints > adjustedDifference) {

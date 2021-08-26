@@ -153,6 +153,34 @@ module.exports = async client => {
             }]
         },
         {
+            name: "comeback",
+            description: "Calculates the hand value you need in order to come back from a given point difference.",
+            options: [{
+                name: "difference",
+                type: "INTEGER",
+                description: "Your opponent's score minus your score (minus 100 if you win the tiebreaker).",
+                required: true
+            },
+            {
+                name: "dealer",
+                type: "BOOLEAN",
+                description: "Whether you are the dealer. Defaults to false.",
+                required: false
+            },
+            {
+                name: "common",
+                type: "BOOLEAN",
+                description: "Whether to only consider hands that score 40 fu or less.",
+                required: false
+            },
+            {
+                name: "sanma",
+                type: "BOOLEAN",
+                description: "Whether it is a three-player game, where you only receive tsumo points from two players.",
+                required: false
+            }]
+        },
+        {
             name: "translate",
             description: "Replaces Japanese mahjong terms in the given message with English ones.",
             options: [{
