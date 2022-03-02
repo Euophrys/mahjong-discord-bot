@@ -1,7 +1,5 @@
 const emoji = require("../utils/emoji");
 const handToEmoji = require("../utils/handToEmoji");
-const sendResponse = require("../utils/sendResponse");
-const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const convertTilesToTenhouString = require("../utils/convertTilesToTenhouString");
 const parseHandFromString = require("../utils/parseHandFromString");
 const { calculateMinimumShanten, calculateStandardShanten } = require("../utils/shanten");

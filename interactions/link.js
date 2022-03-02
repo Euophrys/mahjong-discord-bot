@@ -1,6 +1,4 @@
 const lookupResponse = require("../utils/lookupResponse");
-const sendResponse = require("../utils/sendResponse");
-const sendDeletableResponse = require("../utils/sendDeletableResponse");
 
 module.exports = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('resource'), links, aliases);

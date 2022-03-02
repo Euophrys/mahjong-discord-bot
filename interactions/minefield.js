@@ -1,7 +1,6 @@
 const emoji = require("../utils/emoji");
 const createTilePool = require("../utils/createTilePool");
 const handToEmoji = require("../utils/handToEmoji");
-const sendResponse = require("../utils/sendResponse");
 
 module.exports = async interaction => {
     let sort = interaction.options.getBoolean('sort');

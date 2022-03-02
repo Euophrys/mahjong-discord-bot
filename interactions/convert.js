@@ -1,6 +1,5 @@
 const emoji = require("../utils/emoji");
 const characterToSuit = require("../utils/characterToSuit");
-const sendResponse = require("../utils/sendResponse");
 const conversionRequestRegex = /!(\d+[smzp])+/g;
 
 module.exports = async interaction => {

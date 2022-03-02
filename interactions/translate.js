@@ -1,6 +1,3 @@
-const sendResponse = require("../utils/sendResponse");
-const sendDeletableResponse = require("../utils/sendDeletableResponse");
-
 module.exports = async interaction => {
     let request = interaction.options.getString('message');
 

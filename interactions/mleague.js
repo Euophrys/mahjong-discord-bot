@@ -1,5 +1,4 @@
 const mleague = require('../utils/mleague');
-const sendResponse = require("../utils/sendResponse");
 
 module.exports = async interaction => {
     let now = new Date();

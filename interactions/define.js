@@ -1,8 +1,6 @@
 const WordPos = require("wordpos");
 const wordpos = new WordPos();
 const lookupResponse = require("../utils/lookupResponse");
-const sendResponse = require("../utils/sendResponse");
-const sendDeletableResponse = require("../utils/sendDeletableResponse");
 const spellcheck = require("../utils/spellcheck");
 const npmrequest = require("request");
 var Filter = require('bad-words'),

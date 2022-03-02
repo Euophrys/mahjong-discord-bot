@@ -1,5 +1,3 @@
-const sendResponse = require("../utils/sendResponse");
-
 const starting_messages = [
     "Here are the results of your ten rolls: ",
     "That'll be thirty dollars. ",

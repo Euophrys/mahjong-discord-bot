@@ -1,5 +1,3 @@
-const sendResponse = require("../utils/sendResponse");
-
 module.exports = async interaction => {
     if(!interaction.inGuild() || !interaction.guild.roles.resolve(roles.viewer)) {
         return interaction.reply({content:`That command isn't supported in this server.`,ephemeral:true});

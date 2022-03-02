@@ -1,14 +1,13 @@
 const lookupResponse = require("../utils/lookupResponse");
-const sendResponse = require("../utils/sendResponse");
 
 module.exports = async interaction => {
     let responseObject = lookupResponse(message, platforms, aliases);
 
     if (responseObject.response) {
-        return sendResponse(message, responseObject.response);
+        return interaction.reply(responseObject.response);
     }
 
-    return sendResponse(message, `I don't know about a Mahjong platform named ${responseObject.request}. You're on your own.`);
+    return interaction.reply(`I don't know about a Mahjong platform named ${responseObject.request}. You're on your own.`);
 };
 
 const platforms = {
