@@ -1,5 +1,5 @@
 module.exports = (message, response) => {
-    if (Math.random() < 0.2) {
+    if (Math.random() < 0.5) {
         response = "Starting April 30th, I won't be able to respond to text commands like this. Please start using the slash commands, or give me permission to create them if I don't already have it and I'll add them next time I restart.\n" + response;
     }
     
