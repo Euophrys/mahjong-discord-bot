@@ -314,7 +314,7 @@ module.exports = async client => {
                 await client.guilds.cache.get(guild.id).commands.set(global_commands);
             }
         } catch(e) {
-            console.log("No permission for this guild.");
+            console.log("No permission for this guild: " + guild.name);
         }
     });
 };
