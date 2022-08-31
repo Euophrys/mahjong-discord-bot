@@ -31,7 +31,7 @@ module.exports = async interaction => {
         return interaction.reply({content: `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`, ephemeral: true});
     }
 
-    if (interaction.guild_id && interaction.guild_id == "548440972997033996") {
+    if (interaction.guild_id && (interaction.guild_id == "548440972997033996" || interaction.guild_id == "391257802347118592")) {
         let name = "invisible user";
         if (interaction.member) {
             name = interaction.member.user.username;
