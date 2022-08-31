@@ -31,15 +31,14 @@ module.exports = async interaction => {
         return interaction.reply({content: `That hand has ${tiles} tiles, which is a multiple of three, which can't happen.`, ephemeral: true});
     }
 
-    /*
-    if (message.guild && message.guild.id == "548440972997033996") {
+    if (interaction.guild_id && interaction.guild_id == "548440972997033996") {
         let name = "invisible user";
-        if (message.member) {
-            name = message.member.user.username;
+        if (interaction.member) {
+            name = interaction.member.user.username;
         }
 
         if (cooldown_users.indexOf(name) >= 0) {
-            return sendResponse(message, "You've already called this command recently. Please wait a bit.");
+            return interaction.reply({content: "You've already called this command recently. Please wait a bit.", ephemeral: true});
         } else {
             cooldown_users.push(name);
             setTimeout(() => {
@@ -47,7 +46,6 @@ module.exports = async interaction => {
             }, 300000)
         }
     }
-    */
 
     let remainingTiles = Array(38).fill(4);
     remainingTiles[0] = 0;
