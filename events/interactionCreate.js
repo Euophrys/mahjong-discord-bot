@@ -41,7 +41,7 @@ const commands = {
 }
 
 module.exports = async interaction => {
-    if (!interaction.isCommand()) return;
+    if (!interaction.isChatInputCommand()) return;
 
     if (commands[interaction.commandName]) {
         try {

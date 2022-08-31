@@ -1,3 +1,6 @@
+const { REST, Routes } = require('discord.js');
+require("dotenv").config();
+
 module.exports = async client => {
     console.log(`Logged in as ${client.user.tag}!`);
     console.log(`Present in ${client.guilds.cache.size} servers.`);
@@ -191,10 +194,6 @@ module.exports = async client => {
             }]
         },
         {
-            name: "bubblewrap",
-            description: "Shuffles all of the tiles and posts them with individual spoilers for stress relief."
-        },
-        {
             name: "meme",
             description: "Provides the link to the requested meme.",
             options: [{
@@ -214,107 +213,20 @@ module.exports = async client => {
                 required: false
             }]
         }
-    ]
+    ];
 
-    const majsoul_commands = [
-        {
-            name: "convert",
-            description: "Converts any tile strings prefixed with ! to emoji.",
-            options: [{
-                name: "message",
-                type: "STRING",
-                description: "The message to convert.",
-                required: true
-            }]
-        },
-        {
-            name: "randomhand",
-            description: "Generates a random hand of 14 tiles."
-        },
-        {
-            name: "randomtile",
-            description: "Generates a random tile."
-        },
-        {
-            name: "define",
-            description: "Looks up the definition of the provided term.",
-            options: [{
-                name: "term",
-                type: "STRING",
-                description: "The term to define.",
-                required: true
-            }]
-        },
-        {
-            name: "efficiency",
-            description: "Calculates the ukeire of the hand, if 13 tiles, or each discard, if 14 tiles.",
-            options: [{
-                name: "hand",
-                type: "STRING",
-                description: "The hand in 123s456p789m123z format.",
-                required: true
-            }]
-        },
-        {
-            name: "explain",
-            description: "Provides lengthy explanations for a few terms.",
-            options: [{
-                name: "term",
-                type: "STRING",
-                description: "The term to explain.",
-                required: true
-            }]
-        },
-        {
-            name: "score",
-            description: "Calculates the score of the given hand.",
-            options: [{
-                name: "han",
-                type: "INTEGER",
-                description: "The han value of the hand.",
-                required: true
-            },
-            {
-                name: "fu",
-                type: "INTEGER",
-                description: "The fu value of the hand.",
-                required: true
-            },
-            {
-                name: "dealer",
-                type: "BOOLEAN",
-                description: "Whether the player scoring the hand is the dealer.",
-                required: false
-            },
-            {
-                name: "skyrocketing",
-                type: "BOOLEAN",
-                description: "Whether to use skyrocketing (aotenjou) rules which have no limit hands.",
-                required: false
-            }]
-        },
-        {
-            name: "translate",
-            description: "Replaces Japanese mahjong terms in the given message with English ones.",
-            options: [{
-                name: "message",
-                type: "STRING",
-                description: "The message to translate.",
-                required: true
-            }]
-        },
-    ]
+    const rest = new REST({ version: '10' }).setToken(process.env.BOT_TOKEN);
 
-    let guilds = await client.guilds.fetch();
-    guilds.each(async guild => {
-        try {
-            if (guild.id == "548440972997033996") {
-                await client.guilds.cache.get('548440972997033996').commands.set(majsoul_commands);
-            } else {
-                await client.guilds.cache.get(guild.id).commands.set(global_commands);
-            }
-        } catch(e) {
-            console.log("No permission for this guild: " + guild.name);
-        }
-    });
+    (async () => {
+    try {
+        console.log('Started refreshing application (/) commands.');
+
+        await rest.put(Routes.applicationCommands(629290905723076609), { body: global_commands });
+
+        console.log('Successfully reloaded application (/) commands.');
+    } catch (error) {
+        console.error(error);
+    }
+    })();
+
 };
