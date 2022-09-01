@@ -11,7 +11,7 @@ module.exports = async client => {
             description: "Converts any tile strings prefixed with ! to emoji.",
             options: [{
                 name: "message",
-                type: "STRING",
+                type: 3,
                 description: "The message to convert.",
                 required: true
             }]
@@ -29,7 +29,7 @@ module.exports = async client => {
             description: "Looks up the definition of the provided term.",
             options: [{
                 name: "term",
-                type: "STRING",
+                type: 3,
                 description: "The term to define.",
                 required: true
             }]
@@ -39,7 +39,7 @@ module.exports = async client => {
             description: "Provides the link to the given resource.",
             options: [{
                 name: "resource",
-                type: "STRING",
+                type: 3,
                 description: "The resource to fetch.",
                 required: true
             }]
@@ -49,12 +49,12 @@ module.exports = async client => {
             description: "Calculates the ukeire of the hand, if 13 tiles, or each discard, if 14 tiles.",
             options: [{
                 name: "hand",
-                type: "STRING",
+                type: 3,
                 description: "The hand in 123s456p789m123z format.",
                 required: true
             },{
                 name: "standard",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether to only look at standard ukeire (no Seven Pairs or Thirteen Orphans)",
                 required: false
             }]
@@ -64,7 +64,7 @@ module.exports = async client => {
             description: "Provides 34 random tiles for playing minefield mahjong with.",
             options: [{
                 name: "sort",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether to sort the tiles.",
                 required: false
             }]
@@ -78,7 +78,7 @@ module.exports = async client => {
             description: "Checks the given player's Nodocchi information to see their rank.",
             options: [{
                 name: "name",
-                type: "STRING",
+                type: 3,
                 description: "The name of the player's tenhou account, or 'me'.",
                 required: true
             }]
@@ -88,7 +88,7 @@ module.exports = async client => {
             description: "Provides lengthy explanations for a few terms.",
             options: [{
                 name: "term",
-                type: "STRING",
+                type: 3,
                 description: "The term to explain.",
                 required: true,
                 choices: [
@@ -132,25 +132,25 @@ module.exports = async client => {
             description: "Calculates the score of the given hand.",
             options: [{
                 name: "han",
-                type: "INTEGER",
+                type: 4,
                 description: "The han value of the hand.",
                 required: true
             },
             {
                 name: "fu",
-                type: "INTEGER",
+                type: 4,
                 description: "The fu value of the hand.",
                 required: true
             },
             {
                 name: "dealer",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether the player scoring the hand is the dealer.",
                 required: false
             },
             {
                 name: "skyrocketing",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether to use skyrocketing (aotenjou) rules which have no limit hands.",
                 required: false
             }]
@@ -160,25 +160,25 @@ module.exports = async client => {
             description: "Calculates the hand value you need in order to come back from a given point difference.",
             options: [{
                 name: "difference",
-                type: "INTEGER",
+                type: 4,
                 description: "Your opponent's score minus your score (minus 100 if you win the tiebreaker).",
                 required: true
             },
             {
                 name: "dealer",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether you are the dealer. Defaults to false.",
                 required: false
             },
             {
                 name: "common",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether to only consider hands that score 40 fu or less.",
                 required: false
             },
             {
                 name: "sanma",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether it is a three-player game, where you only receive tsumo points from two players.",
                 required: false
             }]
@@ -188,7 +188,7 @@ module.exports = async client => {
             description: "Replaces Japanese mahjong terms in the given message with English ones.",
             options: [{
                 name: "message",
-                type: "STRING",
+                type: 3,
                 description: "The message to translate.",
                 required: true
             }]
@@ -198,7 +198,7 @@ module.exports = async client => {
             description: "Provides the link to the requested meme.",
             options: [{
                 name: "meme",
-                type: "STRING",
+                type: 3,
                 description: "The meme to link to.",
                 required: true
             }]
@@ -208,7 +208,7 @@ module.exports = async client => {
             description: "Simulates a pull on the MajSoul gacha.",
             options: [{
                 name: "bamboo",
-                type: "BOOLEAN",
+                type: 5,
                 description: "Whether to pull for boys or not.",
                 required: false
             }]
