@@ -1,6 +1,5 @@
 const lookupResponse = require("../utils/lookupResponse");
 
-exports.keys = Object.keys(links);
 exports.meme = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('meme'), links, aliases);
 
@@ -87,7 +86,7 @@ const links = {
     "ds4": "https://cdn.discordapp.com/attachments/202201840887136256/789720871447166976/image0.jpg",
     "shanpes": "https://cdn.discordapp.com/attachments/469490857716875285/811265715758956544/unknown.png",
 }
-
+exports.keys = Object.keys(links);
 const aliases = {
     "connectkan": "kan",
     "majsoul": "kan",

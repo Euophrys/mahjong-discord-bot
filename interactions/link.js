@@ -1,6 +1,5 @@
 const lookupResponse = require("../utils/lookupResponse");
 
-exports.keys = Object.keys(links);
 exports.link = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('resource'), links, aliases);
 
@@ -78,7 +77,7 @@ const links = {
     "kuinobashi": "https://pathofhouou.blogspot.com/2020/05/guide-defense-techniques-kuinobashi.html",
     "sotogawa": "https://pathofhouou.blogspot.com/2020/07/analysis-sotogawa-effectiveness-by-turn.html",
 }
-
+exports.keys = Object.keys(links);
 const aliases = {
     "yakurates": "yakurate",
     "doradragons": "doradragon",

@@ -7,7 +7,6 @@ var Filter = require('bad-words'),
     filter = new Filter();
 filter.addWords("sexual");
 
-exports.keys = Object.keys(base_definitions);
 exports.define = async interaction => {
     let definitions = {...base_definitions};
 
@@ -404,6 +403,7 @@ const base_definitions = {
     "hai": "Hai is the japanese word for 'tile.' It will sometimes be 'pai' due to rendaku.",
     "rendaku": "You're gonna need to ask a Japanese teacher about that one."
 };
+exports.keys = Object.keys(base_definitions);
 
 const aliases = {
     "kyuushuu": "kyuushu",
