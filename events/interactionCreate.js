@@ -56,7 +56,7 @@ module.exports = async interaction => {
                 await interaction.reply({content: "There was an error: " + e.stack, ephemeral: true})
             }
         }
-    } else if (interaction.isAutoComplete()) {
+    } else if (interaction.isAutocomplete()) {
         if (keys[interaction.commandName]) {
             const focusedValue = interaction.options.getFocused();
             if (!focusedValue) {
