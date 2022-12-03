@@ -7,7 +7,8 @@ var Filter = require('bad-words'),
     filter = new Filter();
 filter.addWords("sexual");
 
-module.exports = async interaction => {
+exports.keys = Object.keys(base_definitions);
+exports.define = async interaction => {
     let definitions = {...base_definitions};
 
     /*

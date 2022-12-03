@@ -1,6 +1,7 @@
 const lookupResponse = require("../utils/lookupResponse");
 
-module.exports = async interaction => {
+exports.keys = Object.keys(links);
+exports.link = async interaction => {
     let responseObject = lookupResponse(interaction.options.getString('resource'), links, aliases);
 
     if (responseObject.response) {

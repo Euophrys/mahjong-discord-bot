@@ -31,7 +31,8 @@ module.exports = async client => {
                 name: "term",
                 type: 3,
                 description: "The term to define.",
-                required: true
+                required: true,
+                autocomplete: true
             }]
         },
         {
@@ -41,7 +42,8 @@ module.exports = async client => {
                 name: "resource",
                 type: 3,
                 description: "The resource to fetch.",
-                required: true
+                required: true,
+                autocomplete: true
             }]
         },
         {
@@ -200,7 +202,8 @@ module.exports = async client => {
                 name: "meme",
                 type: 3,
                 description: "The meme to link to.",
-                required: true
+                required: true,
+                autocomplete: true
             }]
         },
         {
