@@ -90,6 +90,8 @@ const links = {
     "shanpes": "https://cdn.discordapp.com/attachments/469490857716875285/811265715758956544/unknown.png",
     "tileback": "https://cdn.discordapp.com/attachments/202201840887136256/846648127720521748/Scr20210525150636.gif",
     "ryuuiisou": "https://cdn.discordapp.com/attachments/656638097890738197/1012815073531670559/path8154.png",
+    "haipai": "https://i.imgur.com/rVCdm8A.png",
+    "chombo": "https://i.imgur.com/6kNknA7.png",
 }
 
 const aliases = {
